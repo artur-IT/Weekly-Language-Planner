@@ -19,6 +19,8 @@ h2 {
 /* Form add task - start */
 .task_fields {
   margin: 20px 0;
+  padding: 10px;
+  background-color: #fff;
 }
 
 select {
