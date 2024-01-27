@@ -9,6 +9,34 @@
   <body>
     <h2>Weekly Language Planner</h2>
     <main class="wrapper">
+      <section class="task_fields">
+        <form action="">
+          <label for="day">Day:</label>
+          <select name="day">
+            <option>Monday</option>
+            <option>Tuesday</option>
+            <option>Wednesday</option>
+            <option>Thursday</option>
+            <option>Friday</option>
+            <option>Saturday</option>
+            <option>Sunday</option>
+          </select>
+          <label for="study">Study:</label>
+          <select name="habit">
+            <option>SPEAKING</option>
+            <option>READING</option>
+            <option>WRITING</option>
+            <option>LISTENING</option>
+            <option>VOCABULARY</option>
+          </select>
+          <label for="task_name">Task name:</label>
+          <input type="text" placeholder="task name..." />
+          <label for="">Task time:</label>
+          <input type="number" id="exercise_time" step="5" min="0" max="60" placeholder="max. 60" /> min.
+          <button>Dodaj</button>
+        </form>
+      </section>
+
       <section class="layout">
         <div class="zero"></div>
         <div class="monnday"><p class="center_text">Monday</p></div>
@@ -19,11 +47,11 @@
         <div class="saturday"><p class="center_text">Saturday</p></div>
         <div class="sunday"><p class="center_text">Sunday</p></div>
         <div class="habit_sum"><p class="center_text">Habit time</p></div>
-        <div class="habit1"><p class="center_text">10</p></div>
-        <div class="habit2"><p class="center_text">11</p></div>
-        <div class="habit3"><p class="center_text">12</p></div>
-        <div class="habit4"><p class="center_text">13</p></div>
-        <div class="habit5"><p class="center_text">14</p></div>
+        <div class="habit1"><p class="center_text">SPEAKING</p></div>
+        <div class="habit2"><p class="center_text">READING</p></div>
+        <div class="habit3"><p class="center_text">WRITING</p></div>
+        <div class="habit4"><p class="center_text">LISTENING</p></div>
+        <div class="habit5"><p class="center_text">VOCABULARY</p></div>
         <div class="plannded_time"><p class="center_text">Planned time:</p></div>
         <div class="time_done"><p class="center_text">Time done:</p></div>
         <div>17</div>

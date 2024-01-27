@@ -7,14 +7,47 @@
 }
 
 body {
-  background-color: #b1b687;
+  background-color: #dadada;
   font-family: "Lato", Arial, sans-serif;
   text-align: center;
 }
 
 h2 {
-  margin: 40px 0;
+  margin: 20px 0;
 }
+
+/* Form add task - start */
+.task_fields {
+  margin: 20px 0;
+}
+
+select {
+  margin-right: 10px;
+  padding: 2px 3px;
+}
+input {
+  padding: 2px 3px;
+}
+
+#exercise_time {
+  width: 75px;
+}
+
+button {
+  margin-left: 10px;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: yellow;
+  border: 2px solid greenyellow;
+}
+
+button:hover {
+  color: white;
+  background-color: black;
+  transition: 0.7s;
+}
+/* End */
 
 .layout {
   margin: 0 auto;
@@ -30,8 +63,8 @@ h2 {
     "habit3 . . . . . . . ." 100px
     "habit4 . . . . . . . ." 100px
     "habit5 . . . . . . . ." 100px
-    "plannded_time . . . . . . . ." 50px
-    "time_done . . . . . . . ." 50px
+    "plannded_time . . . . . . . ." 30px
+    "time_done . . . . . . . ." 30px
     / 160px 100px 100px 100px 100px 100px 100px 100px 50px;
   gap: 8px;
 }
