@@ -1,9 +1,6 @@
-// (init = () => {
-// })();
+import GetTaskBox from "./GetTaskBox.jsx";
 
-let taskDB = [];
-
-getTaskFromUser = (e) => {
+const getTaskFromUser = (e) => {
   const myDay = document.querySelector(".day_task");
   const myStudy = document.querySelector(".study");
   const myTask = document.querySelector(".task_name");
@@ -49,3 +46,10 @@ class TaskBox {
     console.log(this.day, this.study);
   }
 }
+
+const MyApp = () => {
+  return <h1>Hello, world!</h1>;
+  // <GetTaskBox />;
+};
+const root = ReactDOM.createRoot(document.getElementById("app"));
+root.render(<MyApp />);
