@@ -11,8 +11,8 @@
     <main class="wrapper">
       <section class="task_fields">
         <form action="">
-          <label for="day">Day:</label>
-          <select class="day_task">
+          <label>Day:</label>
+          <select class="day_task" name="day-task">
             <option>Monday</option>
             <option>Tuesday</option>
             <option>Wednesday</option>
@@ -21,17 +21,17 @@
             <option>Saturday</option>
             <option>Sunday</option>
           </select>
-          <label for="study">Study:</label>
-          <select class="study">
+          <label>Study:</label>
+          <select class="study" name="study-name">
             <option>SPEAKING</option>
             <option>READING</option>
             <option>WRITING</option>
             <option>LISTENING</option>
             <option>VOCABULARY</option>
           </select>
-          <label for="task_name">Task name:</label>
-          <input class="task_name" type="text" placeholder="task name..." />
-          <label for="">Task time:</label>
+          <label>Task name:</label>
+          <input class="task_name" name="task-name" type="text" placeholder="task name..." />
+          <label>Task time:</label>
           <input class="task_time" type="number" id="exercise_time" step="5" min="0" max="60" placeholder="max. 60" /> min.
           <button>Dodaj</button>
         </form>
@@ -112,6 +112,13 @@
         <div class="habit_sum_bgc"><p class="center_text">72</p></div>
       </section>
     </main>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <!-- <script src="https://unpkg.com/babel-standalone/babel.js"></script> -->
     <script src="main.js"></script>
+    <div id="app"></div>
+    <script type="text/babel">
+      ReactDOM.render(<h1>Witaj, świecie!</h1>, document.getElementById("app"));
+    </script>
   </body>
 </html>

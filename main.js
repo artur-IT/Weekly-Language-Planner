@@ -2,8 +2,6 @@
 // })();
 
 let taskDB = [];
-// const days = ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"];
-// const habits = ["SPEAKING", "READING", "WRITING", "LISTENING", "VOCABULARY"];
 
 getTaskFromUser = (e) => {
   const myDay = document.querySelector(".day_task");
@@ -11,16 +9,11 @@ getTaskFromUser = (e) => {
   const myTask = document.querySelector(".task_name");
   const myTime = document.querySelector(".task_time");
   const id = myDay.value + "-" + myStudy.value;
-
+  const date_add = new Date().toLocaleDateString("pl-PL");
   e.preventDefault();
-  const newTask = new TaskBox(id, myDay.value, myStudy.value, myTask.value, myTime.value);
-
+  const newTask = new TaskBox(id, date_add, myDay.value, myStudy.value, myTask.value, myTime.value);
   window.localStorage.setItem(id, JSON.stringify(newTask));
-  // console.log(newTask);
-  // taskDB.push(newTask);
-  for (let i = 0; i < window.localStorage.length; i++) {
-    console.log(window.localStorage);
-  }
+  // console.log(JSON.parse(window.localStorage.getItem(id)));
 };
 
 document.querySelector("button").onclick = getTaskFromUser;
@@ -42,13 +35,14 @@ document.querySelector("button").onclick = getTaskFromUser;
 // console.log(taskDB);
 
 class TaskBox {
-  constructor(id, day, study, name, time) {
+  constructor(id, date_add, day, study, name, time) {
     this.id = id;
+    this.date_add = date_add;
     this.day = day;
     this.study = study;
     this.name = name;
     this.time = time;
-    this.active = false;
+    // this.active = false;
   }
 
   addTask() {
