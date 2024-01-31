@@ -16,6 +16,10 @@ h2 {
   margin: 20px 0;
 }
 
+.empty {
+  background-color: #eee;
+}
+
 /* Form add task - start */
 .task_fields {
   margin: 20px 0;

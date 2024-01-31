@@ -1,24 +1,47 @@
-import GetTaskBox from "./GetTaskBox.jsx";
+// import GetTaskBox from "./GetTaskBox.jsx";
 
 const getTaskFromUser = (e) => {
+  e.preventDefault();
   const myDay = document.querySelector(".day_task");
   const myStudy = document.querySelector(".study");
   const myTask = document.querySelector(".task_name");
   const myTime = document.querySelector(".task_time");
-  const id = myDay.value + "-" + myStudy.value;
+  const id = myDay.value.toLocaleLowerCase() + "-" + myStudy.value;
   const date_add = new Date().toLocaleDateString("pl-PL");
-  e.preventDefault();
+
   const newTask = new TaskBox(id, date_add, myDay.value, myStudy.value, myTask.value, myTime.value);
   window.localStorage.setItem(id, JSON.stringify(newTask));
   // console.log(JSON.parse(window.localStorage.getItem(id)));
+  GetTaskBox(id);
 };
 
 document.querySelector("button").onclick = getTaskFromUser;
 
+// REACT COMPONENT
+const GetTaskBox = () => {
+  const emptyBoxes = document.querySelectorAll(".empty");
+
+  //  if (emptyBoxId === localStoreId) {
+  //         el.style.backgroundColor = "yellow";
+  //         el.textContent = "oko";
+  //         console.log(localStorage.key(i));
+  //       }
+
+  for (let i = 0; i < localStorage.length; i++) {
+    const localStoreId = localStorage.key(i);
+  }
+
+  for (const el of emptyBoxes) {
+    const emptyBoxId = el.attributes.name.nodeValue;
+  }
+
+  return <div>testy...</div>;
+};
+//------------
+
 // for (let x = 0; x < days.length; x++) {
 //   for (let y = 0; y < habits.length; y++) {
 //     const newTaskName = days[x].toLocaleLowerCase() + `-` + habits[y];
-//     //
 //     const test = {
 //       [newTaskName]: {
 //         name: "",
@@ -26,10 +49,9 @@ document.querySelector("button").onclick = getTaskFromUser;
 //       },
 //     };
 //     taskDB.push(test);
+//     console.log(newTaskName);
 //   }
 // }
-
-// console.log(taskDB);
 
 class TaskBox {
   constructor(id, date_add, day, study, name, time) {
@@ -47,8 +69,12 @@ class TaskBox {
   }
 }
 
+GetTaskBox();
+
 const MyApp = () => {
-  return <h1>Hello, world!</h1>;
+  return;
+  // <GetTaskBox />;
+  // <h1>Hello, world!</h1>;
   // <GetTaskBox />;
 };
 const root = ReactDOM.createRoot(document.getElementById("app"));
