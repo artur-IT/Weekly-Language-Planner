@@ -13,7 +13,10 @@ body {
 }
 
 h2 {
-  margin: 20px 0;
+  position: relative;
+  padding: 20px 0;
+  background-color: lightcoral;
+  z-index: 2;
 }
 
 .empty {
@@ -31,9 +34,13 @@ h2 {
 
 /* Form add task - start */
 .task_fields {
-  margin: 20px 0;
+  /* display: none; */
+  position: relative;
+  top: -00px;
+  margin: 0 0 20px 0;
   padding: 10px;
   background-color: #fff;
+  z-index: 0;
 }
 
 select {
@@ -48,6 +55,16 @@ input {
   width: 75px;
 }
 
+button.top {
+  position: relative;
+  margin-left: 10px;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: #0f4cf3;
+  border: 2px solid greenyellow;
+  z-index: 0;
+}
 button {
   margin-left: 10px;
   padding: 5px 10px;

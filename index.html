@@ -11,36 +11,37 @@
   </head>
   <body>
     <h2>Weekly Language Planner</h2>
-    <main class="wrapper">
-      <button>Dodaj</button>
-      <section class="task_fields">
-        <form action="">
-          <label>Day:</label>
-          <select class="day_task" name="day-task">
-            <option>Monday</option>
-            <option>Tuesday</option>
-            <option>Wednesday</option>
-            <option>Thursday</option>
-            <option>Friday</option>
-            <option>Saturday</option>
-            <option>Sunday</option>
-          </select>
-          <label>Study:</label>
-          <select class="study" name="study-name">
-            <option>SPEAKING</option>
-            <option>READING</option>
-            <option>WRITING</option>
-            <option>LISTENING</option>
-            <option>VOCABULARY</option>
-          </select>
-          <label>Task name:</label>
-          <input class="task_name" name="task-name" type="text" placeholder="task name..." />
-          <label>Task time:</label>
-          <input class="task_time" type="number" id="exercise_time" step="5" min="0" max="60" placeholder="max. 60" /> min.
-          <button>Dodaj</button>
-        </form>
-      </section>
+    <button class="top">Dodaj</button>
 
+    <section class="task_fields">
+      <form action="">
+        <label>Day:</label>
+        <select class="day_task" name="day-task">
+          <option>Monday</option>
+          <option>Tuesday</option>
+          <option>Wednesday</option>
+          <option>Thursday</option>
+          <option>Friday</option>
+          <option>Saturday</option>
+          <option>Sunday</option>
+        </select>
+        <label>Study:</label>
+        <select class="study" name="study-name">
+          <option>SPEAKING</option>
+          <option>READING</option>
+          <option>WRITING</option>
+          <option>LISTENING</option>
+          <option>VOCABULARY</option>
+        </select>
+        <label>Task name:</label>
+        <input class="task_name" name="task-name" type="text" placeholder="task name..." />
+        <label>Task time:</label>
+        <input class="task_time" type="number" id="exercise_time" step="5" min="0" max="60" placeholder="max. 60" /> min.
+        <button>Dodaj</button>
+      </form>
+    </section>
+
+    <main class="wrapper">
       <section class="layout">
         <div class="zero"></div>
         <div class="monnday"><p class="center_text">Monday</p></div>
