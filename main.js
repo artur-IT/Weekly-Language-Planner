@@ -1,4 +1,4 @@
-// import GetTaskBox from "./GetTaskBox.jsx";
+// import ShowTask from "./components/ShowTask.jsx";
 
 // KOMPONENT wyświetla zadanie z LocalStorage
 const ShowTask = ({ taskValues }) => {
@@ -6,13 +6,47 @@ const ShowTask = ({ taskValues }) => {
     <div>
       <p>{taskValues.name}</p>
       <p>{taskValues.time} min.</p>
-      <p>{taskValues.date_add}</p>
     </div>
   );
 };
 
-// search empty boxes and compare to LocalStore
-const GetTaskBox = () => {
+// R.COMPONENT - ADD TASK SECTION
+const addTaskSection = () => {
+  return (
+    <section>
+      <section class="task_fields">
+        <form action="">
+          <label>Day:</label>
+          <select class="day_task" name="day-task">
+            <option>Monday</option>
+            <option>Tuesday</option>
+            <option>Wednesday</option>
+            <option>Thursday</option>
+            <option>Friday</option>
+            <option>Saturday</option>
+            <option>Sunday</option>
+          </select>
+          <label>Study:</label>
+          <select class="study" name="study-name">
+            <option>SPEAKING</option>
+            <option>READING</option>
+            <option>WRITING</option>
+            <option>LISTENING</option>
+            <option>VOCABULARY</option>
+          </select>
+          <label>Task name:</label>
+          <input class="task_name" name="task-name" type="text" placeholder="task name..." />
+          <label>Task time:</label>
+          <input class="task_time" type="number" id="exercise_time" step="5" min="0" max="60" placeholder="max. 60" /> min.
+          <button>Dodaj</button>
+        </form>
+      </section>
+    </section>
+  );
+};
+
+// SEARCH EMPTY BOXES AND COMPARE WITH LocalStore
+const getAllTasksBox = () => {
   const emptyBoxes = document.querySelectorAll(".empty");
 
   for (const el of emptyBoxes) {
@@ -29,9 +63,7 @@ const GetTaskBox = () => {
   }
 };
 
-GetTaskBox();
-
-// object to new task from user
+// OPBJECT FOR NEW TASK FROM USER
 class TaskBox {
   constructor(id, date_add, day, study, name, time) {
     this.id = id;
@@ -40,11 +72,10 @@ class TaskBox {
     this.study = study;
     this.name = name;
     this.time = time;
-    // this.active = false;
   }
 }
 
-// get new task from user and save to LocalStorage
+// GET NEW TASK FROM USER AND SAVE TO LocalStorage
 const getTaskFromUser = (e) => {
   e.preventDefault();
   const myDay = document.querySelector(".day_task");
@@ -56,8 +87,10 @@ const getTaskFromUser = (e) => {
 
   const newTask = new TaskBox(id, date_add, myDay.value, myStudy.value, myTask.value, myTime.value);
   window.localStorage.setItem(id, JSON.stringify(newTask));
-  // console.log(JSON.parse(window.localStorage.getItem(id)));
-  GetTaskBox(id);
+
+  myDay.value = myStudy.value = myTask.value = myTime.value = null;
+  getAllTasksBox();
 };
 
 document.querySelector("button").onclick = getTaskFromUser;
+getAllTasksBox();
