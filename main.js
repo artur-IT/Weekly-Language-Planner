@@ -21,21 +21,22 @@ document.querySelector("button").onclick = getTaskFromUser;
 const GetTaskBox = () => {
   const emptyBoxes = document.querySelectorAll(".empty");
 
-  //  if (emptyBoxId === localStoreId) {
-  //         el.style.backgroundColor = "yellow";
-  //         el.textContent = "oko";
-  //         console.log(localStorage.key(i));
-  //       }
-
-  for (let i = 0; i < localStorage.length; i++) {
-    const localStoreId = localStorage.key(i);
-  }
+  // for (let i = 0; i < localStorage.length; i++) {
+  // console.log(localStorage.key(i));
 
   for (const el of emptyBoxes) {
-    const emptyBoxId = el.attributes.name.nodeValue;
+    const emptyBoxName = el.attributes.name.nodeValue;
+    const localStoreId = JSON.parse(localStorage.getItem(emptyBoxName));
+    console.log(localStoreId:id);
+
+    // if (emptyBoxName === localStoreId) {
+    //   el.style.backgroundColor = "yellow";
+    //   el.textContent = "oko";
+    //   console.log("jest");
+    // }
   }
 
-  return <div>testy...</div>;
+  // }
 };
 //------------
 
