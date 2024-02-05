@@ -27,7 +27,7 @@ const GetTaskBox = () => {
   for (const el of emptyBoxes) {
     const emptyBoxName = el.attributes.name.nodeValue;
     const localStoreId = JSON.parse(localStorage.getItem(emptyBoxName));
-    console.log(localStoreId:id);
+    console.log(localStoreId);
 
     // if (emptyBoxName === localStoreId) {
     //   el.style.backgroundColor = "yellow";
