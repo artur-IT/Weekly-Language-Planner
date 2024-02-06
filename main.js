@@ -1,6 +1,6 @@
 // import ShowTask from "./components/ShowTask.jsx";
 
-// KOMPONENT show 1 task from LocalStorage
+// SHOW 1 TASK FROM LocalStorage
 const ShowTask = ({ taskValues }) => {
   if (!taskValues) return;
   else
@@ -15,35 +15,31 @@ const ShowTask = ({ taskValues }) => {
 // R.COMPONENT - ADD TASK SECTION
 const AddTaskSection = () => {
   return (
-    <section>
-      <section class="task_fields">
-        <form action="">
-          <label>Day:</label>
-          <select class="day_task" name="day-task">
-            <option>Monday</option>
-            <option>Tuesday</option>
-            <option>Wednesday</option>
-            <option>Thursday</option>
-            <option>Friday</option>
-            <option>Saturday</option>
-            <option>Sunday</option>
-          </select>
-          <label>Study:</label>
-          <select class="study" name="study-name">
-            <option>SPEAKING</option>
-            <option>READING</option>
-            <option>WRITING</option>
-            <option>LISTENING</option>
-            <option>VOCABULARY</option>
-          </select>
-          <label>Task name:</label>
-          <input class="task_name" name="task-name" type="text" placeholder="task name..." />
-          <label>Task time:</label>
-          <input class="task_time" type="number" id="exercise_time" step="5" min="0" max="60" placeholder="max. 60" /> min.
-          <button>Dodaj</button>
-        </form>
-      </section>
-    </section>
+    <form action="">
+      <label>Day:</label>
+      <select className="day_task" name="day-task">
+        <option>Monday</option>
+        <option>Tuesday</option>
+        <option>Wednesday</option>
+        <option>Thursday</option>
+        <option>Friday</option>
+        <option>Saturday</option>
+        <option>Sunday</option>
+      </select>
+      <label>Study:</label>
+      <select className="study" name="study-name">
+        <option>SPEAKING</option>
+        <option>READING</option>
+        <option>WRITING</option>
+        <option>LISTENING</option>
+        <option>VOCABULARY</option>
+      </select>
+      <label>Task name:</label>
+      <input className="task_name" name="task-name" type="text" placeholder="task name..." />
+      <label>Task time:</label>
+      <input className="task_time" type="number" id="exercise_time" step="5" min="0" max="60" placeholder="max. 60" /> min.
+      <button className="add_form">Dodaj</button>
+    </form>
   );
 };
 
@@ -64,7 +60,7 @@ const getAllTasks = () => {
   }
 };
 
-// OPBJECT FOR NEW TASK FROM USER
+// OBJECT FOR NEW TASK FROM USER
 class TaskBox {
   constructor(id, date_add, day, study, name, time) {
     this.id = id;
@@ -91,25 +87,23 @@ const addTaskFromUser = (e) => {
     window.localStorage.setItem(id, JSON.stringify(newTask));
   } else alert("Uzupełnij pola!");
 
-  clearFormFields();
-  // myDay.value = myStudy.value = myTask.value = myTime.value = null;
+  myDay.value = myStudy.value = myTask.value = myTime.value = null;
   getAllTasks();
 };
 
-const clearFormFields = () => {
-  const myDay = document.querySelector(".day_task");
-  const myStudy = document.querySelector(".study");
-  const myTask = document.querySelector(".task_name");
-  const myTime = document.querySelector(".task_time");
-  myDay.value = myStudy.value = myTask.value = myTime.value = null;
-};
-
+// REMOVE ALL TASKS FROM LocalStore
 const clearAllTasks = () => {
   localStorage.clear();
   return getAllTasks();
 };
 
-document.querySelector("button.add_form").onclick = addTaskFromUser;
-document.querySelector("button.remove_top").onclick = clearAllTasks;
+// RENDER SECTION 'ADD TASK' FROM USER
+ReactDOM.createRoot(document.querySelector("section.task_fields")).render(<AddTaskSection />);
 
+// GET ALL TASKS FROM LocalStore
 getAllTasks();
+
+setTimeout(() => {
+  document.querySelector("button.add_form").onclick = addTaskFromUser;
+  document.querySelector("button.remove_top").onclick = clearAllTasks;
+}, 500);
