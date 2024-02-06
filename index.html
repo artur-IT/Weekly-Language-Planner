@@ -7,11 +7,13 @@
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
     <script src="https://unpkg.com/babel-standalone/babel.js"></script>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="grid.css" />
     <title>Weekly Language Planner</title>
   </head>
   <body>
     <h2>Weekly Language Planner</h2>
-    <button class="top">Dodaj</button>
+    <button class="add_top">Add Task</button>
+    <button class="remove_top">Clear All</button>
 
     <section class="task_fields">
       <form action="">
@@ -37,7 +39,7 @@
         <input class="task_name" name="task-name" type="text" placeholder="task name..." />
         <label>Task time:</label>
         <input class="task_time" type="number" id="exercise_time" step="5" min="0" max="60" placeholder="max. 60" /> min.
-        <button>Dodaj</button>
+        <button class="add_form">Dodaj</button>
       </form>
     </section>
 

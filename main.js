@@ -1,17 +1,19 @@
 // import ShowTask from "./components/ShowTask.jsx";
 
-// KOMPONENT wyświetla zadanie z LocalStorage
+// KOMPONENT show 1 task from LocalStorage
 const ShowTask = ({ taskValues }) => {
-  return (
-    <div>
-      <p>{taskValues.name}</p>
-      <p>{taskValues.time} min.</p>
-    </div>
-  );
+  if (!taskValues) return;
+  else
+    return (
+      <div>
+        <p>{taskValues.name}</p>
+        <p>{taskValues.time} min.</p>
+      </div>
+    );
 };
 
 // R.COMPONENT - ADD TASK SECTION
-const addTaskSection = () => {
+const AddTaskSection = () => {
   return (
     <section>
       <section class="task_fields">
@@ -46,20 +48,19 @@ const addTaskSection = () => {
 };
 
 // SEARCH EMPTY BOXES AND COMPARE WITH LocalStore
-const getAllTasksBox = () => {
+const getAllTasks = () => {
   const emptyBoxes = document.querySelectorAll(".empty");
 
   for (const el of emptyBoxes) {
     // get box name from DOM
     const emptyBoxName = el.attributes.name.nodeValue;
     const localStoreId = JSON.parse(localStorage.getItem(emptyBoxName));
+    const empty = ReactDOM.createRoot(el);
 
     // show all task's from LocalStore to empty boxes
     if (localStoreId) {
-      el.style.backgroundColor = "yellow";
-      const empty = ReactDOM.createRoot(el);
       empty.render(<ShowTask taskValues={localStoreId} />);
-    }
+    } else empty.render(<ShowTask taskValues={localStoreId} />);
   }
 };
 
@@ -76,7 +77,7 @@ class TaskBox {
 }
 
 // GET NEW TASK FROM USER AND SAVE TO LocalStorage
-const getTaskFromUser = (e) => {
+const addTaskFromUser = (e) => {
   e.preventDefault();
   const myDay = document.querySelector(".day_task");
   const myStudy = document.querySelector(".study");
@@ -85,12 +86,30 @@ const getTaskFromUser = (e) => {
   const id = myDay.value.toLocaleLowerCase() + "-" + myStudy.value;
   const date_add = new Date().toLocaleDateString("pl-PL");
 
-  const newTask = new TaskBox(id, date_add, myDay.value, myStudy.value, myTask.value, myTime.value);
-  window.localStorage.setItem(id, JSON.stringify(newTask));
+  if (myDay.value && myStudy.value && myTask.value && myTime.value && myTime.value != 0) {
+    const newTask = new TaskBox(id, date_add, myDay.value, myStudy.value, myTask.value, myTime.value);
+    window.localStorage.setItem(id, JSON.stringify(newTask));
+  } else alert("Uzupełnij pola!");
 
-  myDay.value = myStudy.value = myTask.value = myTime.value = null;
-  getAllTasksBox();
+  clearFormFields();
+  // myDay.value = myStudy.value = myTask.value = myTime.value = null;
+  getAllTasks();
 };
 
-document.querySelector("button").onclick = getTaskFromUser;
-getAllTasksBox();
+const clearFormFields = () => {
+  const myDay = document.querySelector(".day_task");
+  const myStudy = document.querySelector(".study");
+  const myTask = document.querySelector(".task_name");
+  const myTime = document.querySelector(".task_time");
+  myDay.value = myStudy.value = myTask.value = myTime.value = null;
+};
+
+const clearAllTasks = () => {
+  localStorage.clear();
+  return getAllTasks();
+};
+
+document.querySelector("button.add_form").onclick = addTaskFromUser;
+document.querySelector("button.remove_top").onclick = clearAllTasks;
+
+getAllTasks();

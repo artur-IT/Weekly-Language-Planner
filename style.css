@@ -19,20 +19,19 @@ h2 {
   z-index: 2;
 }
 
-.empty {
-  background-color: #eee;
-}
-.empty p {
-  font-size: 0.8rem;
-  font-weight: 400;
-}
-.empty div {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+button.add_top,
+button.remove_top {
+  position: relative;
+  margin-left: 10px;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: #0f4cf3;
+  border: 2px solid greenyellow;
+  z-index: 0;
 }
 
-/* Form add task - start */
+/* Form add task - Start */
 .task_fields {
   /* display: none; */
   position: relative;
@@ -55,17 +54,7 @@ input {
   width: 75px;
 }
 
-button.top {
-  position: relative;
-  margin-left: 10px;
-  padding: 5px 10px;
-  cursor: pointer;
-  border-radius: 5px;
-  background-color: #0f4cf3;
-  border: 2px solid greenyellow;
-  z-index: 0;
-}
-button {
+button.add_form {
   margin-left: 10px;
   padding: 5px 10px;
   cursor: pointer;
@@ -74,125 +63,9 @@ button {
   border: 2px solid greenyellow;
 }
 
-button:hover {
+button.add_form:hover {
   color: white;
   background-color: black;
   transition: 0.7s;
 }
-/* End */
-
-.layout {
-  margin: 0 auto;
-  width: 1000px;
-  height: auto;
-  /* border: 1px solid blue; */
-
-  display: grid;
-  grid:
-    "zero monnday tuesday wednesday thursday friday saturday sunday habit_sum" 50px
-    "habit1 . . . . . . . ." 100px
-    "habit2 . . . . . . . ." 100px
-    "habit3 . . . . . . . ." 100px
-    "habit4 . . . . . . . ." 100px
-    "habit5 . . . . . . . ." 100px
-    "plannded_time . . . . . . . ." 30px
-    "time_done . . . . . . . ." 30px
-    / 160px 100px 100px 100px 100px 100px 100px 100px 50px;
-  gap: 8px;
-}
-
-div {
-  position: relative;
-  border: 1px solid yellow;
-}
-
-.center_text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.habit_sum_bgc {
-  background-color: #fff;
-}
-
-.zero {
-  grid-area: zero;
-  border: none;
-}
-.monnday {
-  grid-area: monnday;
-  font-weight: 700;
-  background-color: #fffda4;
-}
-.tuesday {
-  grid-area: tuesday;
-  font-weight: 700;
-  background-color: #fffda4;
-}
-.wednesday {
-  grid-area: wednesday;
-  font-weight: 700;
-  background-color: #fffda4;
-}
-.thursday {
-  grid-area: thursday;
-  font-weight: 700;
-  background-color: #fffda4;
-}
-.friday {
-  grid-area: friday;
-  font-weight: 700;
-  background-color: #fffda4;
-}
-.saturday {
-  grid-area: saturday;
-  font-weight: 700;
-  background-color: #fffda4;
-}
-.sunday {
-  grid-area: sunday;
-  font-weight: 700;
-  background-color: #fffda4;
-}
-.habit_sum {
-  width: 50px;
-  font-size: 0.8rem;
-  grid-area: habit_sum;
-}
-.habit1 {
-  grid-area: habit1;
-  font-weight: 700;
-  background-color: lightskyblue;
-}
-.habit2 {
-  grid-area: habit2;
-  font-weight: 700;
-  background-color: lightskyblue;
-}
-.habit3 {
-  grid-area: habit3;
-  font-weight: 700;
-  background-color: lightskyblue;
-}
-.habit4 {
-  grid-area: habit4;
-  font-weight: 700;
-  background-color: lightskyblue;
-}
-.habit5 {
-  grid-area: habit5;
-  font-weight: 700;
-  background-color: lightskyblue;
-}
-.plannded_time {
-  font-size: 0.8rem;
-  grid-area: plannded_time;
-  background-color: aliceblue;
-}
-.time_done {
-  font-size: 0.8rem;
-  grid-area: time_done;
-  background-color: aliceblue;
-}
+/* Form add task - End */
