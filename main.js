@@ -60,6 +60,10 @@ const getAllTasks = () => {
   }
 };
 
+const x = (taskValues) => {
+  return <ShowTask taskValues={taskValues} />;
+};
+
 // OBJECT FOR NEW TASK FROM USER
 class TaskBox {
   constructor(id, date_add, day, study, name, time) {
