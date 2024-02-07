@@ -12,7 +12,7 @@ const ShowTask = ({ taskValues }) => {
     );
 };
 
-// R.COMPONENT - ADD TASK SECTION
+// R.COMPONENT - ADD TASK SECTION TO DOM
 const AddTaskSection = () => {
   return (
     <form action="">
@@ -55,6 +55,9 @@ const getAllTasks = () => {
 
     // show all task's from LocalStore to empty boxes
     if (localStoreId) {
+      // <SummaryOneDayTime study={localStoreId.study} time={localStoreId.time} />;
+      SummaryOneDayTime(localStoreId.day, localStoreId.time);
+      // console.log(localStoreId.date_add);
       empty.render(<ShowTask taskValues={localStoreId} />);
     } else empty.render(<ShowTask taskValues={localStoreId} />);
   }
@@ -62,6 +65,26 @@ const getAllTasks = () => {
 
 const x = (taskValues) => {
   return <ShowTask taskValues={taskValues} />;
+};
+
+let dayTimes = [
+  { Monday: { study: "", time: 0 } },
+  { Tuesday: { study: "", time: 0 } },
+  { Wednesday: { study: "", time: 0 } },
+  { Thursday: { study: "", time: 0 } },
+  { Friday: { study: "", time: 0 } },
+  { Saturday: { study: "", time: 0 } },
+  { Sunday: { study: "", time: 0 } },
+];
+
+// SUMMARY ALL TASKS PLANNED TIME FROM ONE-DAY
+const SummaryOneDayTime = (study, time) => {
+  console.log(study, time);
+  const monday = document.querySelector(".monday_sum_time");
+  const summary = ReactDOM.createRoot(monday);
+  summary.render();
+  // console.log(monday);
+  return <p>suma</p>;
 };
 
 // OBJECT FOR NEW TASK FROM USER
