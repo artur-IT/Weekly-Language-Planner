@@ -24,6 +24,7 @@ div {
 
 .empty {
   background-color: #eee;
+  border-radius: 5px;
 }
 .empty p {
   font-size: 0.8rem;
