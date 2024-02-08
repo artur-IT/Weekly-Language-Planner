@@ -54,8 +54,7 @@ const getAllTasks = () => {
 
     // show all task's from LocalStore to empty boxes
     if (localStoreId) {
-      // <SummaryOneDayTime study={localStoreId.study} time={localStoreId.time} />;
-      // summaryOneDayTime(localStoreId.day, localStoreId.time);
+      summaryOneDayTime(localStoreId.day, localStoreId.time);
       ReactDOM.createRoot(el).render(<ShowTask taskValues={localStoreId} />);
     } else null;
   }
@@ -73,13 +72,19 @@ let dayTimes = [
 
 // SUMMARY ALL TASKS PLANNED TIME FROM ONE-DAY
 const summaryOneDayTime = (day, time) => {
-  // console.log(day, time);
   dayTimes.forEach((item) => {
-    console.log(item.day);
+    if (item.day === day) item.time += Number(time);
   });
-  // ReactDOM.createRoot(document.querySelector(".monday_sum_time")).render(<p>{time}</p>);
+  document.querySelector(".monday_sum_time").textContent = `${dayTimes[0].time} min.`;
+  document.querySelector(".tuesday_sum_time").textContent = `${dayTimes[1].time} min.`;
+  document.querySelector(".wednesday_sum_time").textContent = `${dayTimes[2].time} min.`;
+  document.querySelector(".thursday_sum_time").textContent = `${dayTimes[3].time} min.`;
+  document.querySelector(".friday_sum_time").textContent = `${dayTimes[4].time} min.`;
+  document.querySelector(".saturday_sum_time").textContent = `${dayTimes[5].time} min.`;
+  document.querySelector(".sunday_sum_time").textContent = `${dayTimes[6].time} min.`;
+
+  // dayTimes[0].time = 0;
 };
-summaryOneDayTime();
 
 // OBJECT FOR NEW TASK FROM USER
 class TaskBox {
@@ -95,6 +100,9 @@ class TaskBox {
 
 // GET NEW TASK FROM USER AND SAVE TO LocalStorage
 const addTaskFromUser = (e) => {
+  // reset oneDaySum time
+  dayTimes.forEach((item) => (item.time = 0));
+
   e.preventDefault();
   const myDay = document.querySelector(".day_task");
   const myStudy = document.querySelector(".study");
@@ -106,7 +114,9 @@ const addTaskFromUser = (e) => {
   if (myDay.value && myStudy.value && myTask.value && myTime.value && myTime.value != 0) {
     const newTask = new TaskBox(id, date_add, myDay.value, myStudy.value, myTask.value, myTime.value);
     window.localStorage.setItem(id, JSON.stringify(newTask));
+
     getAllTasks();
+    summaryOneDayTime();
   } else alert("Uzupełnij pola!");
 
   myDay.value = myStudy.value = myTask.value = myTime.value = null;
@@ -220,13 +230,15 @@ ReactDOM.createRoot(document.querySelector(".wrapper")).render(
     <div className="habit_sum_bgc">
       <p className="center_text"></p>
     </div>
-    <div className="monday_sum_time">0</div>
-    <div className="tuesday_sum_time">0</div>
-    <div className="wednesday_sum_time">0</div>
-    <div className="thursday_sum_time">0</div>
-    <div className="friday_sum_time">0</div>
-    <div className="saturday_sum_time">0</div>
-    <div className="sunday_sum_time">0</div>
+    <div className="monday_sum_time" name="monday_sum_time">
+      777
+    </div>
+    <div className="tuesday_sum_time"></div>
+    <div className="wednesday_sum_time"></div>
+    <div className="thursday_sum_time"></div>
+    <div className="friday_sum_time"></div>
+    <div className="saturday_sum_time"></div>
+    <div className="sunday_sum_time"></div>
     <div className="habit_sum_bgc">
       <p className="center_text">0</p>
     </div>
@@ -248,4 +260,5 @@ setTimeout(() => {
   document.querySelector("button.remove_top").onclick = clearAllTasks;
   // GET ALL TASKS FROM LocalStore
   getAllTasks();
+  summaryOneDayTime();
 }, 200);
