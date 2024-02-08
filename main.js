@@ -7,6 +7,7 @@ const ShowTask = ({ taskValues }) => {
     return (
       <div>
         <p>{taskValues.name}</p>
+        <hr />
         <p>{taskValues.time} min.</p>
       </div>
     );
@@ -119,11 +120,12 @@ class TaskBox {
 
 // GET NEW TASK FROM USER AND SAVE TO LocalStorage
 const addTaskFromUser = (e) => {
+  e.preventDefault();
+
   // reset oneDaySum and oneHabitSum time
   dayTimes.forEach((item) => (item.time = 0));
   habitTimes.forEach((item) => (item.time = 0));
 
-  e.preventDefault();
   const myDay = document.querySelector(".day_task");
   const myStudy = document.querySelector(".study");
   const myTask = document.querySelector(".task_name");

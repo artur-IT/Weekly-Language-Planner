@@ -27,6 +27,7 @@ div {
   border-radius: 5px;
 }
 .empty p {
+  padding: 5px 7px;
   font-size: 0.8rem;
   font-weight: 400;
 }
@@ -36,11 +37,24 @@ div {
   transform: translate(-50%, -50%);
 }
 
-.center_text {
+.center_text,
+hr {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.monday_sum_time,
+.tuesday_sum_time,
+.wednesday_sum_time,
+.thursday_sum_time,
+.friday_sum_time,
+.saturday_sum_time,
+.sunday_sum_time {
+  line-height: 200%;
+  font-size: 0.8rem;
+  background-color: aliceblue;
 }
 
 .habit1_sum,
