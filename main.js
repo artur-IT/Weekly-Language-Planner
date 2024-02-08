@@ -82,9 +82,8 @@ let habitTimes = [
 
 // SUMMARY ALL TASKS PLANNED TIME FROM ONE-DAY
 const summaryOneDayTime = (day, time) => {
-  dayTimes.forEach((item) => {
-    if (item.day === day) item.time += Number(time);
-  });
+  dayTimes.forEach((item) => (item.day === day ? (item.time += Number(time)) : null));
+
   document.querySelector(".monday_sum_time").textContent = `${dayTimes[0].time} min.`;
   document.querySelector(".tuesday_sum_time").textContent = `${dayTimes[1].time} min.`;
   document.querySelector(".wednesday_sum_time").textContent = `${dayTimes[2].time} min.`;
@@ -96,9 +95,8 @@ const summaryOneDayTime = (day, time) => {
 
 // SUMMARY ONE HABIT TIME FROM ALL DAYS
 const summaryOneHabitTime = (study, time) => {
-  habitTimes.forEach((item) => {
-    if (item.study === study) item.time += Number(time);
-  });
+  habitTimes.forEach((item) => (item.study === study ? (item.time += Number(time)) : null));
+
   document.querySelector(".habit1_sum p").textContent = `${habitTimes[0].time} min.`;
   document.querySelector(".habit2_sum p").textContent = `${habitTimes[1].time} min.`;
   document.querySelector(".habit3_sum p").textContent = `${habitTimes[2].time} min.`;

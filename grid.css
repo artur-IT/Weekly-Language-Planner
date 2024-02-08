@@ -37,8 +37,7 @@ div {
   transform: translate(-50%, -50%);
 }
 
-.center_text,
-hr {
+.center_text {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -52,7 +51,7 @@ hr {
 .friday_sum_time,
 .saturday_sum_time,
 .sunday_sum_time {
-  line-height: 200%;
+  line-height: 230%;
   font-size: 0.8rem;
   background-color: aliceblue;
 }
