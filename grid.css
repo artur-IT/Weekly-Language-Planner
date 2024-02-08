@@ -43,7 +43,12 @@ div {
   transform: translate(-50%, -50%);
 }
 
-.habit_sum_bgc {
+.habit1_sum,
+.habit2_sum,
+.habit3_sum,
+.habit4_sum,
+.habit5_sum {
+  font-size: 0.8rem;
   background-color: #fff;
 }
 

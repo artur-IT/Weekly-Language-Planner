@@ -55,6 +55,7 @@ const getAllTasks = () => {
     // show all task's from LocalStore to empty boxes
     if (localStoreId) {
       summaryOneDayTime(localStoreId.day, localStoreId.time);
+      summaryOneHabitTime(localStoreId.study, localStoreId.time);
       ReactDOM.createRoot(el).render(<ShowTask taskValues={localStoreId} />);
     } else null;
   }
@@ -70,6 +71,14 @@ let dayTimes = [
   { day: "Sunday", time: 0 },
 ];
 
+let habitTimes = [
+  { study: "SPEAKING", time: 0 },
+  { study: "READING", time: 0 },
+  { study: "WRITING", time: 0 },
+  { study: "LISTENING", time: 0 },
+  { study: "VOCABULARY", time: 0 },
+];
+
 // SUMMARY ALL TASKS PLANNED TIME FROM ONE-DAY
 const summaryOneDayTime = (day, time) => {
   dayTimes.forEach((item) => {
@@ -82,8 +91,18 @@ const summaryOneDayTime = (day, time) => {
   document.querySelector(".friday_sum_time").textContent = `${dayTimes[4].time} min.`;
   document.querySelector(".saturday_sum_time").textContent = `${dayTimes[5].time} min.`;
   document.querySelector(".sunday_sum_time").textContent = `${dayTimes[6].time} min.`;
+};
 
-  // dayTimes[0].time = 0;
+// SUMMARY ONE HABIT TIME FROM ALL DAYS
+const summaryOneHabitTime = (study, time) => {
+  habitTimes.forEach((item) => {
+    if (item.study === study) item.time += Number(time);
+  });
+  document.querySelector(".habit1_sum p").textContent = `${habitTimes[0].time} min.`;
+  document.querySelector(".habit2_sum p").textContent = `${habitTimes[1].time} min.`;
+  document.querySelector(".habit3_sum p").textContent = `${habitTimes[2].time} min.`;
+  document.querySelector(".habit4_sum p").textContent = `${habitTimes[3].time} min.`;
+  document.querySelector(".habit5_sum p").textContent = `${habitTimes[4].time} min.`;
 };
 
 // OBJECT FOR NEW TASK FROM USER
@@ -100,8 +119,9 @@ class TaskBox {
 
 // GET NEW TASK FROM USER AND SAVE TO LocalStorage
 const addTaskFromUser = (e) => {
-  // reset oneDaySum time
+  // reset oneDaySum and oneHabitSum time
   dayTimes.forEach((item) => (item.time = 0));
+  habitTimes.forEach((item) => (item.time = 0));
 
   e.preventDefault();
   const myDay = document.querySelector(".day_task");
@@ -187,7 +207,7 @@ ReactDOM.createRoot(document.querySelector(".wrapper")).render(
     <div className="empty" name="friday-SPEAKING"></div>
     <div className="empty" name="saturday-SPEAKING"></div>
     <div className="empty" name="sunday-SPEAKING"></div>
-    <div className="habit_sum_bgc">
+    <div className="habit1_sum">
       <p className="center_text"></p>
     </div>
     <div className="empty" name="monday-READING"></div>
@@ -197,7 +217,7 @@ ReactDOM.createRoot(document.querySelector(".wrapper")).render(
     <div className="empty" name="friday-READING"></div>
     <div className="empty" name="saturday-READING"></div>
     <div className="empty" name="sunday-READING"></div>
-    <div className="habit_sum_bgc">
+    <div className="habit2_sum">
       <p className="center_text"></p>
     </div>
     <div className="empty" name="monday-WRITING"></div>
@@ -207,7 +227,7 @@ ReactDOM.createRoot(document.querySelector(".wrapper")).render(
     <div className="empty" name="friday-WRITING"></div>
     <div className="empty" name="saturday-WRITING"></div>
     <div className="empty" name="sunday-WRITING"></div>
-    <div className="habit_sum_bgc">
+    <div className="habit3_sum">
       <p className="center_text"></p>
     </div>
     <div className="empty" name="monday-LISTENING"></div>
@@ -217,7 +237,7 @@ ReactDOM.createRoot(document.querySelector(".wrapper")).render(
     <div className="empty" name="friday-LISTENING"></div>
     <div className="empty" name="saturday-LISTENING"></div>
     <div className="empty" name="sunday-LISTENING"></div>
-    <div className="habit_sum_bgc">
+    <div className="habit4_sum">
       <p className="center_text"></p>
     </div>
     <div className="empty" name="monday-VOCABULARY"></div>
@@ -227,12 +247,10 @@ ReactDOM.createRoot(document.querySelector(".wrapper")).render(
     <div className="empty" name="friday-VOCABULARY"></div>
     <div className="empty" name="saturday-VOCABULARY"></div>
     <div className="empty" name="sunday-VOCABULARY"></div>
-    <div className="habit_sum_bgc">
+    <div className="habit5_sum">
       <p className="center_text"></p>
     </div>
-    <div className="monday_sum_time" name="monday_sum_time">
-      777
-    </div>
+    <div className="monday_sum_time"></div>
     <div className="tuesday_sum_time"></div>
     <div className="wednesday_sum_time"></div>
     <div className="thursday_sum_time"></div>
