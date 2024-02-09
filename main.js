@@ -9,6 +9,8 @@ const ShowTask = ({ taskValues }) => {
         <p>{taskValues.name}</p>
         <hr />
         <p>{taskValues.time} min.</p>
+        <button className="btn_remove"></button>
+        <button className="btn_done"></button>
       </div>
     );
 };
@@ -113,6 +115,7 @@ class TaskBox {
     this.study = study;
     this.name = name;
     this.time = time;
+    this.done = false;
   }
 }
 
@@ -276,6 +279,7 @@ ReactDOM.createRoot(document.querySelector(".wrapper")).render(
 setTimeout(() => {
   document.querySelector("button.add_form").onclick = addTaskFromUser;
   document.querySelector("button.remove_top").onclick = clearAllTasks;
+
   // GET ALL TASKS FROM LocalStore
   getAllTasks();
   summaryOneDayTime();

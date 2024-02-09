@@ -36,6 +36,38 @@ button.remove_top {
   z-index: 0;
 }
 
+.btn_remove {
+  background-image: url(./icon/remove.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 40%;
+  opacity: 0.7;
+}
+
+.btn_done {
+  background-image: url(./icon/done.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 40%;
+  opacity: 0.7;
+}
+
+.btn_remove,
+.btn_done {
+  width: 20px;
+  height: 20px;
+  background-color: aliceblue;
+  transition: 0.5s;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+.btn_remove:hover {
+  background-color: red;
+}
+.btn_done:hover {
+  background-color: green;
+}
+
 /* Form add task - Start */
 .task_fields {
   /* display: none; */
@@ -43,7 +75,7 @@ button.remove_top {
   top: -00px;
   margin: 0 0 20px 0;
   padding: 10px;
-  background-color: #fff;
+  background-color: white;
   z-index: 0;
 }
 
