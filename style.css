@@ -4,6 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  border-radius: 5px;
 }
 
 body {
@@ -36,7 +37,7 @@ button.remove_top {
   margin-left: 10px;
   padding: 5px 10px;
   cursor: pointer;
-  border-radius: 5px;
+
   background-color: #0f4cf3;
   border: 2px solid greenyellow;
   z-index: 0;
@@ -62,10 +63,10 @@ button.remove_top {
 .btn_done {
   width: 20px;
   height: 20px;
+  margin-top: 5px;
   background-color: aliceblue;
   transition: 0.5s;
   border: 1px solid #ddd;
-  border-radius: 5px;
 }
 .btn_remove:hover {
   background-color: red;
@@ -103,7 +104,7 @@ button.add_form {
   margin-left: 10px;
   padding: 5px 10px;
   cursor: pointer;
-  border-radius: 5px;
+
   background-color: yellow;
   border: 2px solid greenyellow;
 }

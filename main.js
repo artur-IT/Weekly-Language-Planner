@@ -285,6 +285,15 @@ const doneTaskHandle = () => {
   });
 };
 
+// BTN_REMOVE HANDLER
+const removeTaskHandle = () => {
+  const removeBtn = document.querySelectorAll(".btn_remove");
+
+  removeBtn.forEach((btn) => {
+    btn.addEventListener("click", () => console.log("ok"));
+  });
+};
+
 setTimeout(() => {
   document.querySelector("button.add_form").onclick = addTaskFromUser;
   document.querySelector("button.remove_top").onclick = clearAllTasks;
@@ -294,4 +303,7 @@ setTimeout(() => {
   summaryOneDayTime();
 }, 200);
 
-setTimeout(doneTaskHandle, 400);
+setTimeout(() => {
+  doneTaskHandle();
+  removeTaskHandle();
+}, 400);
