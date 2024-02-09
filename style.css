@@ -63,18 +63,18 @@ button.remove_top {
 .btn_done {
   width: 20px;
   height: 20px;
-  margin-top: 5px;
+  margin-top: 4px;
   background-color: aliceblue;
   transition: 0.5s;
-  border: 1px solid #ddd;
+  border: 0px solid #ddd;
 }
 .btn_remove:hover {
-  background-color: red;
   cursor: pointer;
+  border: 1px solid red;
 }
 .btn_done:hover {
-  background-color: green;
   cursor: pointer;
+  border: 1px solid green;
 }
 
 /* Form add task - Start */

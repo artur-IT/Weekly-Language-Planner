@@ -1,5 +1,6 @@
 .layout {
   margin: 0 auto;
+  padding-bottom: 40px;
   width: 1000px;
   height: auto;
   /* border: 1px solid blue; */
@@ -23,7 +24,7 @@ div {
 }
 
 .empty {
-  background-color: #eee;
+  background-color: white;
 }
 .empty p {
   padding: 5px 7px;
@@ -49,7 +50,14 @@ div {
 .thursday_sum_time,
 .friday_sum_time,
 .saturday_sum_time,
-.sunday_sum_time {
+.sunday_sum_time,
+.monday_real_time,
+.tuesday_real_time,
+.wednesday_real_time,
+.thursday_real_time,
+.friday_real_time,
+.saturday_real_time,
+.sunday_real_time {
   line-height: 230%;
   font-size: 0.8rem;
   background-color: aliceblue;
@@ -61,7 +69,7 @@ div {
 .habit4_sum,
 .habit5_sum {
   font-size: 0.8rem;
-  background-color: #fff;
+  background-color: #eee;
 }
 
 .zero {
@@ -107,6 +115,7 @@ div {
   width: 50px;
   font-size: 0.8rem;
   grid-area: habit_sum;
+  background-color: lightskyblue;
 }
 .habit1 {
   grid-area: habit1;
@@ -138,6 +147,7 @@ div {
   grid-area: plannded_time;
   background-color: aliceblue;
 }
+
 .time_done {
   font-size: 0.8rem;
   grid-area: time_done;

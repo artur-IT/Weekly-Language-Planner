@@ -200,7 +200,7 @@ ReactDOM.createRoot(document.querySelector(".wrapper")).render(
       <p className="center_text">Planned time:</p>
     </div>
     <div className="time_done">
-      <p className="center_text">My Realy Time:</p>
+      <p className="center_text">My real time:</p>
     </div>
 
     <div className="empty" name="monday-SPEAKING"></div>
@@ -260,19 +260,15 @@ ReactDOM.createRoot(document.querySelector(".wrapper")).render(
     <div className="friday_sum_time"></div>
     <div className="saturday_sum_time"></div>
     <div className="sunday_sum_time"></div>
-    <div className="habit_sum_bgc">
-      <p className="center_text">0</p>
-    </div>
-    <div className="real_time">-</div>
-    <div className="real_time">-</div>
-    <div className="real_time">-</div>
-    <div className="real_time">-</div>
-    <div className="real_time">-</div>
-    <div className="real_time">-</div>
-    <div className="real_time">-</div>
-    <div className="habit_sum_bgc">
-      <p className="center_text">-</p>
-    </div>
+    <div className="habit_sum_bgc"></div>
+    <div className="monday_real_time">-</div>
+    <div className="tuesday_real_time">-</div>
+    <div className="wednesday_real_time">-</div>
+    <div className="thursday_real_time">-</div>
+    <div className="friday_real_time">-</div>
+    <div className="saturday_real_time">-</div>
+    <div className="sunday_real_time">-</div>
+    <div className="habit_sum_bgc"></div>
   </section>
 );
 
