@@ -272,21 +272,21 @@ ReactDOM.createRoot(document.querySelector(".wrapper")).render(
   </section>
 );
 
-// BTN_DONE HANDLER
+// ----- BTN_DONE HANDLER
 const doneTaskHandle = () => {
-  const doneBtn = document.querySelectorAll(".btn_done");
-
-  doneBtn.forEach((btn) => {
-    btn.addEventListener("click", () => console.log("ok"));
-  });
+  document
+    .querySelectorAll(".btn_done")
+    .forEach((btn) => btn.addEventListener("click", (e) => e.target.parentElement.parentElement.classList.toggle("done_task_bgc")));
 };
 
-// BTN_REMOVE HANDLER
+// ----- BTN_REMOVE HANDLER
 const removeTaskHandle = () => {
-  const removeBtn = document.querySelectorAll(".btn_remove");
-
-  removeBtn.forEach((btn) => {
-    btn.addEventListener("click", () => console.log("ok"));
+  document.querySelectorAll(".btn_remove").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      const taskName = e.target.parentElement.parentElement.attributes.name.nodeValue;
+      const localStoreId = JSON.parse(localStorage.getItem(taskName));
+      taskName === localStoreId.id ? localStorage.removeItem(taskName) : null;
+    });
   });
 };
 

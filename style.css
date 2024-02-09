@@ -29,6 +29,9 @@ h2 {
 hr {
   margin: 0 auto;
   width: 80%;
+  color: black;
+  border-style: dashed;
+  opacity: 0.2;
 }
 
 button.add_top,
@@ -63,7 +66,6 @@ button.remove_top {
 .btn_done {
   width: 20px;
   height: 20px;
-  margin-top: 4px;
   background-color: aliceblue;
   transition: 0.5s;
   border: 0px solid #ddd;
@@ -84,16 +86,30 @@ button.remove_top {
   top: -00px;
   margin: 0 0 20px 0;
   padding: 10px;
+  font-size: 0.8rem;
   background-color: white;
   z-index: 0;
 }
 
+label {
+  margin: 10px 5px;
+}
+
 select {
+  font-size: 0.7rem;
   margin-right: 10px;
   padding: 2px 3px;
+  border: 1px solid #ddd;
 }
+
+select option {
+  margin: 15px;
+  padding: 15px;
+}
+
 input {
   padding: 2px 3px;
+  border: 1px solid #ddd;
 }
 
 #exercise_time {
