@@ -276,6 +276,15 @@ ReactDOM.createRoot(document.querySelector(".wrapper")).render(
   </section>
 );
 
+// BTN_DONE HANDLER
+const doneTaskHandle = () => {
+  const doneBtn = document.querySelectorAll(".btn_done");
+
+  doneBtn.forEach((btn) => {
+    btn.addEventListener("click", () => console.log("ok"));
+  });
+};
+
 setTimeout(() => {
   document.querySelector("button.add_form").onclick = addTaskFromUser;
   document.querySelector("button.remove_top").onclick = clearAllTasks;
@@ -284,3 +293,5 @@ setTimeout(() => {
   getAllTasks();
   summaryOneDayTime();
 }, 200);
+
+setTimeout(doneTaskHandle, 400);

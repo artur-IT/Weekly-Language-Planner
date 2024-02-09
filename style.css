@@ -7,9 +7,15 @@
 }
 
 body {
-  background-color: #dadada;
+  /* background-color: #dadada; */
   font-family: "Lato", Arial, sans-serif;
   text-align: center;
+
+  background: rgb(239, 255, 1);
+  background: -moz-linear-gradient(135deg, rgba(239, 255, 1, 1) 0%, rgba(25, 121, 9, 1) 50%, rgba(0, 212, 255, 1) 100%);
+  background: -webkit-linear-gradient(135deg, rgba(239, 255, 1, 1) 0%, rgba(25, 121, 9, 1) 50%, rgba(0, 212, 255, 1) 100%);
+  background: linear-gradient(135deg, rgba(239, 255, 1, 1) 0%, rgba(25, 121, 9, 1) 50%, rgba(0, 212, 255, 1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#efff01",endColorstr="#00d4ff",GradientType=1);
 }
 
 h2 {
@@ -21,7 +27,7 @@ h2 {
 
 hr {
   margin: 0 auto;
-  width: 70%;
+  width: 80%;
 }
 
 button.add_top,
@@ -63,9 +69,11 @@ button.remove_top {
 }
 .btn_remove:hover {
   background-color: red;
+  cursor: pointer;
 }
 .btn_done:hover {
   background-color: green;
+  cursor: pointer;
 }
 
 /* Form add task - Start */
