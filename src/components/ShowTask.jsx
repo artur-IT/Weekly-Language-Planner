@@ -1,4 +1,5 @@
-const ShowTask = ({ taskValues }) => {
+const ShowTask = (taskValues) => {
+  // console.log(taskValues);
   if (!taskValues) return;
   else
     return (

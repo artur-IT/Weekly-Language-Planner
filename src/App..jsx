@@ -1,86 +1,12 @@
 import ShowTask from "./components/ShowTask";
 
 export function App() {
-  // const [count, setCount] = useState(0)
-  // return (
-  //   <>
-  //     <div>
-  //       <a href="https://vitejs.dev" target="_blank">
-  //         <img src={viteLogo} className="logo" alt="Vite logo" />
-  //       </a>
-  //       <a href="https://react.dev" target="_blank">
-  //         <img src={reactLogo} className="logo react" alt="React logo" />
-  //       </a>
-  //     </div>
-  //     <h1>Vite + React</h1>
-  //     <div className="card">
-  //       <button onClick={() => setCount((count) => count + 1)}>
-  //         count is {count}
-  //       </button>
-  //       <p>
-  //         Edit <code>src/App.jsx</code> and save to test HMR
-  //       </p>
-  //     </div>
-  //     <p className="read-the-docs">
-  //       Click on the Vite and React logos to learn more
-  //     </p>
-  //   </>
-  // )
-  //----------------------
-
-  // SHOW 1 TASK FROM LocalStorage
-  // const ShowTask = ({ taskValues }) => {
-  //   if (!taskValues) return;
-  //   else
-  //     return (
-  //       <div>
-  //         <p>{taskValues.name}</p>
-  //         <hr />
-  //         <p>{taskValues.time} min.</p>
-  //         <button className="btn_remove"></button>
-  //         <button className="btn_done"></button>
-  //       </div>
-  //     );
-  // };
-
-  // R.COMPONENT - ADD TASK SECTION TO DOM
-  // const AddTaskSection = () => {
-  //   return (
-  //     <form action="">
-  //       <label>Day:</label>
-  //       <select className="day_task" name="day-task">
-  //         <option>Monday</option>
-  //         <option>Tuesday</option>
-  //         <option>Wednesday</option>
-  //         <option>Thursday</option>
-  //         <option>Friday</option>
-  //         <option>Saturday</option>
-  //         <option>Sunday</option>
-  //       </select>
-  //       <label>Study:</label>
-  //       <select className="study" name="study-name">
-  //         <option>SPEAKING</option>
-  //         <option>READING</option>
-  //         <option>WRITING</option>
-  //         <option>LISTENING</option>
-  //         <option>VOCABULARY</option>
-  //       </select>
-  //       <label>Task name:</label>
-  //       <input className="task_name" name="task-name" type="text" placeholder="task name..." />
-  //       <label>Task time:</label>
-  //       <input className="task_time" type="number" id="exercise_time" step="5" min="0" max="60" placeholder="max. 60" /> min.
-  //       <button className="add_form">Dodaj</button>
-  //     </form>
-  //   );
-  // };
-
   // SEARCH EMPTY BOXES AND COMPARE WITH LocalStore
   const getAllTasks = () => {
     const emptyBoxes = document.querySelectorAll(".empty");
 
-    for (const el of emptyBoxes) {
-      // get box name from DOM
-      const emptyBoxName = el.attributes.name.nodeValue;
+    emptyBoxes.forEach((item) => {
+      const emptyBoxName = item.attributes.name.nodeValue;
       const localStoreId = JSON.parse(localStorage.getItem(emptyBoxName));
 
       // show all task's from LocalStore to empty boxes
@@ -88,9 +14,13 @@ export function App() {
         summaryOneDayTime(localStoreId.day, localStoreId.time);
         summaryOneHabitTime(localStoreId.study, localStoreId.time);
         // ReactDOM.createRoot(el).render(<ShowTask taskValues={localStoreId} />);
-        <ShowTask taskValues={localStoreId} />;
+        // el.innerHTML =
+
+        console.log(localStoreId);
+        // item.textContent = <ShowTask taskValues={localStoreId} />;
+        // ShowTask(localStoreId);
       } else null;
-    }
+    });
   };
 
   let dayTimes = [
@@ -185,7 +115,6 @@ export function App() {
     document.querySelectorAll(".btn_done").forEach((btn) =>
       btn.addEventListener("click", (e) => {
         e.target.parentElement.parentElement.classList.toggle("done_task_bgc");
-        console.log(e.target.parentElement);
       })
     );
   };
@@ -202,8 +131,8 @@ export function App() {
   };
 
   setTimeout(() => {
-    document.querySelector("button.add_form").onclick = addTaskFromUser;
-    document.querySelector("button.remove_top").onclick = clearAllTasks;
+    // document.querySelector("button.add_form").onclick = addTaskFromUser;
+    // document.querySelector("button.remove_top").onclick = clearAllTasks;
     // GET ALL TASKS FROM LocalStore
     getAllTasks();
     summaryOneDayTime();
@@ -214,124 +143,157 @@ export function App() {
     removeTaskHandle();
   }, 400);
 
-  // RENDER SECTION 'ADD TASK' FROM USER
-  // ReactDOM.createRoot(document.querySelector("section.task_fields")).render(<AddTaskSection />);
+  // ------------
+
+  const DaysNames = () => {
+    return (
+      <>
+        <div className="zero"></div>
+        <div className="monnday">
+          <p className="center_text">Monday</p>
+        </div>
+        <div className="tuesday">
+          <p className="center_text">Tuesday</p>
+        </div>
+        <div className="wednesday">
+          <p className="center_text">Wednesday</p>
+        </div>
+        <div className="thursday">
+          <p className="center_text">Thursday</p>
+        </div>
+        <div className="friday">
+          <p className="center_text">Friday</p>
+        </div>
+        <div className="saturday">
+          <p className="center_text">Saturday</p>
+        </div>
+        <div className="sunday">
+          <p className="center_text">Sunday</p>
+        </div>
+        <div className="habit_sum">
+          <p className="center_text">Habit time</p>
+        </div>
+      </>
+    );
+  };
+
+  const HabitsNames = () => {
+    return (
+      <>
+        <div className="habit1">
+          <p className="center_text">SPEAKING</p>
+        </div>
+        <div className="habit2">
+          <p className="center_text">READING</p>
+        </div>
+        <div className="habit3">
+          <p className="center_text">WRITING</p>
+        </div>
+        <div className="habit4">
+          <p className="center_text">LISTENING</p>
+        </div>
+        <div className="habit5">
+          <p className="center_text">VOCABULARY</p>
+        </div>
+      </>
+    );
+  };
+
+  const MyTaskTable = () => {
+    return (
+      <>
+        <div className="empty" name="monday-SPEAKING"></div>
+        <div className="empty" name="tuesday-SPEAKING"></div>
+        <div className="empty" name="wednesday-SPEAKING"></div>
+        <div className="empty" name="thursday-SPEAKING"></div>
+        <div className="empty" name="friday-SPEAKING"></div>
+        <div className="empty" name="saturday-SPEAKING"></div>
+        <div className="empty" name="sunday-SPEAKING"></div>
+        <div className="habit1_sum">
+          <p className="center_text"></p>
+        </div>
+        <div className="empty" name="monday-READING"></div>
+        <div className="empty" name="tuesday-READING"></div>
+        <div className="empty" name="wednesday-READING"></div>
+        <div className="empty" name="thursday-READING"></div>
+        <div className="empty" name="friday-READING"></div>
+        <div className="empty" name="saturday-READING"></div>
+        <div className="empty" name="sunday-READING"></div>
+        <div className="habit2_sum">
+          <p className="center_text"></p>
+        </div>
+        <div className="empty" name="monday-WRITING"></div>
+        <div className="empty" name="tuesday-WRITING"></div>
+        <div className="empty" name="wednesday-WRITING"></div>
+        <div className="empty" name="thursday-WRITING"></div>
+        <div className="empty" name="friday-WRITING"></div>
+        <div className="empty" name="saturday-WRITING"></div>
+        <div className="empty" name="sunday-WRITING"></div>
+        <div className="habit3_sum">
+          <p className="center_text"></p>
+        </div>
+        <div className="empty" name="monday-LISTENING"></div>
+        <div className="empty" name="tuesday-LISTENING"></div>
+        <div className="empty" name="wednesday-LISTENING"></div>
+        <div className="empty" name="thursday-LISTENING"></div>
+        <div className="empty" name="friday-LISTENING"></div>
+        <div className="empty" name="saturday-LISTENING"></div>
+        <div className="empty" name="sunday-LISTENING"></div>
+        <div className="habit4_sum">
+          <p className="center_text"></p>
+        </div>
+        <div className="empty" name="monday-VOCABULARY"></div>
+        <div className="empty" name="tuesday-VOCABULARY"></div>
+        <div className="empty" name="wednesday-VOCABULARY"></div>
+        <div className="empty" name="thursday-VOCABULARY"></div>
+        <div className="empty" name="friday-VOCABULARY"></div>
+        <div className="empty" name="saturday-VOCABULARY"></div>
+        <div className="empty" name="sunday-VOCABULARY"></div>
+        <div className="habit5_sum">
+          <p className="center_text"></p>
+        </div>
+      </>
+    );
+  };
+
+  const SummaryDaysTimes = () => {
+    return (
+      <>
+        <div className="plannded_time">
+          <p className="center_text">Planned time:</p>
+        </div>
+        <div className="time_done">
+          <p className="center_text">My real time:</p>
+        </div>
+
+        <div className="monday_sum_time"></div>
+        <div className="tuesday_sum_time"></div>
+        <div className="wednesday_sum_time"></div>
+        <div className="thursday_sum_time"></div>
+        <div className="friday_sum_time"></div>
+        <div className="saturday_sum_time"></div>
+        <div className="sunday_sum_time"></div>
+        <div className="habit_sum_bgc"></div>
+        <div className="monday_real_time">-</div>
+        <div className="tuesday_real_time">-</div>
+        <div className="wednesday_real_time">-</div>
+        <div className="thursday_real_time">-</div>
+        <div className="friday_real_time">-</div>
+        <div className="saturday_real_time">-</div>
+        <div className="sunday_real_time">-</div>
+        <div className="habit_sum_bgc"></div>
+      </>
+    );
+  };
+
   return (
     <section className="layout">
-      <div className="zero"></div>
-      <div className="monnday">
-        <p className="center_text">Monday</p>
-      </div>
-      <div className="tuesday">
-        <p className="center_text">Tuesday</p>
-      </div>
-      <div className="wednesday">
-        <p className="center_text">Wednesday</p>
-      </div>
-      <div className="thursday">
-        <p className="center_text">Thursday</p>
-      </div>
-      <div className="friday">
-        <p className="center_text">Friday</p>
-      </div>
-      <div className="saturday">
-        <p className="center_text">Saturday</p>
-      </div>
-      <div className="sunday">
-        <p className="center_text">Sunday</p>
-      </div>
-      <div className="habit_sum">
-        <p className="center_text">Habit time</p>
-      </div>
-      <div className="habit1">
-        <p className="center_text">SPEAKING</p>
-      </div>
-      <div className="habit2">
-        <p className="center_text">READING</p>
-      </div>
-      <div className="habit3">
-        <p className="center_text">WRITING</p>
-      </div>
-      <div className="habit4">
-        <p className="center_text">LISTENING</p>
-      </div>
-      <div className="habit5">
-        <p className="center_text">VOCABULARY</p>
-      </div>
+      <DaysNames />
 
-      <div className="plannded_time">
-        <p className="center_text">Planned time:</p>
-      </div>
-      <div className="time_done">
-        <p className="center_text">My real time:</p>
-      </div>
+      <HabitsNames />
+      <MyTaskTable />
 
-      <div className="empty" name="monday-SPEAKING"></div>
-      <div className="empty" name="tuesday-SPEAKING"></div>
-      <div className="empty" name="wednesday-SPEAKING"></div>
-      <div className="empty" name="thursday-SPEAKING"></div>
-      <div className="empty" name="friday-SPEAKING"></div>
-      <div className="empty" name="saturday-SPEAKING"></div>
-      <div className="empty" name="sunday-SPEAKING"></div>
-      <div className="habit1_sum">
-        <p className="center_text"></p>
-      </div>
-      <div className="empty" name="monday-READING"></div>
-      <div className="empty" name="tuesday-READING"></div>
-      <div className="empty" name="wednesday-READING"></div>
-      <div className="empty" name="thursday-READING"></div>
-      <div className="empty" name="friday-READING"></div>
-      <div className="empty" name="saturday-READING"></div>
-      <div className="empty" name="sunday-READING"></div>
-      <div className="habit2_sum">
-        <p className="center_text"></p>
-      </div>
-      <div className="empty" name="monday-WRITING"></div>
-      <div className="empty" name="tuesday-WRITING"></div>
-      <div className="empty" name="wednesday-WRITING"></div>
-      <div className="empty" name="thursday-WRITING"></div>
-      <div className="empty" name="friday-WRITING"></div>
-      <div className="empty" name="saturday-WRITING"></div>
-      <div className="empty" name="sunday-WRITING"></div>
-      <div className="habit3_sum">
-        <p className="center_text"></p>
-      </div>
-      <div className="empty" name="monday-LISTENING"></div>
-      <div className="empty" name="tuesday-LISTENING"></div>
-      <div className="empty" name="wednesday-LISTENING"></div>
-      <div className="empty" name="thursday-LISTENING"></div>
-      <div className="empty" name="friday-LISTENING"></div>
-      <div className="empty" name="saturday-LISTENING"></div>
-      <div className="empty" name="sunday-LISTENING"></div>
-      <div className="habit4_sum">
-        <p className="center_text"></p>
-      </div>
-      <div className="empty" name="monday-VOCABULARY"></div>
-      <div className="empty" name="tuesday-VOCABULARY"></div>
-      <div className="empty" name="wednesday-VOCABULARY"></div>
-      <div className="empty" name="thursday-VOCABULARY"></div>
-      <div className="empty" name="friday-VOCABULARY"></div>
-      <div className="empty" name="saturday-VOCABULARY"></div>
-      <div className="empty" name="sunday-VOCABULARY"></div>
-      <div className="habit5_sum">
-        <p className="center_text"></p>
-      </div>
-      <div className="monday_sum_time"></div>
-      <div className="tuesday_sum_time"></div>
-      <div className="wednesday_sum_time"></div>
-      <div className="thursday_sum_time"></div>
-      <div className="friday_sum_time"></div>
-      <div className="saturday_sum_time"></div>
-      <div className="sunday_sum_time"></div>
-      <div className="habit_sum_bgc"></div>
-      <div className="monday_real_time">-</div>
-      <div className="tuesday_real_time">-</div>
-      <div className="wednesday_real_time">-</div>
-      <div className="thursday_real_time">-</div>
-      <div className="friday_real_time">-</div>
-      <div className="saturday_real_time">-</div>
-      <div className="sunday_real_time">-</div>
-      <div className="habit_sum_bgc"></div>
+      <SummaryDaysTimes />
     </section>
   );
 }
