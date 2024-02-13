@@ -5,27 +5,39 @@ export function App() {
   // SEARCH EMPTY BOXES AND COMPARE WITH LocalStore
   const GetAllTasks = () => {
     const emptyBoxes = document.querySelectorAll(".empty");
-    // console.log(emptyBoxes);
 
-    emptyBoxes.forEach((el) => {
-      const emptyBoxName = el.attributes.name.nodeValue;
-      const localStoreId = JSON.parse(localStorage.getItem(emptyBoxName));
-      // return (
-      //   <>
-      //     <ShowTask taskValues={localStoreId} />;
-      //   </>
-      // );
-      // el.textContent = "lis";
-      // show all task's from LocalStore to empty boxes
-      if (localStoreId) {
-        summaryOneDayTime(localStoreId.day, localStoreId.time);
-        // summaryOneHabitTime(localStoreId.study, localStoreId.time);
-        // ReactDOM.createRoot(el).render(<ShowTask taskValues={localStoreId} />);
+    if (localStorage.length > 0) {
+      emptyBoxes.forEach((el) => {
+        const emptyBoxName = el.attributes.name.nodeValue;
+        const localStoreId = JSON.parse(localStorage.getItem(emptyBoxName));
+        const test = <ShowTask taskValues={localStoreId} />;
 
-        <ShowTask taskValues={localStoreId} />;
-        // return ShowTask(localStoreId.emptyBoxName);
-      } else null;
-    });
+        if (localStoreId) return el.append(test);
+      });
+    } else return <h1>Hmmm</h1>;
+
+    // localStorage.length > 0 ? <ShowTask taskValues={localStorage} /> : console.log("pusty LS");
+
+    // emptyBoxes.forEach((el) => {
+    //   const emptyBoxName = el.attributes.name.nodeValue;
+    //   const localStoreId = JSON.parse(localStorage.getItem(emptyBoxName));
+
+    // return (
+    //   <>
+    //     <ShowTask taskValues={localStoreId} />;
+    //   </>
+    // );
+
+    // show all task's from LocalStore to empty boxes
+    // if (localStoreId) {
+    //   summaryOneDayTime(localStoreId.day, localStoreId.time);
+    //   summaryOneHabitTime(localStoreId.study, localStoreId.time);
+    // ReactDOM.createRoot(el).render(<ShowTask taskValues={localStoreId} />);
+
+    // <ShowTask taskValues={localStoreId} />;
+    // return ShowTask(localStoreId.emptyBoxName);
+    // } else null;
+    // });
   };
 
   let dayTimes = [
@@ -112,7 +124,7 @@ export function App() {
   // REMOVE ALL TASKS FROM LocalStore
   const clearAllTasks = () => {
     localStorage.clear();
-    return getAllTasks();
+    return GetAllTasks();
   };
 
   // ----- BTN_DONE HANDLER
@@ -142,7 +154,7 @@ export function App() {
     GetAllTasks();
 
     summaryOneDayTime();
-    // summaryOneHabitTime();
+    summaryOneHabitTime();
 
     doneTaskHandle();
     removeTaskHandle();
@@ -239,9 +251,7 @@ export function App() {
         <div className="empty" name="friday-SPEAKING"></div>
         <div className="empty" name="saturday-SPEAKING"></div>
         <div className="empty" name="sunday-SPEAKING"></div>
-        {/* <div className="habit1_sum">
-          <p className="center_text"></p>
-        </div> */}
+
         <div className="empty" name="monday-READING"></div>
         <div className="empty" name="tuesday-READING"></div>
         <div className="empty" name="wednesday-READING"></div>
@@ -249,9 +259,7 @@ export function App() {
         <div className="empty" name="friday-READING"></div>
         <div className="empty" name="saturday-READING"></div>
         <div className="empty" name="sunday-READING"></div>
-        {/* <div className="habit2_sum">
-          <p className="center_text"></p>
-        </div> */}
+
         <div className="empty" name="monday-WRITING"></div>
         <div className="empty" name="tuesday-WRITING"></div>
         <div className="empty" name="wednesday-WRITING"></div>
@@ -259,9 +267,7 @@ export function App() {
         <div className="empty" name="friday-WRITING"></div>
         <div className="empty" name="saturday-WRITING"></div>
         <div className="empty" name="sunday-WRITING"></div>
-        {/* <div className="habit3_sum">
-          <p className="center_text"></p>
-        </div> */}
+
         <div className="empty" name="monday-LISTENING"></div>
         <div className="empty" name="tuesday-LISTENING"></div>
         <div className="empty" name="wednesday-LISTENING"></div>
@@ -269,9 +275,7 @@ export function App() {
         <div className="empty" name="friday-LISTENING"></div>
         <div className="empty" name="saturday-LISTENING"></div>
         <div className="empty" name="sunday-LISTENING"></div>
-        {/* <div className="habit4_sum">
-          <p className="center_text"></p>
-        </div> */}
+
         <div className="empty" name="monday-VOCABULARY"></div>
         <div className="empty" name="tuesday-VOCABULARY"></div>
         <div className="empty" name="wednesday-VOCABULARY"></div>
@@ -279,9 +283,6 @@ export function App() {
         <div className="empty" name="friday-VOCABULARY"></div>
         <div className="empty" name="saturday-VOCABULARY"></div>
         <div className="empty" name="sunday-VOCABULARY"></div>
-        {/* <div className="habit5_sum">
-          <p className="center_text"></p>
-        </div> */}
       </>
     );
   };
@@ -326,6 +327,8 @@ export function App() {
       <OneHabitSumTime />
 
       <SummaryDaysTimes />
+
+      <GetAllTasks dataBase={localStorage} />
     </section>
   );
 }
