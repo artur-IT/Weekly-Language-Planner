@@ -8,11 +8,11 @@
   display: grid;
   grid:
     "zero monnday tuesday wednesday thursday friday saturday sunday habit_sum" 50px
-    "habit1 . . . . . . . ." 100px
-    "habit2 . . . . . . . ." 100px
-    "habit3 . . . . . . . ." 100px
-    "habit4 . . . . . . . ." 100px
-    "habit5 . . . . . . . ." 100px
+    "habit1 . . . . . . . habit1_sum" 100px
+    "habit2 . . . . . . . habit2_sum" 100px
+    "habit3 . . . . . . . habit3_sum" 100px
+    "habit4 . . . . . . . habit4_sum" 100px
+    "habit5 . . . . . . . habit5_sum" 100px
     "plannded_time . . . . . . . ." 30px
     "time_done . . . . . . . ." 30px
     / 160px 100px 100px 100px 100px 100px 100px 100px 50px;
@@ -72,7 +72,23 @@ div {
 .habit4_sum,
 .habit5_sum {
   font-size: 0.8rem;
-  background-color: #eee;
+  background-color: #ccc;
+}
+
+.habit1_sum {
+  grid-area: habit1_sum;
+}
+.habit2_sum {
+  grid-area: habit2_sum;
+}
+.habit3_sum {
+  grid-area: habit3_sum;
+}
+.habit4_sum {
+  grid-area: habit4_sum;
+}
+.habit51_sum {
+  grid-area: habit5_sum;
 }
 
 .zero {

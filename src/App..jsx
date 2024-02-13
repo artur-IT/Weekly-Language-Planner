@@ -5,7 +5,7 @@ export function App() {
   // SEARCH EMPTY BOXES AND COMPARE WITH LocalStore
   const GetAllTasks = () => {
     const emptyBoxes = document.querySelectorAll(".empty");
-    console.log(emptyBoxes);
+    // console.log(emptyBoxes);
 
     emptyBoxes.forEach((el) => {
       const emptyBoxName = el.attributes.name.nodeValue;
@@ -19,10 +19,10 @@ export function App() {
       // show all task's from LocalStore to empty boxes
       if (localStoreId) {
         summaryOneDayTime(localStoreId.day, localStoreId.time);
-        summaryOneHabitTime(localStoreId.study, localStoreId.time);
+        // summaryOneHabitTime(localStoreId.study, localStoreId.time);
         // ReactDOM.createRoot(el).render(<ShowTask taskValues={localStoreId} />);
 
-        // return <ShowTask taskValues={localStoreId} />;
+        <ShowTask taskValues={localStoreId} />;
         // return ShowTask(localStoreId.emptyBoxName);
       } else null;
     });
@@ -140,7 +140,9 @@ export function App() {
     document.querySelector("button.remove_top").onclick = clearAllTasks;
     // GET ALL TASKS FROM LocalStore
     GetAllTasks();
+
     summaryOneDayTime();
+    // summaryOneHabitTime();
 
     doneTaskHandle();
     removeTaskHandle();
@@ -201,6 +203,32 @@ export function App() {
     );
   };
 
+  const OneHabitSumTime = () => {
+    return (
+      <>
+        <div className="habit1_sum">
+          <p className="center_text"></p>
+        </div>
+
+        <div className="habit2_sum">
+          <p className="center_text"></p>
+        </div>
+
+        <div className="habit3_sum">
+          <p className="center_text"></p>
+        </div>
+
+        <div className="habit4_sum">
+          <p className="center_text"></p>
+        </div>
+
+        <div className="habit5_sum">
+          <p className="center_text"></p>
+        </div>
+      </>
+    );
+  };
+
   const MyTaskTable = () => {
     return (
       <>
@@ -211,9 +239,9 @@ export function App() {
         <div className="empty" name="friday-SPEAKING"></div>
         <div className="empty" name="saturday-SPEAKING"></div>
         <div className="empty" name="sunday-SPEAKING"></div>
-        <div className="habit1_sum">
+        {/* <div className="habit1_sum">
           <p className="center_text"></p>
-        </div>
+        </div> */}
         <div className="empty" name="monday-READING"></div>
         <div className="empty" name="tuesday-READING"></div>
         <div className="empty" name="wednesday-READING"></div>
@@ -221,9 +249,9 @@ export function App() {
         <div className="empty" name="friday-READING"></div>
         <div className="empty" name="saturday-READING"></div>
         <div className="empty" name="sunday-READING"></div>
-        <div className="habit2_sum">
+        {/* <div className="habit2_sum">
           <p className="center_text"></p>
-        </div>
+        </div> */}
         <div className="empty" name="monday-WRITING"></div>
         <div className="empty" name="tuesday-WRITING"></div>
         <div className="empty" name="wednesday-WRITING"></div>
@@ -231,9 +259,9 @@ export function App() {
         <div className="empty" name="friday-WRITING"></div>
         <div className="empty" name="saturday-WRITING"></div>
         <div className="empty" name="sunday-WRITING"></div>
-        <div className="habit3_sum">
+        {/* <div className="habit3_sum">
           <p className="center_text"></p>
-        </div>
+        </div> */}
         <div className="empty" name="monday-LISTENING"></div>
         <div className="empty" name="tuesday-LISTENING"></div>
         <div className="empty" name="wednesday-LISTENING"></div>
@@ -241,9 +269,9 @@ export function App() {
         <div className="empty" name="friday-LISTENING"></div>
         <div className="empty" name="saturday-LISTENING"></div>
         <div className="empty" name="sunday-LISTENING"></div>
-        <div className="habit4_sum">
+        {/* <div className="habit4_sum">
           <p className="center_text"></p>
-        </div>
+        </div> */}
         <div className="empty" name="monday-VOCABULARY"></div>
         <div className="empty" name="tuesday-VOCABULARY"></div>
         <div className="empty" name="wednesday-VOCABULARY"></div>
@@ -251,9 +279,9 @@ export function App() {
         <div className="empty" name="friday-VOCABULARY"></div>
         <div className="empty" name="saturday-VOCABULARY"></div>
         <div className="empty" name="sunday-VOCABULARY"></div>
-        <div className="habit5_sum">
+        {/* <div className="habit5_sum">
           <p className="center_text"></p>
-        </div>
+        </div> */}
       </>
     );
   };
@@ -293,7 +321,9 @@ export function App() {
       <DaysNames />
 
       <HabitsNames />
+
       <MyTaskTable />
+      <OneHabitSumTime />
 
       <SummaryDaysTimes />
     </section>
