@@ -1,5 +1,5 @@
 const ShowTask = (taskValues) => {
-  // console.log(taskValues);
+  console.log(taskValues.id);
   if (!taskValues) return;
   else
     return (

@@ -1,24 +1,29 @@
+// import ReactDOM from "react-dom/client";
 import ShowTask from "./components/ShowTask";
 
 export function App() {
   // SEARCH EMPTY BOXES AND COMPARE WITH LocalStore
-  const getAllTasks = () => {
+  const GetAllTasks = () => {
     const emptyBoxes = document.querySelectorAll(".empty");
+    console.log(emptyBoxes);
 
-    emptyBoxes.forEach((item) => {
-      const emptyBoxName = item.attributes.name.nodeValue;
+    emptyBoxes.forEach((el) => {
+      const emptyBoxName = el.attributes.name.nodeValue;
       const localStoreId = JSON.parse(localStorage.getItem(emptyBoxName));
-
+      // return (
+      //   <>
+      //     <ShowTask taskValues={localStoreId} />;
+      //   </>
+      // );
+      // el.textContent = "lis";
       // show all task's from LocalStore to empty boxes
       if (localStoreId) {
         summaryOneDayTime(localStoreId.day, localStoreId.time);
         summaryOneHabitTime(localStoreId.study, localStoreId.time);
         // ReactDOM.createRoot(el).render(<ShowTask taskValues={localStoreId} />);
-        // el.innerHTML =
 
-        console.log(localStoreId);
-        // item.textContent = <ShowTask taskValues={localStoreId} />;
-        // ShowTask(localStoreId);
+        // return <ShowTask taskValues={localStoreId} />;
+        // return ShowTask(localStoreId.emptyBoxName);
       } else null;
     });
   };
@@ -130,21 +135,18 @@ export function App() {
     });
   };
 
-  setTimeout(() => {
-    // document.querySelector("button.add_form").onclick = addTaskFromUser;
-    // document.querySelector("button.remove_top").onclick = clearAllTasks;
+  window.onload = () => {
+    document.querySelector("button.add_form").onclick = addTaskFromUser;
+    document.querySelector("button.remove_top").onclick = clearAllTasks;
     // GET ALL TASKS FROM LocalStore
-    getAllTasks();
+    GetAllTasks();
     summaryOneDayTime();
-  }, 200);
 
-  setTimeout(() => {
     doneTaskHandle();
     removeTaskHandle();
-  }, 400);
+  };
 
-  // ------------
-
+  // ------------HTML COMPONENTS - Structure-------------
   const DaysNames = () => {
     return (
       <>
