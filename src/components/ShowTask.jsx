@@ -1,6 +1,6 @@
 const ShowTask = (taskValues) => {
-  // console.log(taskValues.id);
-  if (!taskValues) return;
+  console.log(taskValues);
+  if (!taskValues || taskValues === null) return <p>nic</p>;
   else
     return (
       <div>

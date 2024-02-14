@@ -2,31 +2,62 @@
 import ShowTask from "./components/ShowTask";
 
 export function App() {
+  let taskArray = [];
+
+  const TestShow = () => {
+    return (
+      <div>
+        <p>testy 1.0</p>
+        <hr />
+        <p>testy 2.0 </p>
+      </div>
+    );
+  };
+
   // SEARCH EMPTY BOXES AND COMPARE WITH LocalStore
-  const GetAllTasks = () => {
+  const getAllTasks = () => {
     const emptyBoxes = document.querySelectorAll(".empty");
+    console.log(emptyBoxes);
 
-    if (localStorage.length > 0) {
-      emptyBoxes.forEach((el) => {
-        const emptyBoxName = el.attributes.name.nodeValue;
-        const localStoreId = JSON.parse(localStorage.getItem(emptyBoxName));
-        const test = <ShowTask taskValues={localStoreId} />;
+    // emptyBoxes.forEach((el, idx) => {
+    for (let i = 0; i < 35; i++) {
+      // const emptyBoxName = emptyBoxes[i].name.nodeValue;
+      // const localStoreId = JSON.parse(localStorage.getItem(emptyBoxName));
+      // console.log(emptyBoxName);
+      // taskArray.push({ localStoreId });
 
-        if (localStoreId) return el.append(test);
-      });
-    } else return <h1>Hmmm</h1>;
+      // if (taskArray[idx].localStoreId !== null)
+      taskArray.push(<TestShow key={i} />);
+      // else el.append("-");
+      // console.log(taskArray[idx].localStoreId);
+    }
+    // );
 
-    // localStorage.length > 0 ? <ShowTask taskValues={localStorage} /> : console.log("pusty LS");
+    // console.log(taskArray);
+    return taskArray;
+
+    // if (localStorage.length > 0) {
+    //   emptyBoxes.forEach((el) => {
+    //     const emptyBoxName = el.attributes.name.nodeValue;
+    //     const localStoreId = JSON.parse(localStorage.getItem(emptyBoxName));
+    //     const test = <ShowTask taskValues={localStoreId} />;
+
+    //     if (localStoreId)
+    //       return el.append(
+    //         <div>
+    //           <p>ok</p>
+    //           <hr />
+    //           <p> min.</p>
+    //           <button className="btn_remove"></button>
+    //           <button className="btn_done"></button>
+    //         </div>
+    //       );
+    //   });
+    // } else return <h1>Hmmm</h1>;
 
     // emptyBoxes.forEach((el) => {
     //   const emptyBoxName = el.attributes.name.nodeValue;
     //   const localStoreId = JSON.parse(localStorage.getItem(emptyBoxName));
-
-    // return (
-    //   <>
-    //     <ShowTask taskValues={localStoreId} />;
-    //   </>
-    // );
 
     // show all task's from LocalStore to empty boxes
     // if (localStoreId) {
@@ -35,7 +66,6 @@ export function App() {
     // ReactDOM.createRoot(el).render(<ShowTask taskValues={localStoreId} />);
 
     // <ShowTask taskValues={localStoreId} />;
-    // return ShowTask(localStoreId.emptyBoxName);
     // } else null;
     // });
   };
@@ -92,6 +122,7 @@ export function App() {
       this.name = name;
       this.time = time;
       this.done = false;
+      this.active = false;
     }
   }
 
@@ -151,7 +182,7 @@ export function App() {
     document.querySelector("button.add_form").onclick = addTaskFromUser;
     document.querySelector("button.remove_top").onclick = clearAllTasks;
     // GET ALL TASKS FROM LocalStore
-    GetAllTasks();
+    // getAllTasks();
 
     summaryOneDayTime();
     summaryOneHabitTime();
@@ -328,7 +359,7 @@ export function App() {
 
       <SummaryDaysTimes />
 
-      <GetAllTasks dataBase={localStorage} />
+      {getAllTasks()}
     </section>
   );
 }
