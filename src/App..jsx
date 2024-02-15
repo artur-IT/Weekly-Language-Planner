@@ -1,18 +1,10 @@
 // import ReactDOM from "react-dom/client";
+import MyTaskTable from "./components/ShowTask";
 import ShowTask from "./components/ShowTask";
 
 export function App() {
   let taskArray = [];
-
-  const TestShow = () => {
-    return (
-      <div>
-        <p>testy 1.0</p>
-        <hr />
-        <p>testy 2.0 </p>
-      </div>
-    );
-  };
+  let emptySquare = [];
 
   // SEARCH EMPTY BOXES AND COMPARE WITH LocalStore
   const getAllTasks = () => {
@@ -26,38 +18,11 @@ export function App() {
       // console.log(emptyBoxName);
       // taskArray.push({ localStoreId });
 
-      // if (taskArray[idx].localStoreId !== null)
-      taskArray.push(<TestShow key={i} />);
-      // else el.append("-");
-      // console.log(taskArray[idx].localStoreId);
+      taskArray.push(<ShowTask key={i} taskValues={null} />);
+      emptySquare.push(<MyTaskTable empty={emptySquare} />);
     }
-    // );
-
-    // console.log(taskArray);
+    console.log(emptySquare);
     return taskArray;
-
-    // if (localStorage.length > 0) {
-    //   emptyBoxes.forEach((el) => {
-    //     const emptyBoxName = el.attributes.name.nodeValue;
-    //     const localStoreId = JSON.parse(localStorage.getItem(emptyBoxName));
-    //     const test = <ShowTask taskValues={localStoreId} />;
-
-    //     if (localStoreId)
-    //       return el.append(
-    //         <div>
-    //           <p>ok</p>
-    //           <hr />
-    //           <p> min.</p>
-    //           <button className="btn_remove"></button>
-    //           <button className="btn_done"></button>
-    //         </div>
-    //       );
-    //   });
-    // } else return <h1>Hmmm</h1>;
-
-    // emptyBoxes.forEach((el) => {
-    //   const emptyBoxName = el.attributes.name.nodeValue;
-    //   const localStoreId = JSON.parse(localStorage.getItem(emptyBoxName));
 
     // show all task's from LocalStore to empty boxes
     // if (localStoreId) {
@@ -67,7 +32,6 @@ export function App() {
 
     // <ShowTask taskValues={localStoreId} />;
     // } else null;
-    // });
   };
 
   let dayTimes = [
@@ -182,7 +146,6 @@ export function App() {
     document.querySelector("button.add_form").onclick = addTaskFromUser;
     document.querySelector("button.remove_top").onclick = clearAllTasks;
     // GET ALL TASKS FROM LocalStore
-    // getAllTasks();
 
     summaryOneDayTime();
     summaryOneHabitTime();
@@ -272,51 +235,51 @@ export function App() {
     );
   };
 
-  const MyTaskTable = () => {
-    return (
-      <>
-        <div className="empty" name="monday-SPEAKING"></div>
-        <div className="empty" name="tuesday-SPEAKING"></div>
-        <div className="empty" name="wednesday-SPEAKING"></div>
-        <div className="empty" name="thursday-SPEAKING"></div>
-        <div className="empty" name="friday-SPEAKING"></div>
-        <div className="empty" name="saturday-SPEAKING"></div>
-        <div className="empty" name="sunday-SPEAKING"></div>
+  // const MyTaskTable = () => {
+  //   return (
+  //     <>
+  //       <div className="empty" name="monday-SPEAKING"></div>
+  //       <div className="empty" name="tuesday-SPEAKING"></div>
+  //       <div className="empty" name="wednesday-SPEAKING"></div>
+  //       <div className="empty" name="thursday-SPEAKING"></div>
+  //       <div className="empty" name="friday-SPEAKING"></div>
+  //       <div className="empty" name="saturday-SPEAKING"></div>
+  //       <div className="empty" name="sunday-SPEAKING"></div>
 
-        <div className="empty" name="monday-READING"></div>
-        <div className="empty" name="tuesday-READING"></div>
-        <div className="empty" name="wednesday-READING"></div>
-        <div className="empty" name="thursday-READING"></div>
-        <div className="empty" name="friday-READING"></div>
-        <div className="empty" name="saturday-READING"></div>
-        <div className="empty" name="sunday-READING"></div>
+  //       <div className="empty" name="monday-READING"></div>
+  //       <div className="empty" name="tuesday-READING"></div>
+  //       <div className="empty" name="wednesday-READING"></div>
+  //       <div className="empty" name="thursday-READING"></div>
+  //       <div className="empty" name="friday-READING"></div>
+  //       <div className="empty" name="saturday-READING"></div>
+  //       <div className="empty" name="sunday-READING"></div>
 
-        <div className="empty" name="monday-WRITING"></div>
-        <div className="empty" name="tuesday-WRITING"></div>
-        <div className="empty" name="wednesday-WRITING"></div>
-        <div className="empty" name="thursday-WRITING"></div>
-        <div className="empty" name="friday-WRITING"></div>
-        <div className="empty" name="saturday-WRITING"></div>
-        <div className="empty" name="sunday-WRITING"></div>
+  //       <div className="empty" name="monday-WRITING"></div>
+  //       <div className="empty" name="tuesday-WRITING"></div>
+  //       <div className="empty" name="wednesday-WRITING"></div>
+  //       <div className="empty" name="thursday-WRITING"></div>
+  //       <div className="empty" name="friday-WRITING"></div>
+  //       <div className="empty" name="saturday-WRITING"></div>
+  //       <div className="empty" name="sunday-WRITING"></div>
 
-        <div className="empty" name="monday-LISTENING"></div>
-        <div className="empty" name="tuesday-LISTENING"></div>
-        <div className="empty" name="wednesday-LISTENING"></div>
-        <div className="empty" name="thursday-LISTENING"></div>
-        <div className="empty" name="friday-LISTENING"></div>
-        <div className="empty" name="saturday-LISTENING"></div>
-        <div className="empty" name="sunday-LISTENING"></div>
+  //       <div className="empty" name="monday-LISTENING"></div>
+  //       <div className="empty" name="tuesday-LISTENING"></div>
+  //       <div className="empty" name="wednesday-LISTENING"></div>
+  //       <div className="empty" name="thursday-LISTENING"></div>
+  //       <div className="empty" name="friday-LISTENING"></div>
+  //       <div className="empty" name="saturday-LISTENING"></div>
+  //       <div className="empty" name="sunday-LISTENING"></div>
 
-        <div className="empty" name="monday-VOCABULARY"></div>
-        <div className="empty" name="tuesday-VOCABULARY"></div>
-        <div className="empty" name="wednesday-VOCABULARY"></div>
-        <div className="empty" name="thursday-VOCABULARY"></div>
-        <div className="empty" name="friday-VOCABULARY"></div>
-        <div className="empty" name="saturday-VOCABULARY"></div>
-        <div className="empty" name="sunday-VOCABULARY"></div>
-      </>
-    );
-  };
+  //       <div className="empty" name="monday-VOCABULARY"></div>
+  //       <div className="empty" name="tuesday-VOCABULARY"></div>
+  //       <div className="empty" name="wednesday-VOCABULARY"></div>
+  //       <div className="empty" name="thursday-VOCABULARY"></div>
+  //       <div className="empty" name="friday-VOCABULARY"></div>
+  //       <div className="empty" name="saturday-VOCABULARY"></div>
+  //       <div className="empty" name="sunday-VOCABULARY"></div>
+  //     </>
+  //   );
+  // };
 
   const SummaryDaysTimes = () => {
     return (
@@ -353,13 +316,10 @@ export function App() {
       <DaysNames />
 
       <HabitsNames />
-
-      <MyTaskTable />
+      {getAllTasks()}
       <OneHabitSumTime />
 
       <SummaryDaysTimes />
-
-      {getAllTasks()}
     </section>
   );
 }
