@@ -1,4 +1,3 @@
-// import ReactDOM from "react-dom/client";
 import ShowTask from "./components/ShowTask";
 
 export function App() {
@@ -15,7 +14,6 @@ export function App() {
         divNames.push(divkName);
       }
     }
-    console.log(divNames);
     return divNames;
   };
   myTaskTable();
@@ -26,23 +24,7 @@ export function App() {
       taskArray.push(<ShowTask key={i} name={`${divNames[i]}`} />);
     }
     return taskArray;
-
-    // show all task's from LocalStore to empty boxes
-    // if (localStoreId) {
-    //   summaryOneDayTime(localStoreId.day, localStoreId.time);
-    //   summaryOneHabitTime(localStoreId.study, localStoreId.time);
-    // } else null;
   };
-
-  let dayTimes = [
-    { day: "Monday", time: 0, real_time: 0 },
-    { day: "Tuesday", time: 0, real_time: 0 },
-    { day: "Wednesday", time: 0, real_time: 0 },
-    { day: "Thursday", time: 0, real_time: 0 },
-    { day: "Friday", time: 0, real_time: 0 },
-    { day: "Saturday", time: 0, real_time: 0 },
-    { day: "Sunday", time: 0, real_time: 0 },
-  ];
 
   let habitTimes = [
     { study: "SPEAKING", time: 0 },
@@ -53,17 +35,6 @@ export function App() {
   ];
 
   // SUMMARY ALL TASKS PLANNED TIME FROM ONE-DAY
-  const summaryOneDayTime = (day, time) => {
-    dayTimes.forEach((item) => (item.day === day ? (item.time += Number(time)) : null));
-
-    document.querySelector(".monday_sum_time").textContent = `${dayTimes[0].time} min.`;
-    document.querySelector(".tuesday_sum_time").textContent = `${dayTimes[1].time} min.`;
-    document.querySelector(".wednesday_sum_time").textContent = `${dayTimes[2].time} min.`;
-    document.querySelector(".thursday_sum_time").textContent = `${dayTimes[3].time} min.`;
-    document.querySelector(".friday_sum_time").textContent = `${dayTimes[4].time} min.`;
-    document.querySelector(".saturday_sum_time").textContent = `${dayTimes[5].time} min.`;
-    document.querySelector(".sunday_sum_time").textContent = `${dayTimes[6].time} min.`;
-  };
 
   // SUMMARY ONE HABIT TIME FROM ALL DAYS
   const summaryOneHabitTime = (study, time) => {
@@ -146,7 +117,7 @@ export function App() {
     document.querySelector("button.add_form").onclick = addTaskFromUser;
     document.querySelector("button.remove_top").onclick = clearAllTasks;
 
-    summaryOneDayTime();
+    // summaryOneDayTime();
     summaryOneHabitTime();
 
     doneTaskHandle();
@@ -281,6 +252,9 @@ export function App() {
   // };
 
   const SummaryDaysTimes = () => {
+    const testy = useRef();
+    console.log(testy);
+
     return (
       <>
         <div className="plannded_time">
@@ -290,7 +264,7 @@ export function App() {
           <p className="center_text">My real time:</p>
         </div>
 
-        <div className="monday_sum_time"></div>
+        <div className="monday_sum_time" ref={testy}></div>
         <div className="tuesday_sum_time"></div>
         <div className="wednesday_sum_time"></div>
         <div className="thursday_sum_time"></div>
@@ -322,4 +296,5 @@ export function App() {
     </section>
   );
 }
+
 export default App;
