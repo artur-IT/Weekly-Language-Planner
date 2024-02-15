@@ -1,17 +1,13 @@
-export const MyTaskTable = (props) => {
-  // console.log(props);
-  return <div className="empty" name="monday-SPEAKING"></div>;
-};
+//---------------------------------
 
-const ShowTask = (taskValues) => {
-  // console.log(taskValues.taskValues);
-  if (taskValues.taskValues === null) return <MyTaskTable />;
+const ShowTask = (values) => {
+  if (values.taskValues === null) return <div className="empty" name={values.name}></div>;
   else
     return (
-      <div>
-        <p>{taskValues.name}</p>
+      <div className="empty" name={values.name}>
+        <p>{values.name}</p>
         <hr />
-        <p>{taskValues.time} min.</p>
+        <p>{values.time} min.</p>
         <button className="btn_remove"></button>
         <button className="btn_done"></button>
       </div>

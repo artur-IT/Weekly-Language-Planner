@@ -1,36 +1,36 @@
 // import ReactDOM from "react-dom/client";
-import MyTaskTable from "./components/ShowTask";
 import ShowTask from "./components/ShowTask";
 
 export function App() {
   let taskArray = [];
-  let emptySquare = [];
+  let divNames = [];
 
-  // SEARCH EMPTY BOXES AND COMPARE WITH LocalStore
-  const getAllTasks = () => {
-    const emptyBoxes = document.querySelectorAll(".empty");
-    console.log(emptyBoxes);
-
-    // emptyBoxes.forEach((el, idx) => {
-    for (let i = 0; i < 35; i++) {
-      // const emptyBoxName = emptyBoxes[i].name.nodeValue;
-      // const localStoreId = JSON.parse(localStorage.getItem(emptyBoxName));
-      // console.log(emptyBoxName);
-      // taskArray.push({ localStoreId });
-
-      taskArray.push(<ShowTask key={i} taskValues={null} />);
-      emptySquare.push(<MyTaskTable empty={emptySquare} />);
+  // CREATE TABLE WITH NAMES (for div): day-HABIT
+  const myTaskTable = () => {
+    const days = ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"];
+    const habits = ["SPEAKING", "READING", "WRITING", "LISTENING", "VOCABULARY"];
+    for (let x = 0; x < habits.length; x++) {
+      for (let y = 0; y < days.length; y++) {
+        const divkName = days[y].toLocaleLowerCase() + `-` + habits[x];
+        divNames.push(divkName);
+      }
     }
-    console.log(emptySquare);
+    console.log(divNames);
+    return divNames;
+  };
+  myTaskTable();
+
+  // CREATE TABLE OF ALL TASKS
+  const getAllTasks = () => {
+    for (let i = 0; i < 35; i++) {
+      taskArray.push(<ShowTask key={i} name={`${divNames[i]}`} />);
+    }
     return taskArray;
 
     // show all task's from LocalStore to empty boxes
     // if (localStoreId) {
     //   summaryOneDayTime(localStoreId.day, localStoreId.time);
     //   summaryOneHabitTime(localStoreId.study, localStoreId.time);
-    // ReactDOM.createRoot(el).render(<ShowTask taskValues={localStoreId} />);
-
-    // <ShowTask taskValues={localStoreId} />;
     // } else null;
   };
 
@@ -145,7 +145,6 @@ export function App() {
   window.onload = () => {
     document.querySelector("button.add_form").onclick = addTaskFromUser;
     document.querySelector("button.remove_top").onclick = clearAllTasks;
-    // GET ALL TASKS FROM LocalStore
 
     summaryOneDayTime();
     summaryOneHabitTime();
