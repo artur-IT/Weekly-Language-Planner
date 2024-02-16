@@ -66,7 +66,7 @@ export function App() {
     e.preventDefault();
 
     // reset oneDaySum and oneHabitSum time
-    dayTimes.forEach((item) => (item.time = 0));
+    // dayTimes.forEach((item) => (item.time = 0));
     habitTimes.forEach((item) => (item.time = 0));
 
     const myDay = document.querySelector(".day_task");
@@ -78,10 +78,15 @@ export function App() {
 
     if (myDay.value && myStudy.value && myTask.value && myTime.value && myTime.value != 0) {
       const newTask = new TaskBox(id, date_add, myDay.value, myStudy.value, myTask.value, myTime.value);
-      localStorage.setItem(id, JSON.stringify(newTask));
+
+      let myLStasks = localStorage.getItem("myTasks") ? JSON.parse(localStorage.getItem("myTasks")) : [];
+      myLStasks.push(newTask);
+      localStorage.setItem("myTasks", JSON.stringify(myLStasks));
+
+      // localStorage.setItem(id, JSON.stringify(newTask));
 
       getAllTasks();
-      summaryOneDayTime();
+      // summaryOneDayTime();
     } else alert("Uzupełnij pola!");
 
     myDay.value = myStudy.value = myTask.value = myTime.value = null;
@@ -252,9 +257,6 @@ export function App() {
   // };
 
   const SummaryDaysTimes = () => {
-    const testy = useRef();
-    console.log(testy);
-
     return (
       <>
         <div className="plannded_time">
@@ -264,7 +266,7 @@ export function App() {
           <p className="center_text">My real time:</p>
         </div>
 
-        <div className="monday_sum_time" ref={testy}></div>
+        <div className="monday_sum_time"></div>
         <div className="tuesday_sum_time"></div>
         <div className="wednesday_sum_time"></div>
         <div className="thursday_sum_time"></div>

@@ -1,9 +1,6 @@
-import { useRef } from "react";
-
 const ShowTask = (values) => {
   // show all task's from LocalStore to empty boxes
-  const localStoreId = JSON.parse(localStorage.getItem(values.name));
-
+  const myLocalStore = JSON.parse(localStorage.getItem("myTasks"));
   let dayTimes = [
     { day: "Monday", time: 0, real_time: 0 },
     { day: "Tuesday", time: 0, real_time: 0 },
@@ -15,7 +12,6 @@ const ShowTask = (values) => {
   ];
 
   const summaryOneDayTime = (day, time) => {
-    console.log(day, time);
     dayTimes.forEach((item) => (item.day === day ? (item.time += Number(time)) : null));
 
     // document.querySelector(".monday_sum_time").textContent = `${dayTimes[0].time} min.`;
@@ -27,24 +23,30 @@ const ShowTask = (values) => {
     // document.querySelector(".sunday_sum_time").textContent = `${dayTimes[6].time} min.`;
   };
 
-  if (localStoreId) {
-    const taskFromLocalStore = (
-      <div className="empty" name={values.name}>
-        <div>
-          <p>{localStoreId.name}</p>
-          <hr />
-          <p>{localStoreId.time} min.</p>
-          <button className="btn_remove"></button>
-          <button className="btn_done"></button>
-        </div>
+  const taskFromLocalStore = (
+    <div className="empty" name={values.name}>
+      <div>
+        <p>{values.name}</p>
+        <hr />
+        <p>{values.time} min.</p>
+        <button className="btn_remove"></button>
+        <button className="btn_done"></button>
       </div>
-    );
-    summaryOneDayTime(localStoreId.day, localStoreId.time);
-    if (localStoreId.id === values.name) return taskFromLocalStore;
+    </div>
+  );
 
+  for (let i = 0; i < myLocalStore.length; i++) {
+    // myLocalStore.forEach((task) =>   {
+    console.log(myLocalStore[i].id, values.name);
+
+    // summaryOneDayTime(localStoreId.day, localStoreId.time);
     // summaryOneHabitTime(localStoreId.study, localStoreId.time);
-  } else {
-    return <div className="empty" name={values.name}></div>;
+
+    if (myLocalStore[i].id === values.name) return taskFromLocalStore;
+    else {
+      return <div className="empty" name={values.name}></div>;
+    }
+    // })
   }
 };
 
