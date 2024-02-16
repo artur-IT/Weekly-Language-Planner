@@ -22,7 +22,7 @@ const ShowTask = (values) => {
     // document.querySelector(".saturday_sum_time").textContent = `${dayTimes[5].time} min.`;
     // document.querySelector(".sunday_sum_time").textContent = `${dayTimes[6].time} min.`;
   };
-
+  console.log(myLocalStore);
   const taskFromLocalStore = (
     <div className="empty" name={values.name}>
       <div>
@@ -35,19 +35,13 @@ const ShowTask = (values) => {
     </div>
   );
 
-  for (let i = 0; i < myLocalStore.length; i++) {
-    // myLocalStore.forEach((task) =>   {
-    console.log(myLocalStore[i].id, values.name);
-
+  for (const el of myLocalStore) {
     // summaryOneDayTime(localStoreId.day, localStoreId.time);
     // summaryOneHabitTime(localStoreId.study, localStoreId.time);
 
-    if (myLocalStore[i].id === values.name) return taskFromLocalStore;
-    else {
-      return <div className="empty" name={values.name}></div>;
-    }
-    // })
+    if (values.name === el.id) return taskFromLocalStore;
   }
+  return <div className="empty" name={values.name}></div>;
 };
 
 export default ShowTask;
