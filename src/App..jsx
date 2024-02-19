@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import ShowTask from "./components/ShowTask";
 import Days from "./components/Days";
 import Habits from "./components/Habits";
@@ -6,10 +8,23 @@ import RealTime from "./components/RealTime";
 import HabitSumTime from "./components/HabitSumTime";
 
 export function App() {
-  let taskArray = [];
-  let divNames = [];
   const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
   const habits = ["SPEAKING", "READING", "WRITING", "LISTENING", "VOCABULARY"];
+  let taskArray = [];
+  let divNames = [];
+
+  const [
+    dayTimes = [
+      { day: "Monday", time: 0, real_time: 0 },
+      { day: "Tuesday", time: 0, real_time: 0 },
+      { day: "Wednesday", time: 0, real_time: 0 },
+      { day: "Thursday", time: 0, real_time: 0 },
+      { day: "Friday", time: 0, real_time: 0 },
+      { day: "Saturday", time: 0, real_time: 0 },
+      { day: "Sunday", time: 0, real_time: 0 },
+    ],
+    setDayTimes,
+  ] = useState();
 
   // CREATE ARRAY WITH NAMES (for div): day-HABIT
   const namesForDIV = () => {
@@ -27,10 +42,26 @@ export function App() {
   const GetAllTasks = () => {
     taskArray = [];
     for (let i = 0; i < 35; i++) {
-      taskArray.push(<ShowTask key={i} name={`${divNames[i]}`} />);
+      taskArray.push(<ShowTask key={i} name={`${divNames[i]}`} times={dayTimes} />);
     }
     return taskArray;
   };
+
+  // SUMMARY ALL TASKS PLANNED TIME FROM ONE-DAY
+  const getOneDayTimes = () => {
+    const myLocalStore = JSON.parse(localStorage.getItem("myTasks"));
+
+    const summaryOneDayTime = (day, time) => {
+      dayTimes.forEach((item) => (item.day === day ? (item.time += Number(time)) : null));
+      return dayTimes;
+    };
+
+    for (const el of myLocalStore) {
+      summaryOneDayTime(el.day, el.time);
+      // summaryOneHabitTime(localStoreId.study, localStoreId.time);
+    }
+  };
+  getOneDayTimes();
 
   let habitTimes = [
     { study: "SPEAKING", time: 0 },
@@ -40,17 +71,9 @@ export function App() {
     { study: "VOCABULARY", time: 0 },
   ];
 
-  // SUMMARY ALL TASKS PLANNED TIME FROM ONE-DAY
-
   // SUMMARY ONE HABIT TIME FROM ALL DAYS
   const summaryOneHabitTime = (study, time) => {
     habitTimes.forEach((item) => (item.study === study ? (item.time += Number(time)) : null));
-    // console.log(study, time);
-    document.querySelector(".habit1_sum p").textContent = `${habitTimes[0].time} min.`;
-    document.querySelector(".habit2_sum p").textContent = `${habitTimes[1].time} min.`;
-    document.querySelector(".habit3_sum p").textContent = `${habitTimes[2].time} min.`;
-    document.querySelector(".habit4_sum p").textContent = `${habitTimes[3].time} min.`;
-    document.querySelector(".habit5_sum p").textContent = `${habitTimes[4].time} min.`;
   };
 
   //------------------------------- ADD SECTION start
@@ -145,7 +168,7 @@ export function App() {
 
       <HabitSumTime />
 
-      <PlannedTime />
+      <PlannedTime times={dayTimes} />
       <RealTime />
     </section>
   );
