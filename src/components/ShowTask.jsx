@@ -23,7 +23,8 @@ const ShowTask = (values) => {
     // document.querySelector(".sunday_sum_time").textContent = `${dayTimes[6].time} min.`;
   };
 
-  const showTask = (el) => {
+  const Task = (el) => {
+    // return html:
     const taskFromLocalStore = (
       <div className="empty" name={values.name}>
         <div>
@@ -35,14 +36,15 @@ const ShowTask = (values) => {
         </div>
       </div>
     );
+
     summaryOneDayTime(el.day, el.time);
-    console.log(taskFromLocalStore);
+    // console.log(taskFromLocalStore);
     return taskFromLocalStore;
   };
 
   for (const el of myLocalStore) {
     // summaryOneHabitTime(localStoreId.study, localStoreId.time);
-    if (values.name === el.id) return showTask(el);
+    if (values.name === el.id) return Task(el);
   }
   return <div className="empty" name={values.name}></div>;
 };

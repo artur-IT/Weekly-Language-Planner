@@ -25,10 +25,10 @@ export function App() {
 
   // CREATE TABLE OF ALL TASKS
   const GetAllTasks = () => {
-    for (let i = 0; i < 5; i++) {
+    taskArray = [];
+    for (let i = 0; i < 35; i++) {
       taskArray.push(<ShowTask key={i} name={`${divNames[i]}`} />);
     }
-    console.log(taskArray);
     return taskArray;
   };
 
@@ -53,6 +53,7 @@ export function App() {
     document.querySelector(".habit5_sum p").textContent = `${habitTimes[4].time} min.`;
   };
 
+  //------------------------------- ADD SECTION start
   // OBJECT FOR NEW TASK FROM USER
   class TaskBox {
     constructor(id, date_add, day, study, name, time) {
@@ -101,8 +102,9 @@ export function App() {
     localStorage.clear();
     return GetAllTasks();
   };
+  //------------------------------- ADD SECTION end
 
-  // ----- BTN_DONE HANDLER
+  // -- BTN_DONE HANDLER
   const doneTaskHandle = () => {
     document.querySelectorAll(".btn_done").forEach((btn) =>
       btn.addEventListener("click", (e) => {
@@ -110,8 +112,7 @@ export function App() {
       })
     );
   };
-
-  // ----- BTN_REMOVE HANDLER
+  // -- BTN_REMOVE HANDLER
   const removeTaskHandle = () => {
     document.querySelectorAll(".btn_remove").forEach((btn) => {
       btn.addEventListener("click", (e) => {
@@ -133,83 +134,7 @@ export function App() {
     removeTaskHandle();
   };
 
-  // ------------HTML COMPONENTS - Structure-------------
-
-  // const MyTaskTable = () => {
-  //   return (
-  //     <>
-  //       <div className="empty" name="monday-SPEAKING"></div>
-  //       <div className="empty" name="tuesday-SPEAKING"></div>
-  //       <div className="empty" name="wednesday-SPEAKING"></div>
-  //       <div className="empty" name="thursday-SPEAKING"></div>
-  //       <div className="empty" name="friday-SPEAKING"></div>
-  //       <div className="empty" name="saturday-SPEAKING"></div>
-  //       <div className="empty" name="sunday-SPEAKING"></div>
-
-  //       <div className="empty" name="monday-READING"></div>
-  //       <div className="empty" name="tuesday-READING"></div>
-  //       <div className="empty" name="wednesday-READING"></div>
-  //       <div className="empty" name="thursday-READING"></div>
-  //       <div className="empty" name="friday-READING"></div>
-  //       <div className="empty" name="saturday-READING"></div>
-  //       <div className="empty" name="sunday-READING"></div>
-
-  //       <div className="empty" name="monday-WRITING"></div>
-  //       <div className="empty" name="tuesday-WRITING"></div>
-  //       <div className="empty" name="wednesday-WRITING"></div>
-  //       <div className="empty" name="thursday-WRITING"></div>
-  //       <div className="empty" name="friday-WRITING"></div>
-  //       <div className="empty" name="saturday-WRITING"></div>
-  //       <div className="empty" name="sunday-WRITING"></div>
-
-  //       <div className="empty" name="monday-LISTENING"></div>
-  //       <div className="empty" name="tuesday-LISTENING"></div>
-  //       <div className="empty" name="wednesday-LISTENING"></div>
-  //       <div className="empty" name="thursday-LISTENING"></div>
-  //       <div className="empty" name="friday-LISTENING"></div>
-  //       <div className="empty" name="saturday-LISTENING"></div>
-  //       <div className="empty" name="sunday-LISTENING"></div>
-
-  //       <div className="empty" name="monday-VOCABULARY"></div>
-  //       <div className="empty" name="tuesday-VOCABULARY"></div>
-  //       <div className="empty" name="wednesday-VOCABULARY"></div>
-  //       <div className="empty" name="thursday-VOCABULARY"></div>
-  //       <div className="empty" name="friday-VOCABULARY"></div>
-  //       <div className="empty" name="saturday-VOCABULARY"></div>
-  //       <div className="empty" name="sunday-VOCABULARY"></div>
-  //     </>
-  //   );
-  // };
-
-  const SummaryDaysTimes = () => {
-    return (
-      <>
-        <div className="plannded_time">
-          <p className="center_text">Planned time:</p>
-        </div>
-        <div className="time_done">
-          <p className="center_text">My real time:</p>
-        </div>
-
-        <div className="monday_sum_time"></div>
-        <div className="tuesday_sum_time"></div>
-        <div className="wednesday_sum_time"></div>
-        <div className="thursday_sum_time"></div>
-        <div className="friday_sum_time"></div>
-        <div className="saturday_sum_time"></div>
-        <div className="sunday_sum_time"></div>
-        <div className="habit_sum_bgc"></div>
-        <div className="monday_real_time">-</div>
-        <div className="tuesday_real_time">-</div>
-        <div className="wednesday_real_time">-</div>
-        <div className="thursday_real_time">-</div>
-        <div className="friday_real_time">-</div>
-        <div className="saturday_real_time">-</div>
-        <div className="sunday_real_time">-</div>
-        <div className="habit_sum_bgc"></div>
-      </>
-    );
-  };
+  //-------
 
   return (
     <section className="layout">
@@ -220,7 +145,8 @@ export function App() {
 
       <HabitSumTime />
 
-      <SummaryDaysTimes />
+      <PlannedTime />
+      <RealTime />
     </section>
   );
 }
