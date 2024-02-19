@@ -150,9 +150,6 @@ export function App() {
     document.querySelector("button.add_form").onclick = addTaskFromUser;
     document.querySelector("button.remove_top").onclick = clearAllTasks;
 
-    // summaryOneDayTime();
-    summaryOneHabitTime();
-
     doneTaskHandle();
     removeTaskHandle();
   };
