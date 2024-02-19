@@ -22,24 +22,27 @@ const ShowTask = (values) => {
     // document.querySelector(".saturday_sum_time").textContent = `${dayTimes[5].time} min.`;
     // document.querySelector(".sunday_sum_time").textContent = `${dayTimes[6].time} min.`;
   };
-  console.log(myLocalStore);
-  const taskFromLocalStore = (
-    <div className="empty" name={values.name}>
-      <div>
-        <p>{values.name}</p>
-        <hr />
-        <p>{values.time} min.</p>
-        <button className="btn_remove"></button>
-        <button className="btn_done"></button>
+
+  const showTask = (el) => {
+    const taskFromLocalStore = (
+      <div className="empty" name={values.name}>
+        <div>
+          <p>{el.name}</p>
+          <hr />
+          <p>{el.time} min.</p>
+          <button className="btn_remove"></button>
+          <button className="btn_done"></button>
+        </div>
       </div>
-    </div>
-  );
+    );
+    summaryOneDayTime(el.day, el.time);
+    console.log(taskFromLocalStore);
+    return taskFromLocalStore;
+  };
 
   for (const el of myLocalStore) {
-    // summaryOneDayTime(localStoreId.day, localStoreId.time);
     // summaryOneHabitTime(localStoreId.study, localStoreId.time);
-
-    if (values.name === el.id) return taskFromLocalStore;
+    if (values.name === el.id) return showTask(el);
   }
   return <div className="empty" name={values.name}></div>;
 };

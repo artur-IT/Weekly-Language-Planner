@@ -1,28 +1,34 @@
 import ShowTask from "./components/ShowTask";
+import Days from "./components/Days";
+import Habits from "./components/Habits";
+import PlannedTime from "./components/PlannedTime";
+import RealTime from "./components/RealTime";
+import HabitSumTime from "./components/HabitSumTime";
 
 export function App() {
   let taskArray = [];
   let divNames = [];
+  const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+  const habits = ["SPEAKING", "READING", "WRITING", "LISTENING", "VOCABULARY"];
 
-  // CREATE TABLE WITH NAMES (for div): day-HABIT
-  const myTaskTable = () => {
-    const days = ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"];
-    const habits = ["SPEAKING", "READING", "WRITING", "LISTENING", "VOCABULARY"];
+  // CREATE ARRAY WITH NAMES (for div): day-HABIT
+  const namesForDIV = () => {
     for (let x = 0; x < habits.length; x++) {
       for (let y = 0; y < days.length; y++) {
-        const divkName = days[y].toLocaleLowerCase() + `-` + habits[x];
-        divNames.push(divkName);
+        const divName = days[y].toLocaleLowerCase() + `-` + habits[x];
+        divNames.push(divName);
       }
     }
     return divNames;
   };
-  myTaskTable();
+  namesForDIV();
 
   // CREATE TABLE OF ALL TASKS
-  const getAllTasks = () => {
-    for (let i = 0; i < 35; i++) {
+  const GetAllTasks = () => {
+    for (let i = 0; i < 5; i++) {
       taskArray.push(<ShowTask key={i} name={`${divNames[i]}`} />);
     }
+    console.log(taskArray);
     return taskArray;
   };
 
@@ -39,7 +45,7 @@ export function App() {
   // SUMMARY ONE HABIT TIME FROM ALL DAYS
   const summaryOneHabitTime = (study, time) => {
     habitTimes.forEach((item) => (item.study === study ? (item.time += Number(time)) : null));
-
+    // console.log(study, time);
     document.querySelector(".habit1_sum p").textContent = `${habitTimes[0].time} min.`;
     document.querySelector(".habit2_sum p").textContent = `${habitTimes[1].time} min.`;
     document.querySelector(".habit3_sum p").textContent = `${habitTimes[2].time} min.`;
@@ -83,9 +89,7 @@ export function App() {
       myLStasks.push(newTask);
       localStorage.setItem("myTasks", JSON.stringify(myLStasks));
 
-      // localStorage.setItem(id, JSON.stringify(newTask));
-
-      getAllTasks();
+      // getAllTasks();
       // summaryOneDayTime();
     } else alert("Uzupełnij pola!");
 
@@ -130,85 +134,6 @@ export function App() {
   };
 
   // ------------HTML COMPONENTS - Structure-------------
-  const DaysNames = () => {
-    return (
-      <>
-        <div className="zero"></div>
-        <div className="monnday">
-          <p className="center_text">Monday</p>
-        </div>
-        <div className="tuesday">
-          <p className="center_text">Tuesday</p>
-        </div>
-        <div className="wednesday">
-          <p className="center_text">Wednesday</p>
-        </div>
-        <div className="thursday">
-          <p className="center_text">Thursday</p>
-        </div>
-        <div className="friday">
-          <p className="center_text">Friday</p>
-        </div>
-        <div className="saturday">
-          <p className="center_text">Saturday</p>
-        </div>
-        <div className="sunday">
-          <p className="center_text">Sunday</p>
-        </div>
-        <div className="habit_sum">
-          <p className="center_text">Habit time</p>
-        </div>
-      </>
-    );
-  };
-
-  const HabitsNames = () => {
-    return (
-      <>
-        <div className="habit1">
-          <p className="center_text">SPEAKING</p>
-        </div>
-        <div className="habit2">
-          <p className="center_text">READING</p>
-        </div>
-        <div className="habit3">
-          <p className="center_text">WRITING</p>
-        </div>
-        <div className="habit4">
-          <p className="center_text">LISTENING</p>
-        </div>
-        <div className="habit5">
-          <p className="center_text">VOCABULARY</p>
-        </div>
-      </>
-    );
-  };
-
-  const OneHabitSumTime = () => {
-    return (
-      <>
-        <div className="habit1_sum">
-          <p className="center_text"></p>
-        </div>
-
-        <div className="habit2_sum">
-          <p className="center_text"></p>
-        </div>
-
-        <div className="habit3_sum">
-          <p className="center_text"></p>
-        </div>
-
-        <div className="habit4_sum">
-          <p className="center_text"></p>
-        </div>
-
-        <div className="habit5_sum">
-          <p className="center_text"></p>
-        </div>
-      </>
-    );
-  };
 
   // const MyTaskTable = () => {
   //   return (
@@ -288,11 +213,12 @@ export function App() {
 
   return (
     <section className="layout">
-      <DaysNames />
+      <Days daysNames={days} />
+      <Habits habitsNames={habits} />
 
-      <HabitsNames />
-      {getAllTasks()}
-      <OneHabitSumTime />
+      <GetAllTasks />
+
+      <HabitSumTime />
 
       <SummaryDaysTimes />
     </section>
