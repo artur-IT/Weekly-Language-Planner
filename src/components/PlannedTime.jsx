@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 const PlannedTime = (props) => {
   return (
     <>
@@ -12,7 +13,7 @@ const PlannedTime = (props) => {
       <div className="friday_sum_time">{props.times[4].time}</div>
       <div className="saturday_sum_time">{props.times[5].time}</div>
       <div className="sunday_sum_time">{props.times[6].time}</div>
-      {/* <div className="habit_sum_bgc">{0}</div> */}
+      <div className="habit_sum_bgc">-</div>
     </>
   );
 };

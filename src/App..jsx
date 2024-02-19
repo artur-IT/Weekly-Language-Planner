@@ -10,6 +10,7 @@ import HabitSumTime from "./components/HabitSumTime";
 export function App() {
   const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
   const habits = ["SPEAKING", "READING", "WRITING", "LISTENING", "VOCABULARY"];
+  const myLocalStore = JSON.parse(localStorage.getItem("myTasks"));
   let taskArray = [];
   let divNames = [];
 
@@ -47,19 +48,13 @@ export function App() {
     return taskArray;
   };
 
-  // SUMMARY ALL TASKS PLANNED TIME FROM ONE-DAY
+  // SUMMARY FROM ALL TASKS PLANNED TIME FROM ONE-DAY
   const getOneDayTimes = () => {
-    const myLocalStore = JSON.parse(localStorage.getItem("myTasks"));
-
     const summaryOneDayTime = (day, time) => {
       dayTimes.forEach((item) => (item.day === day ? (item.time += Number(time)) : null));
       return dayTimes;
     };
-
-    for (const el of myLocalStore) {
-      summaryOneDayTime(el.day, el.time);
-      // summaryOneHabitTime(localStoreId.study, localStoreId.time);
-    }
+    for (const el of myLocalStore) summaryOneDayTime(el.day, el.time);
   };
   getOneDayTimes();
 
@@ -71,10 +66,15 @@ export function App() {
     { study: "VOCABULARY", time: 0 },
   ];
 
-  // SUMMARY ONE HABIT TIME FROM ALL DAYS
-  const summaryOneHabitTime = (study, time) => {
-    habitTimes.forEach((item) => (item.study === study ? (item.time += Number(time)) : null));
+  // SUMMARY ONE HABIT TIMES FROM ALL DAYS
+  const getOneHabitTimes = () => {
+    const summaryOneHabitTime = (study, time) => {
+      habitTimes.forEach((item) => (item.study === study ? (item.time += Number(time)) : null));
+      return habitTimes;
+    };
+    for (const el of myLocalStore) summaryOneHabitTime(el.study, el.time);
   };
+  getOneHabitTimes();
 
   //------------------------------- ADD SECTION start
   // OBJECT FOR NEW TASK FROM USER
@@ -166,10 +166,10 @@ export function App() {
 
       <GetAllTasks />
 
-      <HabitSumTime />
+      <HabitSumTime times={habitTimes} />
 
       <PlannedTime times={dayTimes} />
-      <RealTime />
+      <RealTime times={dayTimes} />
     </section>
   );
 }

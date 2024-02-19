@@ -1,5 +1,3 @@
-import PlannedTime from "./PlannedTime";
-
 const ShowTask = (values) => {
   const myLocalStore = JSON.parse(localStorage.getItem("myTasks"));
 
