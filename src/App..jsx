@@ -10,22 +10,27 @@ import HabitSumTime from "./components/HabitSumTime";
 export function App() {
   const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
   const habits = ["SPEAKING", "READING", "WRITING", "LISTENING", "VOCABULARY"];
-  const myLocalStore = JSON.parse(localStorage.getItem("myTasks"));
+  let myLocalStore = localStorage.getItem("myTasks") ? JSON.parse(localStorage.getItem("myTasks")) : [];
   let taskArray = [];
   let divNames = [];
 
-  const [
-    dayTimes = [
-      { day: "Monday", time: 0, real_time: 0 },
-      { day: "Tuesday", time: 0, real_time: 0 },
-      { day: "Wednesday", time: 0, real_time: 0 },
-      { day: "Thursday", time: 0, real_time: 0 },
-      { day: "Friday", time: 0, real_time: 0 },
-      { day: "Saturday", time: 0, real_time: 0 },
-      { day: "Sunday", time: 0, real_time: 0 },
-    ],
-    setDayTimes,
-  ] = useState();
+  const dayTimes = [
+    { day: "Monday", time: 0, real_time: 0 },
+    { day: "Tuesday", time: 0, real_time: 0 },
+    { day: "Wednesday", time: 0, real_time: 0 },
+    { day: "Thursday", time: 0, real_time: 0 },
+    { day: "Friday", time: 0, real_time: 0 },
+    { day: "Saturday", time: 0, real_time: 0 },
+    { day: "Sunday", time: 0, real_time: 0 },
+  ];
+
+  let habitTimes = [
+    { study: "SPEAKING", time: 0 },
+    { study: "READING", time: 0 },
+    { study: "WRITING", time: 0 },
+    { study: "LISTENING", time: 0 },
+    { study: "VOCABULARY", time: 0 },
+  ];
 
   // CREATE ARRAY WITH NAMES (for div): day-HABIT
   const namesForDIV = () => {
@@ -43,7 +48,7 @@ export function App() {
   const GetAllTasks = () => {
     taskArray = [];
     for (let i = 0; i < 35; i++) {
-      taskArray.push(<ShowTask key={i} name={`${divNames[i]}`} times={dayTimes} />);
+      taskArray.push(<ShowTask key={i} name={`${divNames[i]}`} times={dayTimes} store={myLocalStore} />);
     }
     return taskArray;
   };
@@ -54,17 +59,10 @@ export function App() {
       dayTimes.forEach((item) => (item.day === day ? (item.time += Number(time)) : null));
       return dayTimes;
     };
-    for (const el of myLocalStore) summaryOneDayTime(el.day, el.time);
+    if (myLocalStore) for (const el of myLocalStore) summaryOneDayTime(el.day, el.time);
+    else null;
   };
   getOneDayTimes();
-
-  let habitTimes = [
-    { study: "SPEAKING", time: 0 },
-    { study: "READING", time: 0 },
-    { study: "WRITING", time: 0 },
-    { study: "LISTENING", time: 0 },
-    { study: "VOCABULARY", time: 0 },
-  ];
 
   // SUMMARY ONE HABIT TIMES FROM ALL DAYS
   const getOneHabitTimes = () => {
@@ -72,7 +70,8 @@ export function App() {
       habitTimes.forEach((item) => (item.study === study ? (item.time += Number(time)) : null));
       return habitTimes;
     };
-    for (const el of myLocalStore) summaryOneHabitTime(el.study, el.time);
+    if (myLocalStore) for (const el of myLocalStore) summaryOneHabitTime(el.study, el.time);
+    else null;
   };
   getOneHabitTimes();
 
@@ -93,12 +92,7 @@ export function App() {
 
   // GET NEW TASK FROM USER AND SAVE TO LocalStorage
   const addTaskFromUser = (e) => {
-    e.preventDefault();
-
-    // reset oneDaySum and oneHabitSum time
-    // dayTimes.forEach((item) => (item.time = 0));
-    habitTimes.forEach((item) => (item.time = 0));
-
+    // e.preventDefault();
     const myDay = document.querySelector(".day_task");
     const myStudy = document.querySelector(".study");
     const myTask = document.querySelector(".task_name");
@@ -106,15 +100,24 @@ export function App() {
     const id = myDay.value.toLocaleLowerCase() + "-" + myStudy.value;
     const date_add = new Date().toLocaleDateString("pl-PL");
 
-    if (myDay.value && myStudy.value && myTask.value && myTime.value && myTime.value != 0) {
+    if (myDay.value && myStudy.value && myTask.value && myTime.value != 0) {
       const newTask = new TaskBox(id, date_add, myDay.value, myStudy.value, myTask.value, myTime.value);
 
       let myLStasks = localStorage.getItem("myTasks") ? JSON.parse(localStorage.getItem("myTasks")) : [];
+
+      // if (myLStasks.length !== 0) {
+      //   for (const el of myLStasks) {
+      //     if (id === el.id) {
+      //       // console.log(id, el.id);
+      //       return alert("Usuń najpierw poprzedni wpis");
+      //     } else myLStasks.push(newTask);
+      //   }
+      // } else
+
       myLStasks.push(newTask);
       localStorage.setItem("myTasks", JSON.stringify(myLStasks));
 
-      // getAllTasks();
-      // summaryOneDayTime();
+      // console.log(tasksStore);
     } else alert("Uzupełnij pola!");
 
     myDay.value = myStudy.value = myTask.value = myTime.value = null;
@@ -140,8 +143,10 @@ export function App() {
     document.querySelectorAll(".btn_remove").forEach((btn) => {
       btn.addEventListener("click", (e) => {
         const taskName = e.target.parentElement.parentElement.attributes.name.nodeValue;
-        const localStoreId = JSON.parse(localStorage.getItem(taskName));
-        taskName === localStoreId.id ? localStorage.removeItem(taskName) : null;
+
+        let findTaskIdx = myLocalStore.findIndex((el) => el.id === taskName);
+        myLocalStore.splice(findTaskIdx, 1);
+        localStorage.setItem("myTasks", JSON.stringify(myLocalStore));
       });
     });
   };
@@ -149,7 +154,6 @@ export function App() {
   window.onload = () => {
     document.querySelector("button.add_form").onclick = addTaskFromUser;
     document.querySelector("button.remove_top").onclick = clearAllTasks;
-
     doneTaskHandle();
     removeTaskHandle();
   };
@@ -161,7 +165,8 @@ export function App() {
       <Days daysNames={days} />
       <Habits habitsNames={habits} />
 
-      <GetAllTasks />
+      {/* <GetAllTasks /> */}
+      <ShowTask name={`${divNames}`} times={dayTimes} store={myLocalStore} />
 
       <HabitSumTime times={habitTimes} />
 

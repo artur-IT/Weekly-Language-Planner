@@ -1,5 +1,6 @@
 const ShowTask = (values) => {
-  const myLocalStore = JSON.parse(localStorage.getItem("myTasks"));
+  const myLocalStore = values.store;
+  console.log(values.name);
 
   // return jsx to DOM
   const task = (el) => {
@@ -17,9 +18,12 @@ const ShowTask = (values) => {
     return taskFromLocalStore;
   };
 
-  for (const el of myLocalStore) {
-    if (values.name === el.id) return task(el);
-  }
+  if (myLocalStore) {
+    for (const el of myLocalStore) {
+      if (values.name === el.id) return task(el);
+    }
+  } else null;
+
   return <div className="empty" name={values.name}></div>;
 };
 
