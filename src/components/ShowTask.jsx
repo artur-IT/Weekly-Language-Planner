@@ -1,6 +1,6 @@
 const ShowTask = (values) => {
   const myLocalStore = values.store;
-  console.log(values.name);
+  // console.log(values);
 
   // return jsx to DOM
   const task = (el) => {

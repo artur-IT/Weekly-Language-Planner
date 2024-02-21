@@ -165,8 +165,8 @@ export function App() {
       <Days daysNames={days} />
       <Habits habitsNames={habits} />
 
-      {/* <GetAllTasks /> */}
-      <ShowTask name={`${divNames}`} times={dayTimes} store={myLocalStore} />
+      <GetAllTasks />
+      {/* <ShowTask name={divNames} times={dayTimes} store={myLocalStore} /> */}
 
       <HabitSumTime times={habitTimes} />
 
