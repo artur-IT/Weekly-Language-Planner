@@ -11,12 +11,7 @@ body {
   /* background-color: #dadada; */
   font-family: "Lato", Arial, sans-serif;
   text-align: center;
-
-  background: rgb(239, 255, 1);
-  background: -moz-linear-gradient(135deg, rgba(239, 255, 1, 1) 0%, rgba(25, 121, 9, 1) 50%, rgba(0, 212, 255, 1) 100%);
-  background: -webkit-linear-gradient(135deg, rgba(239, 255, 1, 1) 0%, rgba(25, 121, 9, 1) 50%, rgba(0, 212, 255, 1) 100%);
-  background: linear-gradient(135deg, rgba(239, 255, 1, 1) 0%, rgba(25, 121, 9, 1) 50%, rgba(0, 212, 255, 1) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#efff01",endColorstr="#00d4ff",GradientType=1);
+  background-color: #1e293b;
 }
 
 h2 {
@@ -96,7 +91,8 @@ label {
 
 select {
   font-size: 0.7rem;
-  margin-right: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
   padding: 2px 3px;
   border: 1px solid #ddd;
 }
@@ -107,6 +103,7 @@ select option {
 }
 
 input {
+  margin: 0 5px;
   padding: 2px 3px;
   border: 1px solid #ddd;
 }

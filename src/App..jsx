@@ -92,7 +92,7 @@ export function App() {
 
   // GET NEW TASK FROM USER AND SAVE TO LocalStorage
   const addTaskFromUser = (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     const myDay = document.querySelector(".day_task");
     const myStudy = document.querySelector(".study");
     const myTask = document.querySelector(".task_name");
@@ -121,6 +121,7 @@ export function App() {
     } else alert("Uzupełnij pola!");
 
     myDay.value = myStudy.value = myTask.value = myTime.value = null;
+    // return myLocalStore;
   };
 
   // REMOVE ALL TASKS FROM LocalStore
@@ -165,8 +166,45 @@ export function App() {
       <Days daysNames={days} />
       <Habits habitsNames={habits} />
 
-      <GetAllTasks />
-      {/* <ShowTask name={divNames} times={dayTimes} store={myLocalStore} /> */}
+      {/* <GetAllTasks /> */}
+      <ShowTask name={divNames[0]} times={dayTimes} store={myLocalStore} />
+      <ShowTask name={divNames[1]} times={dayTimes} store={myLocalStore} />
+      <ShowTask name={divNames[2]} times={dayTimes} store={myLocalStore} />
+      <ShowTask name={divNames[3]} times={dayTimes} store={myLocalStore} />
+      <ShowTask name={divNames[4]} times={dayTimes} store={myLocalStore} />
+      <ShowTask name={divNames[5]} times={dayTimes} store={myLocalStore} />
+      <ShowTask name={divNames[6]} times={dayTimes} store={myLocalStore} />
+      <ShowTask name={divNames[7]} times={dayTimes} store={myLocalStore} />
+      <ShowTask name={divNames[8]} times={dayTimes} store={myLocalStore} />
+      <ShowTask name={divNames[9]} times={dayTimes} store={myLocalStore} />
+
+      {/* <ShowTask name={divNames[0]} times={dayTimes} store={myLocalStore} />
+      <ShowTask name={divNames[1]} times={dayTimes} store={myLocalStore} />
+      <ShowTask name={divNames[2]} times={dayTimes} store={myLocalStore} />
+      <ShowTask name={divNames[3]} times={dayTimes} store={myLocalStore} />
+      <ShowTask name={divNames[4]} times={dayTimes} store={myLocalStore} />
+      <ShowTask name={divNames[0]} times={dayTimes} store={myLocalStore} />
+      <ShowTask name={divNames[1]} times={dayTimes} store={myLocalStore} />
+      <ShowTask name={divNames[2]} times={dayTimes} store={myLocalStore} />
+      <ShowTask name={divNames[3]} times={dayTimes} store={myLocalStore} />
+      <ShowTask name={divNames[4]} times={dayTimes} store={myLocalStore} />
+
+      <ShowTask name={divNames[0]} times={dayTimes} store={myLocalStore} />
+      <ShowTask name={divNames[1]} times={dayTimes} store={myLocalStore} />
+      <ShowTask name={divNames[2]} times={dayTimes} store={myLocalStore} />
+      <ShowTask name={divNames[3]} times={dayTimes} store={myLocalStore} />
+      <ShowTask name={divNames[4]} times={dayTimes} store={myLocalStore} />
+      <ShowTask name={divNames[0]} times={dayTimes} store={myLocalStore} />
+      <ShowTask name={divNames[1]} times={dayTimes} store={myLocalStore} />
+      <ShowTask name={divNames[2]} times={dayTimes} store={myLocalStore} />
+      <ShowTask name={divNames[3]} times={dayTimes} store={myLocalStore} />
+      <ShowTask name={divNames[4]} times={dayTimes} store={myLocalStore} />
+
+      <ShowTask name={divNames[0]} times={dayTimes} store={myLocalStore} />
+      <ShowTask name={divNames[1]} times={dayTimes} store={myLocalStore} />
+      <ShowTask name={divNames[2]} times={dayTimes} store={myLocalStore} />
+      <ShowTask name={divNames[3]} times={dayTimes} store={myLocalStore} />
+      <ShowTask name={divNames[4]} times={dayTimes} store={myLocalStore} /> */}
 
       <HabitSumTime times={habitTimes} />
 

@@ -4,6 +4,7 @@ const AddTaskSection = () => {
       <label>
         Day:
         <select className="day_task" name="day-task">
+          <option></option>
           <option>Monday</option>
           <option>Tuesday</option>
           <option>Wednesday</option>
@@ -16,6 +17,7 @@ const AddTaskSection = () => {
       <label>
         Study:
         <select className="study" name="study-name">
+          <option></option>
           <option>SPEAKING</option>
           <option>READING</option>
           <option>WRITING</option>

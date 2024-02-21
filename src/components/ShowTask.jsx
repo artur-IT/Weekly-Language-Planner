@@ -5,7 +5,7 @@ const ShowTask = (values) => {
   // return jsx to DOM
   const task = (el) => {
     const taskFromLocalStore = (
-      <div className="empty" name={values.name}>
+      <div className="empty" name={values.name[0]}>
         <div>
           <p>{el.name}</p>
           <hr />
@@ -24,7 +24,11 @@ const ShowTask = (values) => {
     }
   } else null;
 
-  return <div className="empty" name={values.name}></div>;
+  return (
+    <div className="empty" name={values.name}>
+      --
+    </div>
+  );
 };
 
 export default ShowTask;
