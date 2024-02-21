@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Component, useState } from "react";
 
 import ShowTask from "./components/ShowTask";
 import Days from "./components/Days";
@@ -7,14 +7,36 @@ import PlannedTime from "./components/PlannedTime";
 import RealTime from "./components/RealTime";
 import HabitSumTime from "./components/HabitSumTime";
 
-export function App() {
-  const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-  const habits = ["SPEAKING", "READING", "WRITING", "LISTENING", "VOCABULARY"];
-  let myLocalStore = localStorage.getItem("myTasks") ? JSON.parse(localStorage.getItem("myTasks")) : [];
-  let taskArray = [];
-  let divNames = [];
+export class App extends Component {
+  constructor() {
+    super();
 
-  const dayTimes = [
+    let myLocalStore = localStorage.getItem("myTasks") ? JSON.parse(localStorage.getItem("myTasks")) : [];
+
+    this.state = {
+      store: myLocalStore,
+    };
+
+    this.days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+    this.habits = ["SPEAKING", "READING", "WRITING", "LISTENING", "VOCABULARY"];
+    this.taskArray = [];
+    this.divNames = [];
+
+    class TaskBox {
+      constructor(id, date_add, day, study, name, time) {
+        this.id = id;
+        this.date_add = date_add;
+        this.day = day;
+        this.study = study;
+        this.name = name;
+        this.time = time;
+        this.done = false;
+        this.active = false;
+      }
+    }
+  }
+
+  dayTimes = [
     { day: "Monday", time: 0, real_time: 0 },
     { day: "Tuesday", time: 0, real_time: 0 },
     { day: "Wednesday", time: 0, real_time: 0 },
@@ -24,7 +46,7 @@ export function App() {
     { day: "Sunday", time: 0, real_time: 0 },
   ];
 
-  let habitTimes = [
+  habitTimes = [
     { study: "SPEAKING", time: 0 },
     { study: "READING", time: 0 },
     { study: "WRITING", time: 0 },
@@ -33,19 +55,18 @@ export function App() {
   ];
 
   // CREATE ARRAY WITH NAMES (for div): day-HABIT
-  const namesForDIV = () => {
-    for (let x = 0; x < habits.length; x++) {
-      for (let y = 0; y < days.length; y++) {
-        const divName = days[y].toLocaleLowerCase() + `-` + habits[x];
-        divNames.push(divName);
+  namesForDIV = () => {
+    for (let x = 0; x < this.habits.length; x++) {
+      for (let y = 0; y < this.days.length; y++) {
+        const divName = this.days[y].toLocaleLowerCase() + `-` + this.habits[x];
+        this.divNames.push(divName);
       }
     }
-    return divNames;
+    return this.divNames;
   };
-  namesForDIV();
 
   // CREATE TABLE OF ALL TASKS
-  const GetAllTasks = () => {
+  GetAllTasks = () => {
     taskArray = [];
     for (let i = 0; i < 35; i++) {
       taskArray.push(<ShowTask key={i} name={`${divNames[i]}`} times={dayTimes} store={myLocalStore} />);
@@ -54,44 +75,30 @@ export function App() {
   };
 
   // SUMMARY FROM ALL TASKS PLANNED TIME FROM ONE-DAY
-  const getOneDayTimes = () => {
+  getOneDayTimes = () => {
     const summaryOneDayTime = (day, time) => {
-      dayTimes.forEach((item) => (item.day === day ? (item.time += Number(time)) : null));
-      return dayTimes;
+      this.dayTimes.forEach((item) => (item.day === day ? (item.time += Number(time)) : null));
+      return this.dayTimes;
     };
-    if (myLocalStore) for (const el of myLocalStore) summaryOneDayTime(el.day, el.time);
+    if (this.myLocalStore) for (const el of this.myLocalStore) summaryOneDayTime(el.day, el.time);
     else null;
   };
-  getOneDayTimes();
 
   // SUMMARY ONE HABIT TIMES FROM ALL DAYS
-  const getOneHabitTimes = () => {
+  getOneHabitTimes = () => {
     const summaryOneHabitTime = (study, time) => {
-      habitTimes.forEach((item) => (item.study === study ? (item.time += Number(time)) : null));
-      return habitTimes;
+      this.habitTimes.forEach((item) => (item.study === study ? (item.time += Number(time)) : null));
+      return this.habitTimes;
     };
-    if (myLocalStore) for (const el of myLocalStore) summaryOneHabitTime(el.study, el.time);
+    if (this.myLocalStore) for (const el of this.myLocalStore) summaryOneHabitTime(el.study, el.time);
     else null;
   };
-  getOneHabitTimes();
 
   //------------------------------- ADD SECTION start
   // OBJECT FOR NEW TASK FROM USER
-  class TaskBox {
-    constructor(id, date_add, day, study, name, time) {
-      this.id = id;
-      this.date_add = date_add;
-      this.day = day;
-      this.study = study;
-      this.name = name;
-      this.time = time;
-      this.done = false;
-      this.active = false;
-    }
-  }
 
   // GET NEW TASK FROM USER AND SAVE TO LocalStorage
-  const addTaskFromUser = (e) => {
+  addTaskFromUser = (e) => {
     e.preventDefault();
     const myDay = document.querySelector(".day_task");
     const myStudy = document.querySelector(".study");
@@ -125,14 +132,14 @@ export function App() {
   };
 
   // REMOVE ALL TASKS FROM LocalStore
-  const clearAllTasks = () => {
+  clearAllTasks = () => {
     localStorage.clear();
     return GetAllTasks();
   };
   //------------------------------- ADD SECTION end
 
   // -- BTN_DONE HANDLER
-  const doneTaskHandle = () => {
+  doneTaskHandle = () => {
     document.querySelectorAll(".btn_done").forEach((btn) =>
       btn.addEventListener("click", (e) => {
         e.target.parentElement.parentElement.classList.toggle("done_task_bgc");
@@ -140,7 +147,7 @@ export function App() {
     );
   };
   // -- BTN_REMOVE HANDLER
-  const removeTaskHandle = () => {
+  removeTaskHandle = () => {
     document.querySelectorAll(".btn_remove").forEach((btn) => {
       btn.addEventListener("click", (e) => {
         const taskName = e.target.parentElement.parentElement.attributes.name.nodeValue;
@@ -152,33 +159,42 @@ export function App() {
     });
   };
 
-  window.onload = () => {
-    document.querySelector("button.add_form").onclick = addTaskFromUser;
-    document.querySelector("button.remove_top").onclick = clearAllTasks;
-    doneTaskHandle();
-    removeTaskHandle();
-  };
-
   //-------
+  render() {
+    {
+      // console.log(this.days);
+      const planner = new App();
+      planner.namesForDIV();
+      planner.getOneDayTimes();
+      planner.getOneHabitTimes();
 
-  return (
-    <section className="layout">
-      <Days daysNames={days} />
-      <Habits habitsNames={habits} />
+      window.onload = () => {
+        document.querySelector("button.add_form").onclick = App.addEventListener;
+        document.querySelector("button.remove_top").onclick = App.clearAllTasks;
 
-      {/* <GetAllTasks /> */}
-      <ShowTask name={divNames[0]} times={dayTimes} store={myLocalStore} />
-      <ShowTask name={divNames[1]} times={dayTimes} store={myLocalStore} />
-      <ShowTask name={divNames[2]} times={dayTimes} store={myLocalStore} />
-      <ShowTask name={divNames[3]} times={dayTimes} store={myLocalStore} />
-      <ShowTask name={divNames[4]} times={dayTimes} store={myLocalStore} />
-      <ShowTask name={divNames[5]} times={dayTimes} store={myLocalStore} />
-      <ShowTask name={divNames[6]} times={dayTimes} store={myLocalStore} />
-      <ShowTask name={divNames[7]} times={dayTimes} store={myLocalStore} />
-      <ShowTask name={divNames[8]} times={dayTimes} store={myLocalStore} />
-      <ShowTask name={divNames[9]} times={dayTimes} store={myLocalStore} />
+        planner.doneTaskHandle();
+        planner.removeTaskHandle();
+      };
+    }
 
-      {/* <ShowTask name={divNames[0]} times={dayTimes} store={myLocalStore} />
+    return (
+      <section className="layout">
+        <Days daysNames={this.days} />
+        <Habits habitsNames={this.habits} />
+
+        {/* <GetAllTasks /> */}
+        <ShowTask name={this.divNames[0]} times={this.dayTimes} store={this.myLocalStore} />
+        <ShowTask name={this.divNames[1]} times={this.dayTimes} store={this.myLocalStore} />
+        <ShowTask name={this.divNames[2]} times={this.dayTimes} store={this.myLocalStore} />
+        <ShowTask name={this.divNames[3]} times={this.dayTimes} store={this.myLocalStore} />
+        <ShowTask name={this.divNames[4]} times={this.dayTimes} store={this.myLocalStore} />
+        <ShowTask name={this.divNames[5]} times={this.dayTimes} store={this.myLocalStore} />
+        <ShowTask name={this.divNames[6]} times={this.dayTimes} store={this.myLocalStore} />
+        <ShowTask name={this.divNames[7]} times={this.dayTimes} store={this.myLocalStore} />
+        <ShowTask name={this.divNames[8]} times={this.dayTimes} store={this.myLocalStore} />
+        <ShowTask name={this.divNames[9]} times={this.dayTimes} store={this.myLocalStore} />
+
+        {/* <ShowTask name={divNames[0]} times={dayTimes} store={myLocalStore} />
       <ShowTask name={divNames[1]} times={dayTimes} store={myLocalStore} />
       <ShowTask name={divNames[2]} times={dayTimes} store={myLocalStore} />
       <ShowTask name={divNames[3]} times={dayTimes} store={myLocalStore} />
@@ -206,12 +222,13 @@ export function App() {
       <ShowTask name={divNames[3]} times={dayTimes} store={myLocalStore} />
       <ShowTask name={divNames[4]} times={dayTimes} store={myLocalStore} /> */}
 
-      <HabitSumTime times={habitTimes} />
+        <HabitSumTime times={this.habitTimes} />
 
-      <PlannedTime times={dayTimes} />
-      <RealTime times={dayTimes} />
-    </section>
-  );
+        <PlannedTime times={this.dayTimes} />
+        <RealTime times={this.dayTimes} />
+      </section>
+    );
+  }
 }
 
 export default App;
