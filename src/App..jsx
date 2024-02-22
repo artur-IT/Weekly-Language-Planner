@@ -50,29 +50,24 @@ export class App extends Component {
     return;
   };
 
-  summaryOneDayTime = (day, time) => {
-    this.dayTimes.forEach((item) => (item.day === day ? (item.time += Number(time)) : null));
-  };
-
   // SUMMARY FROM ALL TASKS PLANNED TIME FROM ONE-DAY
   getOneDayTimes = () => {
-    // if (this.state.store)
-    for (const el of this.state.store) this.summaryOneDayTime(el.day, el.time);
-    // else null;
+    const summaryOneDayTime = (day, time) => {
+      this.dayTimes.forEach((item) => (item.time = 0));
+      this.dayTimes.forEach((item) => (item.day === day ? (item.time += Number(time)) : null));
+    };
+    for (const el of this.state.store) summaryOneDayTime(el.day, el.time);
   };
 
   // SUMMARY ONE HABIT TIMES FROM ALL DAYS
   getOneHabitTimes = () => {
+    this.habitTimes.forEach((item) => (item.time = 0));
     const summaryOneHabitTime = (study, time) => {
       this.habitTimes.forEach((item) => (item.study === study ? (item.time += Number(time)) : null));
-      return this.habitTimes;
     };
-    // if (this.state.store)
     for (const el of this.state.store) summaryOneHabitTime(el.study, el.time);
-    // else null;
   };
 
-  //------------------------------- ADD SECTION start
   // GET NEW TASK FROM USER AND SAVE TO LocalStorage
   addTaskFromUser = (e) => {
     e.preventDefault();
@@ -113,8 +108,6 @@ export class App extends Component {
     this.myLocalStore = [];
     this.setState({ store: this.myLocalStore });
   };
-
-  //------------------------------- ADD SECTION end
 
   // -- BTN_DONE HANDLER
   doneTaskHandle = () => {
