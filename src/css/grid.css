@@ -66,101 +66,11 @@ div {
   background-color: aliceblue;
 }
 
-.habit1_sum,
-.habit2_sum,
-.habit3_sum,
-.habit4_sum,
-.habit5_sum {
-  font-size: 0.8rem;
-  background-color: #ddd;
-}
-
-.habit1_sum {
-  grid-area: habit1_sum;
-}
-.habit2_sum {
-  grid-area: habit2_sum;
-}
-.habit3_sum {
-  grid-area: habit3_sum;
-}
-.habit4_sum {
-  grid-area: habit4_sum;
-}
-.habit51_sum {
-  grid-area: habit5_sum;
-}
-
 .zero {
   grid-area: zero;
   border: none;
 }
-.monnday {
-  grid-area: monnday;
-  font-weight: 700;
-  background-color: #fffda4;
-}
-.tuesday {
-  grid-area: tuesday;
-  font-weight: 700;
-  background-color: #fffda4;
-}
-.wednesday {
-  grid-area: wednesday;
-  font-weight: 700;
-  background-color: #fffda4;
-}
-.thursday {
-  grid-area: thursday;
-  font-weight: 700;
-  background-color: #fffda4;
-}
-.friday {
-  grid-area: friday;
-  font-weight: 700;
-  background-color: #fffda4;
-}
-.saturday {
-  grid-area: saturday;
-  font-weight: 700;
-  background-color: #fffda4;
-}
-.sunday {
-  grid-area: sunday;
-  font-weight: 700;
-  background-color: #fffda4;
-}
-.habit_sum {
-  width: 50px;
-  font-size: 0.7rem;
-  grid-area: habit_sum;
-  background-color: lightskyblue;
-}
-.habit1 {
-  grid-area: habit1;
-  font-weight: 700;
-  background-color: lightskyblue;
-}
-.habit2 {
-  grid-area: habit2;
-  font-weight: 700;
-  background-color: lightskyblue;
-}
-.habit3 {
-  grid-area: habit3;
-  font-weight: 700;
-  background-color: lightskyblue;
-}
-.habit4 {
-  grid-area: habit4;
-  font-weight: 700;
-  background-color: lightskyblue;
-}
-.habit5 {
-  grid-area: habit5;
-  font-weight: 700;
-  background-color: lightskyblue;
-}
+
 .plannded_time {
   font-size: 0.8rem;
   grid-area: plannded_time;

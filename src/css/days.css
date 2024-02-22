@@ -1,0 +1,35 @@
+.monnday {
+  grid-area: monnday;
+  font-weight: 700;
+  background-color: #fffda4;
+}
+.tuesday {
+  grid-area: tuesday;
+  font-weight: 700;
+  background-color: #fffda4;
+}
+.wednesday {
+  grid-area: wednesday;
+  font-weight: 700;
+  background-color: #fffda4;
+}
+.thursday {
+  grid-area: thursday;
+  font-weight: 700;
+  background-color: #fffda4;
+}
+.friday {
+  grid-area: friday;
+  font-weight: 700;
+  background-color: #fffda4;
+}
+.saturday {
+  grid-area: saturday;
+  font-weight: 700;
+  background-color: #fffda4;
+}
+.sunday {
+  grid-area: sunday;
+  font-weight: 700;
+  background-color: #fffda4;
+}

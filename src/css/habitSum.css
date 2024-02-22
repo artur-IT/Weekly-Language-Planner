@@ -1,0 +1,31 @@
+.habit1_sum,
+.habit2_sum,
+.habit3_sum,
+.habit4_sum,
+.habit5_sum {
+  font-size: 0.8rem;
+  background-color: #ddd;
+}
+
+.habit1_sum {
+  grid-area: habit1_sum;
+}
+.habit2_sum {
+  grid-area: habit2_sum;
+}
+.habit3_sum {
+  grid-area: habit3_sum;
+}
+.habit4_sum {
+  grid-area: habit4_sum;
+}
+.habit51_sum {
+  grid-area: habit5_sum;
+}
+
+.habit_sum {
+  width: 50px;
+  font-size: 0.6rem;
+  grid-area: habit_sum;
+  background-color: lightskyblue;
+}
