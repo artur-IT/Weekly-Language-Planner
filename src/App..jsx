@@ -1,4 +1,4 @@
-import { Component, setState } from "react";
+import { Component } from "react";
 
 import ShowTask from "./components/ShowTask";
 import Days from "./components/Days";
@@ -57,9 +57,7 @@ export class App extends Component {
   // SUMMARY FROM ALL TASKS PLANNED TIME FROM ONE-DAY
   getOneDayTimes = () => {
     // if (this.state.store)
-    //  console.log(el);
-    // for (const el of this.state.store)
-    // this.summaryOneDayTime(el.day, el.time);
+    for (const el of this.state.store) this.summaryOneDayTime(el.day, el.time);
     // else null;
   };
 
@@ -101,19 +99,8 @@ export class App extends Component {
     if (myDay.value && myStudy.value && myTask.value && myTime.value != 0) {
       const newTask = new TaskBox(id, date_add, myDay.value, myStudy.value, myTask.value, myTime.value);
 
-      // if (myLStasks.length !== 0) {
-      //   for (const el of myLStasks) {
-      //     if (id === el.id) {
-      //       return alert("Usuń najpierw poprzedni wpis");
-      //     } else myLStasks.push(newTask);
-      //   }
-      // } else
-
-      // this.state.store.push(newTask);
-      this.setState(() => ({
-        store: this.myLocalStore.push(newTask),
-      }));
-
+      this.myLocalStore.push(newTask);
+      this.setState({ store: this.myLocalStore });
       localStorage.setItem("myTasks", JSON.stringify(this.state.store));
     } else alert("Uzupełnij pola!");
 
@@ -123,7 +110,8 @@ export class App extends Component {
   // REMOVE ALL TASKS FROM LocalStore
   clearAllTasks = () => {
     localStorage.clear();
-    this.setState(this.myLocalStore);
+    this.myLocalStore = [];
+    this.setState({ store: this.myLocalStore });
   };
 
   //------------------------------- ADD SECTION end
