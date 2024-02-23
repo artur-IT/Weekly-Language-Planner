@@ -27,11 +27,12 @@ select option {
 
 input {
   margin: 0 5px;
-  padding: 2px 3px;
+  padding: 5px;
   border: 1px solid #ddd;
 }
 
 #exercise_time {
+  padding: 5px;
   width: 75px;
 }
 

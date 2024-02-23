@@ -10,7 +10,9 @@ import HabitSumTime from "./components/HabitSumTime";
 export class App extends Component {
   constructor() {
     super();
-    this.myLocalStore = localStorage.getItem("myTasks") ? JSON.parse(localStorage.getItem("myTasks")) : [];
+    this.myLocalStore = localStorage.getItem("myTasks") ? JSON.parse(localStorage.getItem("myTasks")) : new Array();
+    // this.storeWithTasks = localStorage.getItem("myTasks") ? JSON.parse(localStorage.getItem("myTasks")) : [];
+    // this.myLocalStore = [this.storeWithTasks];
 
     this.state = {
       store: this.myLocalStore,
@@ -68,6 +70,19 @@ export class App extends Component {
     for (const el of this.state.store) summaryOneHabitTime(el.study, el.time);
   };
 
+  // check conflict names LocalStore <=> myLocalstore
+  checkNameInLS = (taskId) => {
+    this.myLocalStore.forEach((el, idx) => {
+      // console.log(el[0].id);
+      // if (el[0].id === taskId) {
+      //   this.myLocalStore.slice(idx, 1);
+      // }
+    });
+    // console.log(this.myLocalStore);
+    this.setState({ store: this.myLocalStore });
+    localStorage.setItem("myTasks", JSON.stringify(this.myLocalStore));
+  };
+
   // GET NEW TASK FROM USER AND SAVE TO LocalStorage
   addTaskFromUser = (e) => {
     e.preventDefault();
@@ -78,24 +93,22 @@ export class App extends Component {
     const id = myDay.value.toLocaleLowerCase() + "-" + myStudy.value;
     const date_add = new Date().toLocaleDateString("pl-PL");
 
-    class TaskBox {
-      constructor(id, date_add, day, study, name, time) {
-        this.id = id;
-        this.date_add = date_add;
-        this.day = day;
-        this.study = study;
-        this.name = name;
-        this.time = time;
-        this.done = false;
-        this.active = false;
-      }
-    }
+    // this.checkNameInLS(id);
     // add new task to this.state and LocalStore
     if (myDay.value && myStudy.value && myTask.value && myTime.value != 0) {
-      const newTask = new TaskBox(id, date_add, myDay.value, myStudy.value, myTask.value, myTime.value);
+      this.myLocalStore.push({
+        id: id,
+        date_add: date_add,
+        day: myDay.value,
+        study: myStudy.value,
+        name: myTask.value,
+        time: myTime.value,
+        done: false,
+        active: false,
+      });
 
-      this.myLocalStore.push(newTask);
       this.setState({ store: this.myLocalStore });
+
       localStorage.setItem("myTasks", JSON.stringify(this.state.store));
     } else alert("Uzupełnij pola!");
 
@@ -140,6 +153,8 @@ export class App extends Component {
       this.namesForDIV();
 
       this.getOneDayTimes();
+
+      // console.log(this.state.store[0][0].id);
 
       this.getOneHabitTimes();
       this.doneTaskHandle();
