@@ -1,6 +1,19 @@
+import { useRef } from "react";
+
 const ShowTask = (values) => {
   const myLocalStore = values.store;
-  // console.log(values);
+  const myRef = useRef();
+
+  // -- BTN_REMOVE HANDLER
+  const removeTask = () => {
+    myRef.current = values.name;
+    const taskName = myRef.current;
+
+    let findTaskIdx = myLocalStore.findIndex((el) => el.id === taskName);
+    myLocalStore.splice(findTaskIdx, 1);
+
+    localStorage.setItem("myTasks", JSON.stringify(myLocalStore));
+  };
 
   // return jsx to DOM
   const task = (el) => {
@@ -10,7 +23,7 @@ const ShowTask = (values) => {
           <p>{el.name}</p>
           <hr />
           <p>{el.time} min.</p>
-          <button className="btn_remove"></button>
+          <button className="btn_remove" ref={myRef} onClick={removeTask}></button>
           <button className="btn_done"></button>
         </div>
       </div>
@@ -24,11 +37,7 @@ const ShowTask = (values) => {
     }
   } else null;
 
-  return (
-    <div className="empty" name={values.name}>
-      --
-    </div>
-  );
+  return <div className="empty" name={values.name}></div>;
 };
 
 export default ShowTask;

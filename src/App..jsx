@@ -11,8 +11,6 @@ export class App extends Component {
   constructor() {
     super();
     this.myLocalStore = localStorage.getItem("myTasks") ? JSON.parse(localStorage.getItem("myTasks")) : new Array();
-    // this.storeWithTasks = localStorage.getItem("myTasks") ? JSON.parse(localStorage.getItem("myTasks")) : [];
-    // this.myLocalStore = [this.storeWithTasks];
 
     this.state = {
       store: this.myLocalStore,
@@ -54,8 +52,8 @@ export class App extends Component {
 
   // SUMMARY FROM ALL TASKS PLANNED TIME FROM ONE-DAY
   getOneDayTimes = () => {
+    this.dayTimes.forEach((item) => (item.time = 0));
     const summaryOneDayTime = (day, time) => {
-      this.dayTimes.forEach((item) => (item.time = 0));
       this.dayTimes.forEach((item) => (item.day === day ? (item.time += Number(time)) : null));
     };
     for (const el of this.state.store) summaryOneDayTime(el.day, el.time);
@@ -74,6 +72,7 @@ export class App extends Component {
   checkNameConflict = (taskId) => {
     let flag = false;
     if (this.state.store == []) return flag;
+
     this.state.store.forEach((el, idx) => {
       if (this.state.store[idx].id === taskId) {
         alert("W tym polu jest już zadanie, usuń je najpierw");
@@ -134,18 +133,6 @@ export class App extends Component {
       })
     );
   };
-  // -- BTN_REMOVE HANDLER
-  removeTaskHandle = () => {
-    document.querySelectorAll(".btn_remove").forEach((btn) => {
-      btn.addEventListener("click", (e) => {
-        const taskName = e.target.parentElement.parentElement.attributes.name.nodeValue;
-
-        let findTaskIdx = this.state.store.findIndex((el) => el.id === taskName);
-        this.state.store.splice(findTaskIdx, 1);
-        localStorage.setItem("myTasks", JSON.stringify(this.state.store));
-      });
-    });
-  };
 
   //-------
   render() {
@@ -158,11 +145,8 @@ export class App extends Component {
 
       this.getOneDayTimes();
 
-      // console.log(this.state.store[0].id);
-
       this.getOneHabitTimes();
       this.doneTaskHandle();
-      this.removeTaskHandle();
     }
 
     return (
