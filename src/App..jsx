@@ -71,16 +71,13 @@ export class App extends Component {
   };
 
   // check conflict names LocalStore <=> myLocalstore
-  checkNameInLS = (taskId) => {
-    this.myLocalStore.forEach((el, idx) => {
-      // console.log(el[0].id);
-      // if (el[0].id === taskId) {
-      //   this.myLocalStore.slice(idx, 1);
-      // }
+  checkNameConfict = (taskId) => {
+    this.state.store.forEach((el, idx) => {
+      if (this.state.store[idx].id === taskId) {
+        alert("W tym polu jest już zadanie, usuń je najpierw");
+        return true;
+      } else return false;
     });
-    // console.log(this.myLocalStore);
-    this.setState({ store: this.myLocalStore });
-    localStorage.setItem("myTasks", JSON.stringify(this.myLocalStore));
   };
 
   // GET NEW TASK FROM USER AND SAVE TO LocalStorage
@@ -93,19 +90,21 @@ export class App extends Component {
     const id = myDay.value.toLocaleLowerCase() + "-" + myStudy.value;
     const date_add = new Date().toLocaleDateString("pl-PL");
 
-    // this.checkNameInLS(id);
     // add new task to this.state and LocalStore
     if (myDay.value && myStudy.value && myTask.value && myTime.value != 0) {
-      this.myLocalStore.push({
-        id: id,
-        date_add: date_add,
-        day: myDay.value,
-        study: myStudy.value,
-        name: myTask.value,
-        time: myTime.value,
-        done: false,
-        active: false,
-      });
+      // this.checkNameConfict(id);
+
+      if (this.checkNameConfict(id) == false)
+        this.myLocalStore.push({
+          id: id,
+          date_add: date_add,
+          day: myDay.value,
+          study: myStudy.value,
+          name: myTask.value,
+          time: myTime.value,
+          done: false,
+          active: false,
+        });
 
       this.setState({ store: this.myLocalStore });
 
@@ -154,7 +153,7 @@ export class App extends Component {
 
       this.getOneDayTimes();
 
-      // console.log(this.state.store[0][0].id);
+      // console.log(this.state.store[0].id);
 
       this.getOneHabitTimes();
       this.doneTaskHandle();
