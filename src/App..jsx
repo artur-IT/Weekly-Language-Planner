@@ -71,13 +71,16 @@ export class App extends Component {
   };
 
   // check conflict names LocalStore <=> myLocalstore
-  checkNameConfict = (taskId) => {
+  checkNameConflict = (taskId) => {
+    let flag = false;
+    if (this.state.store == []) return flag;
     this.state.store.forEach((el, idx) => {
       if (this.state.store[idx].id === taskId) {
         alert("W tym polu jest już zadanie, usuń je najpierw");
-        return true;
-      } else return false;
+        return (flag = true);
+      } else return (flag = false);
     });
+    return flag;
   };
 
   // GET NEW TASK FROM USER AND SAVE TO LocalStorage
@@ -94,7 +97,8 @@ export class App extends Component {
     if (myDay.value && myStudy.value && myTask.value && myTime.value != 0) {
       // this.checkNameConfict(id);
 
-      if (this.checkNameConfict(id) == false)
+      const test = this.checkNameConflict(`${id}`);
+      if (test == false) {
         this.myLocalStore.push({
           id: id,
           date_add: date_add,
@@ -105,6 +109,7 @@ export class App extends Component {
           done: false,
           active: false,
         });
+      }
 
       this.setState({ store: this.myLocalStore });
 
