@@ -4,27 +4,30 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  border-radius: 5px;
+  border-radius: 10px;
+  --bgc-habit: #34d399;
+  --bgc-days: #fbbf24;
 }
 
 body {
   /* background-color: #dadada; */
   font-family: "Lato", Arial, sans-serif;
   text-align: center;
-  background-color: #1e293b;
+  background-color: #020408;
 }
 
 h2 {
   position: relative;
   padding: 20px 0;
-  background-color: lightcoral;
+  color: #fff;
+  background-color: #151d2c;
   z-index: 2;
 }
 
 hr {
   margin: 0 auto;
   width: 80%;
-  color: black;
+  color: #000;
   border-style: dashed;
   opacity: 0.2;
 }
@@ -32,12 +35,12 @@ hr {
 button.add_top,
 button.remove_top {
   position: relative;
-  margin-left: 10px;
-  padding: 5px 10px;
+  margin: 10px 5px;
+  padding: 15px 20px;
+  color: #fff;
   cursor: pointer;
-
-  background-color: #0f4cf3;
-  border: 2px solid greenyellow;
+  background-color: #000;
+  border: 1px solid #34d399;
   z-index: 0;
 }
 
@@ -59,10 +62,10 @@ button.remove_top {
 
 .btn_remove,
 .btn_done {
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
   background-color: aliceblue;
-  transition: 0.5s;
+  transition: 0.3s;
   border: 0px solid #ddd;
 }
 .btn_remove:hover {

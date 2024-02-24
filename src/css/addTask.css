@@ -3,12 +3,14 @@
   position: relative;
   top: -00px;
   margin: 0 0 20px 0;
-  padding: 10px;
-  background-color: white;
+  padding: 20px;
+  background-color: #090b0d;
   z-index: 0;
+  border: 2px solid #222;
 }
 
 label {
+  color: #fff;
   margin: 10px 5px;
 }
 
@@ -38,15 +40,15 @@ input {
 
 button.add_form {
   margin-left: 10px;
-  padding: 5px 10px;
+  padding: 7px 10px;
+  color: #fff;
   cursor: pointer;
-
-  background-color: yellow;
-  border: 2px solid greenyellow;
+  background-color: #000;
+  border: 1px solid #34d399;
 }
 
 button.add_form:hover {
   color: white;
-  background-color: black;
+  background-color: #e879f9;
   transition: 0.7s;
 }

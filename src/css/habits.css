@@ -1,25 +1,25 @@
 .habit1 {
   grid-area: habit1;
   font-weight: 700;
-  background-color: lightskyblue;
+  background-color: var(--bgc-habit);
 }
 .habit2 {
   grid-area: habit2;
   font-weight: 700;
-  background-color: lightskyblue;
+  background-color: var(--bgc-habit);
 }
 .habit3 {
   grid-area: habit3;
   font-weight: 700;
-  background-color: lightskyblue;
+  background-color: var(--bgc-habit);
 }
 .habit4 {
   grid-area: habit4;
   font-weight: 700;
-  background-color: lightskyblue;
+  background-color: var(--bgc-habit);
 }
 .habit5 {
   grid-area: habit5;
   font-weight: 700;
-  background-color: lightskyblue;
+  background-color: var(--bgc-habit);
 }

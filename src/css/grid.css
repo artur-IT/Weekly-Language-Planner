@@ -3,7 +3,6 @@
   padding-bottom: 40px;
   width: 1000px;
   height: auto;
-  /* border: 1px solid blue; */
 
   display: grid;
   grid:
@@ -16,7 +15,7 @@
     "plannded_time . . . . . . . ." 30px
     "time_done . . . . . . . ." 30px
     / 160px 100px 100px 100px 100px 100px 100px 100px 50px;
-  gap: 4px;
+  gap: 10px;
 }
 
 div {
@@ -24,15 +23,18 @@ div {
 }
 
 .empty {
-  background-color: white;
+  background-color: #f0f8ff;
+}
+.empty:hover {
+  background-color: #e879f9;
 }
 .done_task_bgc {
-  background-color: lightgreen;
+  background-color: #e879f9;
 }
 .empty p {
   padding: 5px 7px;
   font-size: 0.7rem;
-  font-weight: 400;
+  font-weight: 500;
 }
 .empty div {
   top: 50%;
@@ -63,7 +65,8 @@ div {
 .sunday_real_time {
   line-height: 230%;
   font-size: 0.8rem;
-  background-color: aliceblue;
+  font-weight: bold;
+  background-color: #cbd5e1;
 }
 
 .zero {

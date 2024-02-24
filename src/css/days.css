@@ -1,35 +1,35 @@
 .monnday {
   grid-area: monnday;
   font-weight: 700;
-  background-color: #fffda4;
+  background-color: var(--bgc-days);
 }
 .tuesday {
   grid-area: tuesday;
   font-weight: 700;
-  background-color: #fffda4;
+  background-color: var(--bgc-days);
 }
 .wednesday {
   grid-area: wednesday;
   font-weight: 700;
-  background-color: #fffda4;
+  background-color: var(--bgc-days);
 }
 .thursday {
   grid-area: thursday;
   font-weight: 700;
-  background-color: #fffda4;
+  background-color: var(--bgc-days);
 }
 .friday {
   grid-area: friday;
   font-weight: 700;
-  background-color: #fffda4;
+  background-color: var(--bgc-days);
 }
 .saturday {
   grid-area: saturday;
   font-weight: 700;
-  background-color: #fffda4;
+  background-color: var(--bgc-days);
 }
 .sunday {
   grid-area: sunday;
   font-weight: 700;
-  background-color: #fffda4;
+  background-color: var(--bgc-days);
 }
