@@ -11,10 +11,9 @@ const ShowTask = (values) => {
 
     let findTaskIdx = myLocalStore.findIndex((el) => el.id === taskName);
     myLocalStore.splice(findTaskIdx, 1);
-    myRef.current = null;
 
+    values.updateState(myLocalStore);
     localStorage.setItem("myTasks", JSON.stringify(myLocalStore));
-    // console.log(myRef.current);
   };
 
   // return jsx to DOM
