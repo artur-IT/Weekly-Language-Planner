@@ -39,7 +39,7 @@ export class App extends Component {
     ];
   }
 
-  // CREATE ARRAY WITH NAMES (for div): day-HABIT
+  // CREATE ARRAY WITH NAMES for div: 'day-HABIT'
   namesForDIV = () => {
     for (let x = 0; x < this.habits.length; x++) {
       for (let y = 0; y < this.days.length; y++) {
@@ -68,7 +68,7 @@ export class App extends Component {
     for (const el of this.state.store) summaryOneHabitTime(el.study, el.time);
   };
 
-  // check conflict names LocalStore <=> myLocalstore
+  // CHECK CONFLICTS NAMES in LocalStore <=> myLocalstore in App
   checkNameConflict = (taskId) => {
     let flag = false;
     if (this.state.store == []) return flag;
@@ -95,10 +95,7 @@ export class App extends Component {
 
     // add new task to this.state and LocalStore
     if (myDay && myStudy && myTask && myTime != 0) {
-      // this.checkNameConfict(id);
-
       const test = this.checkNameConflict(`${id}`);
-      console.log(test);
       if (test == false) {
         this.myLocalStore.push({
           id: id,
@@ -140,13 +137,9 @@ export class App extends Component {
         document.querySelector("button.add_form").onclick = this.addTaskFromUser;
         document.querySelector("button.remove_top").onclick = this.clearAllTasks;
       };
-      // table with unique names for div's
       this.namesForDIV();
-
       this.getOneDayTimes();
-
       this.getOneHabitTimes();
-
       this.doneTaskHandle();
     }
 
