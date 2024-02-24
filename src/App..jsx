@@ -76,8 +76,9 @@ export class App extends Component {
     this.state.store.forEach((el, idx) => {
       if (this.state.store[idx].id === taskId) {
         alert("W tym polu jest już zadanie, usuń je najpierw");
-        return (flag = true);
-      } else return (flag = false);
+        flag = true;
+        return flag;
+      }
     });
     return flag;
   };
@@ -85,37 +86,35 @@ export class App extends Component {
   // GET NEW TASK FROM USER AND SAVE TO LocalStorage
   addTaskFromUser = (e) => {
     e.preventDefault();
-    const myDay = document.querySelector(".day_task");
-    const myStudy = document.querySelector(".study");
-    const myTask = document.querySelector(".task_name");
-    const myTime = document.querySelector(".task_time");
-    const id = myDay.value.toLocaleLowerCase() + "-" + myStudy.value;
+    let myDay = document.querySelector(".day_task").value;
+    let myStudy = document.querySelector(".study").value;
+    let myTask = document.querySelector(".task_name").value;
+    let myTime = document.querySelector(".task_time").value;
+    const id = myDay.toLocaleLowerCase() + "-" + myStudy;
     const date_add = new Date().toLocaleDateString("pl-PL");
 
     // add new task to this.state and LocalStore
-    if (myDay.value && myStudy.value && myTask.value && myTime.value != 0) {
+    if (myDay && myStudy && myTask && myTime != 0) {
       // this.checkNameConfict(id);
 
       const test = this.checkNameConflict(`${id}`);
+      console.log(test);
       if (test == false) {
         this.myLocalStore.push({
           id: id,
           date_add: date_add,
-          day: myDay.value,
-          study: myStudy.value,
-          name: myTask.value,
-          time: myTime.value,
+          day: myDay,
+          study: myStudy,
+          name: myTask,
+          time: myTime,
           done: false,
           active: false,
         });
+        this.setState({ store: this.myLocalStore });
+        localStorage.setItem("myTasks", JSON.stringify(this.state.store));
+        myDay = myStudy = myTask = myTime = null;
       }
-
-      this.setState({ store: this.myLocalStore });
-
-      localStorage.setItem("myTasks", JSON.stringify(this.state.store));
     } else alert("Uzupełnij pola!");
-
-    myDay.value = myStudy.value = myTask.value = myTime.value = null;
   };
 
   // REMOVE ALL TASKS FROM LocalStore
@@ -141,11 +140,13 @@ export class App extends Component {
         document.querySelector("button.add_form").onclick = this.addTaskFromUser;
         document.querySelector("button.remove_top").onclick = this.clearAllTasks;
       };
+      // table with unique names for div's
       this.namesForDIV();
 
       this.getOneDayTimes();
 
       this.getOneHabitTimes();
+
       this.doneTaskHandle();
     }
 
