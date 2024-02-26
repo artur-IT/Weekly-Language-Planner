@@ -53,19 +53,23 @@ export class App extends Component {
   // SUMMARY FROM ALL TASKS PLANNED TIME FROM ONE-DAY
   getOneDayTimes = () => {
     this.dayTimes.forEach((item) => (item.time = 0));
-    const summaryOneDayTime = (day, time) => {
-      this.dayTimes.forEach((item) => (item.day === day ? (item.time += Number(time)) : null));
-    };
+    const summaryOneDayTime = (day, time) => this.dayTimes.forEach((item) => (item.day === day ? (item.time += Number(time)) : null));
     for (const el of this.state.store) summaryOneDayTime(el.day, el.time);
   };
 
   // SUMMARY ONE HABIT TIMES FROM ALL DAYS
   getOneHabitTimes = () => {
     this.habitTimes.forEach((item) => (item.time = 0));
-    const summaryOneHabitTime = (study, time) => {
+    const summaryOneHabitTime = (study, time) =>
       this.habitTimes.forEach((item) => (item.study === study ? (item.time += Number(time)) : null));
-    };
     for (const el of this.state.store) summaryOneHabitTime(el.study, el.time);
+  };
+
+  // SUMMARY MY REALLY TIME (tasks done)
+  getOneDayRealTime = () => {
+    this.dayTimes.forEach((item) => (item.real_time = 0));
+    const summaryRealTime = (day, time) => this.dayTimes.forEach((item) => (item.day === day ? (item.real_time += Number(time)) : null));
+    for (const el of this.state.store) el.done == true ? summaryRealTime(el.day, el.time) : null;
   };
 
   // CHECK CONFLICTS NAMES in LocalStore <=> myLocalstore in App
@@ -135,6 +139,7 @@ export class App extends Component {
       };
       this.namesForDIV();
       this.getOneDayTimes();
+      this.getOneDayRealTime();
       this.getOneHabitTimes();
     }
 
