@@ -48,31 +48,33 @@ button.remove_top {
   background-image: url(/src/icon/remove.svg);
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 40%;
-  opacity: 0.7;
+  background-size: 50%;
+  opacity: 0.5;
 }
 
 .btn_done {
   background-image: url(/src/icon/done.svg);
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 40%;
-  opacity: 0.7;
+  background-size: 50%;
+  opacity: 0.5;
 }
 
 .btn_remove,
 .btn_done {
   width: 25px;
   height: 25px;
-  background-color: aliceblue;
-  transition: 0.3s;
-  border: 0px solid #ddd;
+  transition: 0.1s;
+  border: 0px;
+  border-radius: 15px;
 }
 .btn_remove:hover {
   cursor: pointer;
   border: 1px solid red;
+  opacity: 1;
 }
 .btn_done:hover {
   cursor: pointer;
   border: 1px solid green;
+  opacity: 1;
 }

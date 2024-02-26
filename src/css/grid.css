@@ -36,6 +36,7 @@ div {
   z-index: 5;
 }
 .done_task_bgc {
+  color: #fff;
   background-color: #e879f9;
 }
 .empty p {
@@ -74,6 +75,17 @@ div {
   font-size: 0.8rem;
   font-weight: bold;
   background-color: #cbd5e1;
+}
+
+.monday_real_time,
+.tuesday_real_time,
+.wednesday_real_time,
+.thursday_real_time,
+.friday_real_time,
+.saturday_real_time,
+.sunday_real_time {
+  color: #fff;
+  background-color: #e879f9;
 }
 
 .zero {
