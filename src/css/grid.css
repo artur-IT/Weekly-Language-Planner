@@ -27,7 +27,6 @@ div {
   transition: 0.6s;
 }
 .empty:hover {
-  background-color: #e879f9;
   border: 1px solid #000;
   transform: scale(1.3);
   box-shadow: 1.6px 1.6px 0.2px rgba(0, 0, 0, 0.105), 3.4px 3.4px 0.6px rgba(0, 0, 0, 0.155), 5.8px 5.8px 1.5px rgba(0, 0, 0, 0.191),

@@ -22,9 +22,9 @@ const ShowTask = (values) => {
     const taskName = myRef.current;
 
     const findTaskIdx = myLocalStore.findIndex((el) => el.id === taskName);
-    !myLocalStore[findTaskIdx].done;
 
     console.log(myLocalStore[findTaskIdx].done);
+    myLocalStore[findTaskIdx].done = !myLocalStore[findTaskIdx].done;
 
     values.updateState(myLocalStore);
     localStorage.setItem("myTasks", JSON.stringify(myLocalStore));
@@ -36,7 +36,7 @@ const ShowTask = (values) => {
   // return jsx to DOM
   const task = (el) => {
     const taskFromLocalStore = (
-      <div className={`empty ${el.done == true ? `done_task_bgc` : null}`} name={values.name}>
+      <div className={`empty${el.done == true ? ` done_task_bgc` : ""}`} name={values.name}>
         <div>
           <p>{el.name}</p>
           <p>{el.time} min.</p>
