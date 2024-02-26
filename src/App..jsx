@@ -50,6 +50,13 @@ export class App extends Component {
     return;
   };
 
+  // REMOVE ALL TASKS FROM LocalStore
+  clearAllTasks = () => {
+    localStorage.clear();
+    this.myLocalStore = [];
+    this.setState({ store: this.myLocalStore });
+  };
+
   // CHECK CONFLICTS NAMES in LocalStore <=> myLocalstore in App
   checkNameConflict = (taskId) => {
     let flag = false;
@@ -65,7 +72,7 @@ export class App extends Component {
     return flag;
   };
 
-  clearAllInputs = () => document.getElementById("test").reset();
+  clearAllInputs = () => document.getElementById("task_inputs").reset();
 
   // GET NEW TASK FROM USER AND SAVE TO LocalStorage
   addTaskFromUser = (e) => {
@@ -96,13 +103,6 @@ export class App extends Component {
         this.clearAllInputs();
       }
     } else alert("Uzupełnij pola!");
-  };
-
-  // REMOVE ALL TASKS FROM LocalStore
-  clearAllTasks = () => {
-    localStorage.clear();
-    this.myLocalStore = [];
-    this.setState({ store: this.myLocalStore });
   };
 
   // SUMMARY FROM ALL TASKS PLANNED TIME FROM ONE-DAY

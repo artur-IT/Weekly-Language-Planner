@@ -1,6 +1,6 @@
 const AddTaskSection = () => {
   return (
-    <form className="task_fields" id="test">
+    <form className="task_fields" id="task_inputs">
       <label>
         Day:
         <select className="day_task" name="day-task">

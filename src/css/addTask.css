@@ -1,5 +1,5 @@
 .task_fields {
-  /* display: none; */
+  display: none;
   position: relative;
   top: -00px;
   margin: 0 0 20px 0;
@@ -7,6 +7,11 @@
   background-color: #090b0d;
   z-index: 0;
   border: 2px solid #222;
+  transition: 0.7s;
+}
+
+.show_task_bar {
+  display: inline-block;
 }
 
 label {
