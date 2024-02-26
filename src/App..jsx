@@ -121,15 +121,6 @@ export class App extends Component {
     this.setState({ store: this.myLocalStore });
   };
 
-  // -- BTN_DONE HANDLER
-  doneTaskHandle = () => {
-    document.querySelectorAll(".btn_done").forEach((btn) =>
-      btn.addEventListener("click", (e) => {
-        e.target.parentElement.parentElement.classList.toggle("done_task_bgc");
-      })
-    );
-  };
-
   // UPDATE state AFTER REMOVE TASK FROM COMPONENT ShowTask
   newstate = (newState) => {
     this.setState({ store: newState });
@@ -145,7 +136,6 @@ export class App extends Component {
       this.namesForDIV();
       this.getOneDayTimes();
       this.getOneHabitTimes();
-      this.doneTaskHandle();
     }
 
     return (
