@@ -10,7 +10,6 @@
 }
 
 body {
-  /* background-color: #dadada; */
   font-family: "Lato", Arial, sans-serif;
   text-align: center;
   background-color: #020408;
@@ -32,6 +31,13 @@ hr {
   opacity: 0.2;
 }
 
+.two-buttons-top {
+  margin: 0 auto;
+  width: 90vw;
+  background-color: #020408;
+  z-index: 1;
+}
+
 button.add_top,
 button.remove_top {
   position: relative;
@@ -41,7 +47,7 @@ button.remove_top {
   cursor: pointer;
   background-color: #000;
   border: 1px solid #34d399;
-  z-index: 0;
+  z-index: 1;
 }
 
 .btn_remove {
@@ -62,19 +68,20 @@ button.remove_top {
 
 .btn_remove,
 .btn_done {
+  margin-top: 10px;
   width: 25px;
   height: 25px;
   transition: 0.1s;
   border: 0px;
   border-radius: 15px;
 }
-.btn_remove:hover {
+.btn_remove:hover,
+.btn_done:hover {
   cursor: pointer;
   border: 1px solid red;
   opacity: 1;
 }
+
 .btn_done:hover {
-  cursor: pointer;
   border: 1px solid green;
-  opacity: 1;
 }

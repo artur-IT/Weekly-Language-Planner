@@ -1,10 +1,11 @@
 .layout {
+  display: grid;
+  /* position: relative;
+  top: 70px; */
   margin: 0 auto;
   padding-bottom: 40px;
   width: 1000px;
   height: auto;
-
-  display: grid;
   grid:
     "zero monnday tuesday wednesday thursday friday saturday sunday habit_sum" 50px
     "habit1 . . . . . . . habit1_sum" 100px
@@ -16,7 +17,23 @@
     "time_done . . . . . . . ." 30px
     / 160px 100px 100px 100px 100px 100px 100px 100px 50px;
   gap: 10px;
+  /* animation: move-from-top 1s both;
+  transition: 1s; */
 }
+
+/* @keyframes move-from-top {
+  0% {
+    top: 0px;
+    transform-origin: top;
+  }
+  100% {
+    top: 70px;
+    transform-origin: top;
+  }
+}
+.show_layout {
+  top: 70px;
+} */
 
 div {
   position: relative;

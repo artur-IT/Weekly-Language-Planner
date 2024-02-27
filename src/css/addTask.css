@@ -1,17 +1,47 @@
 .task_fields {
   display: none;
   position: relative;
-  top: -00px;
+  top: -50px;
   margin: 0 0 20px 0;
   padding: 20px;
   background-color: #090b0d;
   z-index: 0;
   border: 2px solid #222;
-  transition: 0.7s;
+}
+
+@keyframes move-from-top {
+  0% {
+    top: -70px;
+    transform-origin: top;
+  }
+  100% {
+    top: 0px;
+    transform-origin: top;
+  }
+}
+
+@keyframes move-to-top {
+  0% {
+    top: 0px;
+    transform-origin: top;
+  }
+  100% {
+    top: -70px;
+    transform-origin: top;
+  }
 }
 
 .show_task_bar {
-  display: inline-block;
+  display: block;
+  animation: move-from-top 1s both;
+  animation-direction: alternate;
+  transition: 1s;
+}
+.hide_task_bar {
+  display: block;
+  animation: move-to-top 1s both;
+  animation-direction: alternate;
+  transition: 1s;
 }
 
 label {
