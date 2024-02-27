@@ -1,8 +1,7 @@
 .layout {
   display: grid;
-  /* position: relative;
-  top: 70px; */
-  margin: 0 auto;
+  margin: 0px auto;
+  margin-top: 20px;
   padding-bottom: 40px;
   width: 1000px;
   height: auto;
@@ -17,23 +16,7 @@
     "time_done . . . . . . . ." 30px
     / 160px 100px 100px 100px 100px 100px 100px 100px 50px;
   gap: 10px;
-  /* animation: move-from-top 1s both;
-  transition: 1s; */
 }
-
-/* @keyframes move-from-top {
-  0% {
-    top: 0px;
-    transform-origin: top;
-  }
-  100% {
-    top: 70px;
-    transform-origin: top;
-  }
-}
-.show_layout {
-  top: 70px;
-} */
 
 div {
   position: relative;

@@ -12,15 +12,24 @@
 body {
   font-family: "Lato", Arial, sans-serif;
   text-align: center;
-  background-color: #020408;
+  /* background-color: #020408; */
+  background-color: #151d2c;
 }
 
-h2 {
-  position: relative;
+h1 {
+  margin-bottom: 20px;
   padding: 20px 0;
   color: #fff;
-  background-color: #151d2c;
+  background-color: #020408;
   z-index: 2;
+}
+
+img {
+  width: 15px;
+  margin-left: 10px;
+}
+img:hover {
+  border: 1px solid red;
 }
 
 hr {
@@ -31,17 +40,9 @@ hr {
   opacity: 0.2;
 }
 
-.two-buttons-top {
-  margin: 0 auto;
-  width: 90vw;
-  background-color: #020408;
-  z-index: 1;
-}
-
 button.add_top,
 button.remove_top {
   position: relative;
-  margin: 10px 5px;
   padding: 15px 20px;
   color: #fff;
   cursor: pointer;

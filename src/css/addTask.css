@@ -1,47 +1,53 @@
+.form-container {
+  margin: 0 auto;
+  width: 1000px;
+  height: 70px;
+  /* background-color: yellowgreen; */
+}
+
 .task_fields {
   display: none;
-  position: relative;
-  top: -50px;
-  margin: 0 0 20px 0;
+  width: 85vw;
+  max-width: 1000px;
+  margin: 20px auto;
   padding: 20px;
   background-color: #090b0d;
-  z-index: 0;
   border: 2px solid #222;
 }
 
-@keyframes move-from-top {
+@keyframes show-bar {
   0% {
-    top: -70px;
-    transform-origin: top;
+    transform: scale(0);
+    transform-origin: center;
   }
   100% {
-    top: 0px;
-    transform-origin: top;
+    transform: scale(1);
+    transform-origin: center;
   }
 }
 
-@keyframes move-to-top {
+@keyframes hide-bar {
   0% {
-    top: 0px;
-    transform-origin: top;
+    transform: scale(1);
+    transform-origin: center;
   }
   100% {
-    top: -70px;
-    transform-origin: top;
+    transform: scale(0);
+    transform-origin: center;
   }
 }
 
 .show_task_bar {
   display: block;
-  animation: move-from-top 1s both;
+  animation: show-bar 1s both;
   animation-direction: alternate;
-  transition: 1s;
+  transition: 0.1s;
 }
 .hide_task_bar {
   display: block;
-  animation: move-to-top 1s both;
+  animation: hide-bar 1s both;
   animation-direction: alternate;
-  transition: 1s;
+  transition: 0.1s;
 }
 
 label {
