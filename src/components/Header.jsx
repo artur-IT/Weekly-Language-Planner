@@ -5,7 +5,6 @@ const Header = () => {
 
   const showTaskBar = () => {
     const addBar = document.querySelector(".task_fields");
-    // const tasksGrid = document.querySelector(".layout");
 
     if (addBar.classList.contains("show_task_bar")) {
       addBar.classList.remove("show_task_bar");

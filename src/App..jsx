@@ -1,5 +1,6 @@
 import { Component } from "react";
 
+import Language from "./components/Language.jsx";
 import ShowTask from "./components/ShowTask";
 import Days from "./components/Days";
 import Habits from "./components/Habits";
@@ -189,6 +190,8 @@ export class App extends Component {
         <HabitSumTime times={this.habitTimes} />
         <PlannedTime times={this.dayTimes} />
         <RealTime times={this.dayTimes} />
+
+        <Language daysName={this.days} habitsNames={this.habits} />
       </section>
     );
   }
