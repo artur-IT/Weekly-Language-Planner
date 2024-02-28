@@ -21,15 +21,6 @@ h1 {
   padding: 20px 0;
   color: #fff;
   background-color: #020408;
-  z-index: 2;
-}
-
-img {
-  width: 15px;
-  margin-left: 10px;
-}
-img:hover {
-  border: 1px solid red;
 }
 
 hr {
@@ -84,5 +75,5 @@ button.remove_top {
 }
 
 .btn_done:hover {
-  border: 1px solid green;
+  border: 1px solid #34d399;
 }

@@ -19,10 +19,7 @@ const Header = () => {
 
   return (
     <>
-      <h1>
-        Weekly Language Planner <img src="./src/icon/question.svg" alt="question symbol" />
-      </h1>
-
+      <h1>Weekly Language Planner</h1>
       <button className="add_top" onClick={showTaskBar} ref={myRef}>
         Add Task
       </button>
