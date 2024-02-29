@@ -17,7 +17,7 @@ export class App extends Component {
 
     this.state = {
       store: this.myLocalStore,
-      switchPL: true,
+      switchPL: false,
       days: {
         en: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
         pl: ["Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek", "Sobota", "Niedziela"],
@@ -142,6 +142,10 @@ export class App extends Component {
     this.setState({ store: newState });
   };
 
+  newStateSwitchPL = (lang) => {
+    this.setState({ switchPL: lang });
+  };
+
   //-------
   render() {
     {
@@ -203,7 +207,7 @@ export class App extends Component {
           <PlannedTime times={this.dayTimes} switch={this.state.switchPL} />
           <RealTime times={this.dayTimes} switch={this.state.switchPL} />
 
-          <Language daysName={this.days} habitsNames={this.habits} />
+          <Language updateLang={this.newStateSwitchPL} switch={this.state.switchPL} />
         </section>
       </>
     );
