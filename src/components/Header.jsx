@@ -1,9 +1,6 @@
 /* eslint-disable react/prop-types */
-import { useRef } from "react";
-
 const Header = (props) => {
   let myLocalStore = props.store;
-  const myRef = useRef();
 
   const showTaskBar = () => {
     const addBar = document.querySelector(".task_fields");
@@ -28,7 +25,7 @@ const Header = (props) => {
   return (
     <>
       <h1> {!props.switch ? "Weekly Language Planner" : "Tygodniowy planner językowy"}</h1>
-      <button className="add_top" onClick={showTaskBar} ref={myRef}>
+      <button className="add_top" onClick={showTaskBar}>
         {!props.switch ? "ADD TASK" : "DODAJ ZADANIE"}
       </button>
       <button className="remove_top" onClick={clearAllTasks}>

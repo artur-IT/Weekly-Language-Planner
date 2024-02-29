@@ -78,8 +78,7 @@ export class App extends Component {
   clearAllInputs = () => document.getElementById("task_inputs").reset();
 
   // GET NEW TASK FROM USER AND SAVE TO LocalStorage
-  addTaskFromUser = (e) => {
-    e.preventDefault();
+  addTaskFromUser = () => {
     let myDay = document.querySelector(".day_task").value;
     let myStudy = document.querySelector(".study").value;
     let myTask = document.querySelector(".task_name").value;
@@ -135,16 +134,13 @@ export class App extends Component {
     this.setState({ store: newState });
   };
 
+  // SWITCH LANGUAGE in state
   newStateSwitchPL = (lang) => {
     this.setState({ switchPL: lang });
   };
 
-  //-------
   render() {
     {
-      window.onload = () => {
-        // document.querySelector("button.remove_top").onclick = this.clearAllTasks;
-      };
       this.namesForDIV();
       this.getOneDayTimes();
       this.getOneDayRealTime();
@@ -198,7 +194,6 @@ export class App extends Component {
           <HabitSumTime times={this.habitTimes} />
           <PlannedTime times={this.dayTimes} switch={this.state.switchPL} />
           <RealTime times={this.dayTimes} switch={this.state.switchPL} />
-
           <Language updateLang={this.newStateSwitchPL} switch={this.state.switchPL} />
         </section>
       </>
