@@ -60,13 +60,6 @@ export class App extends Component {
     return;
   };
 
-  // REMOVE ALL TASKS FROM LocalStore
-  clearAllTasks = () => {
-    localStorage.clear();
-    this.myLocalStore = [];
-    this.setState({ store: this.myLocalStore });
-  };
-
   // CHECK CONFLICTS NAMES in LocalStore <=> myLocalstore in App
   checkNameConflict = (taskId) => {
     let flag = false;
@@ -150,8 +143,7 @@ export class App extends Component {
   render() {
     {
       window.onload = () => {
-        document.querySelector("button.add_form").onclick = this.addTaskFromUser;
-        document.querySelector("button.remove_top").onclick = this.clearAllTasks;
+        // document.querySelector("button.remove_top").onclick = this.clearAllTasks;
       };
       this.namesForDIV();
       this.getOneDayTimes();
@@ -161,8 +153,8 @@ export class App extends Component {
 
     return (
       <>
-        <Header switch={this.state.switchPL} />
-        <SectionAddTask switch={this.state.switchPL} />
+        <Header store={this.state.store} updateState={this.newstate} switch={this.state.switchPL} />
+        <SectionAddTask days={this.state.days} habits={this.state.habits} switch={this.state.switchPL} btnAdd={this.addTaskFromUser} />
         <section className="layout">
           <Days daysNames={this.state.days} switch={this.state.switchPL} />
           <Habits habitsNames={this.state.habits} switch={this.state.switchPL} />

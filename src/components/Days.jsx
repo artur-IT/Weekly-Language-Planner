@@ -27,7 +27,7 @@ const Days = (props) => {
         <p className="center_text">{!props.switch ? dayEN[6] : dayPL[6]}</p>
       </div>
       <div className="habit_sum">
-        <p className="center_text">{!props.switch ? "Habit Summary Time" : "Czas całego nawyku"}</p>
+        <p className="center_text">{!props.switch ? "Habit time" : "Czas nawyku"}</p>
       </div>
     </>
   );

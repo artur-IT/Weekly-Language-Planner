@@ -1,16 +1,6 @@
 /* eslint-disable react/prop-types */
-import { useRef } from "react";
-
 const Language = (props) => {
-  const plRef = useRef();
-  const enRef = useRef();
-
-  const langButton = () => {
-    // const pl = plRef.current;
-    // const en = enRef.current;
-    const lang = props.switch;
-    props.updateLang(!lang);
-  };
+  const langButton = () => props.updateLang(!props.switch);
 
   return (
     <>
@@ -24,9 +14,9 @@ const Language = (props) => {
           </p>
         </div>
         {props.switch ? (
-          <img src="icon/en.png" ref={enRef} onClick={langButton} alt="english language" />
+          <img src="icon/en.png" onClick={langButton} alt="english language" />
         ) : (
-          <img src="icon/pl.png" ref={plRef} onClick={langButton} alt="polish language" />
+          <img src="icon/pl.png" onClick={langButton} alt="polish language" />
         )}
       </div>
     </>
