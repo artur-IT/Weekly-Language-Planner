@@ -2,8 +2,6 @@ import { useRef } from "react";
 
 const Language = (props) => {
   // console.log(props.daysName);
-  const daysPL = ["Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek", "Sobota", "Niedziela"];
-  const habitsPL = ["MÓWIENIE", "CZYTANIE", "PISANIE", "SŁUCHANIE", "SŁOWNICTWO"];
   const plRef = useRef();
   const enRef = useRef();
 
@@ -11,7 +9,6 @@ const Language = (props) => {
     const pl = plRef.current;
     const en = enRef.current;
     // console.log(pl, en);
-    props.daysName = daysPL;
   };
 
   return (

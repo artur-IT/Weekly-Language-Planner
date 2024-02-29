@@ -1,16 +1,14 @@
 .form-container {
   margin: 20px auto;
-  width: 1000px;
+  width: 1020px;
   height: 70px;
   /* background-color: yellowgreen; */
 }
 
 .task_fields {
   display: none;
-  width: 85vw;
-  max-width: 1000px;
   margin: 20px auto;
-  padding: 20px;
+  padding: 20px 0;
   background-color: #090b0d;
   border: 2px solid #222;
 }

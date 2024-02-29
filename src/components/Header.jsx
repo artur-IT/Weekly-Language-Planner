@@ -1,6 +1,7 @@
+/* eslint-disable react/prop-types */
 import { useRef } from "react";
 
-const Header = () => {
+const Header = (props) => {
   const myRef = useRef();
 
   const showTaskBar = () => {
@@ -20,9 +21,9 @@ const Header = () => {
     <>
       <h1>Weekly Language Planner</h1>
       <button className="add_top" onClick={showTaskBar} ref={myRef}>
-        Add Task
+        {!props.switch ? "ADD TASK" : "DODAJ ZADANIE"}
       </button>
-      <button className="remove_top">Clear All</button>
+      <button className="remove_top"> {!props.switch ? "CLEAR ALL" : "WYCZYŚĆ WSZYSTKO"}</button>
     </>
   );
 };

@@ -33,6 +33,7 @@ hr {
 button.add_top,
 button.remove_top {
   position: relative;
+  margin-left: 15px;
   padding: 15px 20px;
   color: #fff;
   cursor: pointer;

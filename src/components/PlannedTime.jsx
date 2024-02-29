@@ -4,7 +4,7 @@ const PlannedTime = (props) => {
   return (
     <>
       <div className="plannded_time">
-        <p className="center_text">Planned time:</p>
+        <p className="center_text">{!props.switch ? "Planned time:" : "Planowany czas:"}</p>
       </div>
 
       <div className="monday_sum_time">{time[0].time > 0 ? `${time[0].time} min.` : null} </div>

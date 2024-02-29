@@ -4,7 +4,7 @@ const RealTime = (props) => {
   return (
     <>
       <div className="time_done">
-        <p className="center_text">My real time:</p>
+        <p className="center_text">{!props.switch ? "My real time:" : "Zrealizowany czas:"}</p>
       </div>
 
       <div className="monday_real_time">{time[0].real_time > 0 ? `${time[0].real_time} min.` : null}</div>
