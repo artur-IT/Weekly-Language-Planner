@@ -39,15 +39,13 @@
 
 .show_task_bar {
   display: block;
-  animation: show-bar 1s both;
+  animation: show-bar 0.5s both;
   animation-direction: alternate;
-  transition: 0.1s;
 }
 .hide_task_bar {
   display: block;
-  animation: hide-bar 1s both;
+  animation: hide-bar 0.5s both;
   animation-direction: alternate;
-  transition: 0.1s;
 }
 
 label {

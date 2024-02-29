@@ -42,7 +42,7 @@ button.remove_top {
 }
 
 .btn_remove {
-  background-image: url(/src/icon/remove.svg);
+  background-image: url(icon/remove.svg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: 50%;
@@ -50,7 +50,7 @@ button.remove_top {
 }
 
 .btn_done {
-  background-image: url(/src/icon/done.svg);
+  background-image: url(icon/done.svg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: 50%;
