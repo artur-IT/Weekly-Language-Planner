@@ -2,6 +2,7 @@
 import { useRef } from "react";
 
 const Header = (props) => {
+  let myLocalStore = props.store;
   const myRef = useRef();
 
   const showTaskBar = () => {
@@ -20,7 +21,8 @@ const Header = (props) => {
   // REMOVE ALL TASKS FROM LocalStore
   const clearAllTasks = () => {
     localStorage.clear();
-    props.updateState((props.store = []));
+    myLocalStore = [];
+    props.updateState(myLocalStore);
   };
 
   return (
