@@ -24,7 +24,7 @@ img:hover {
 /* Tooltip text */
 .tooltip .tooltiptext {
   visibility: hidden;
-  width: 170px;
+  width: 200px;
   background-color: #555;
   color: #fbbf24;
   text-align: center;
@@ -33,7 +33,7 @@ img:hover {
 
   /* Position the tooltip text */
   position: absolute;
-  bottom: -85px;
+  bottom: -180px;
   left: 50%;
   margin-left: -83px;
 
