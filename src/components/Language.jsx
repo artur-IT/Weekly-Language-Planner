@@ -11,7 +11,7 @@ const Language = (props) => {
           <p className="tooltiptext">
             {!props.switch
               ? "Accurate Plan to learn your foreign language. Type in a brief statement of what you will be doing in chosing day e.g., listening to the radio, reading an article, fiche..."
-              : "Dokładny plan nauki języka obcego. Wpisz krótki opis tego co będziesz robić w wybranym dniu np. słuchanie radia, czytanie artykułu, fiszki."}
+              : "Dokładny plan nauki języka obcego. Wpisz krótki opis tego co będziesz robił/a w wybranym dniu np. słuchanie radia, czytanie artykułu, fiszki itp."}
           </p>
         </div>
         {props.switch ? (

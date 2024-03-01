@@ -1,3 +1,11 @@
+.habit1,
+.habit2,
+.habit3,
+.habit4,
+.habit5 {
+  font-size: 1.2rem;
+}
+
 .habit1 {
   grid-area: habit1;
   font-weight: 700;

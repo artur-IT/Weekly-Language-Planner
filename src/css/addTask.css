@@ -85,7 +85,8 @@ button.add_form {
 }
 
 button.add_form:hover {
-  color: white;
-  background-color: #e879f9;
+  color: #000;
+  font-weight: bold;
+  background-color: #34d399;
   transition: 0.7s;
 }

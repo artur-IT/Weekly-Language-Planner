@@ -22,7 +22,7 @@ div {
 }
 
 .empty {
-  background-color: #f0f8ff;
+  background-color: #fff;
   transition: 0.6s;
 }
 .empty:hover {
@@ -96,7 +96,7 @@ div {
 
 .plannded_time,
 .time_done {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   grid-area: plannded_time time_done;
   background-color: aliceblue;
 }

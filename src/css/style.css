@@ -42,6 +42,14 @@ button.remove_top {
   z-index: 1;
 }
 
+button.add_top:hover,
+button.remove_top:hover {
+  color: #000;
+  font-weight: bold;
+  background-color: #34d399;
+  transition: 0.7s;
+}
+
 .btn_remove {
   background-image: url(/public/icon/remove.svg);
   background-position: center;
