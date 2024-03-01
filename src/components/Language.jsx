@@ -9,8 +9,8 @@ const Language = (props) => {
           <img className="" src="icon/question.svg" alt="question symbol" />
           <p className="tooltiptext">
             {!props.switch
-              ? "Accurate Plan to learn your foreign language. Type in a brief statement of what you will be doing, e.g., listening to the radio, reading an article, fiche..."
-              : "Dokładny plan nauki języka obcego. Wpisz krótki opis tego, co będziesz robić, np. słuchanie radia, czytanie artykułu, fiszki."}
+              ? "Accurate Plan to learn your foreign language. Type in a brief statement of what you will be doing in chosing day e.g., listening to the radio, reading an article, fiche..."
+              : "Dokładny plan nauki języka obcego. Wpisz krótki opis tego co będziesz robić w wybranym dniu np. słuchanie radia, czytanie artykułu, fiszki."}
           </p>
         </div>
         {props.switch ? (

@@ -102,7 +102,7 @@ export class App extends Component {
         });
         this.setState({ store: this.myLocalStore });
         localStorage.setItem("myTasks", JSON.stringify(this.state.store));
-        this.clearAllInputs();
+        // this.clearAllInputs();
       }
     } else alert("Uzupełnij pola!");
   };

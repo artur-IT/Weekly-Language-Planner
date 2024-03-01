@@ -33,8 +33,8 @@ img:hover {
 
   /* Position the tooltip text */
   position: absolute;
-  bottom: -150px;
-  left: 50%;
+  bottom: -160px;
+  left: -60px;
   margin-left: -100px;
 
   /* Fade in tooltip */
@@ -47,7 +47,7 @@ img:hover {
   content: "";
   position: absolute;
   bottom: 100%;
-  left: 50%;
+  left: 90%;
   margin-left: 0px;
   border-width: 5px;
   border-style: solid;

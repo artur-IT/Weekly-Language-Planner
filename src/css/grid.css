@@ -1,20 +1,19 @@
 .layout {
   display: grid;
   margin: 0px auto;
-  margin-top: 20px;
   padding-bottom: 40px;
-  width: 1000px;
+  width: 1150px;
   height: auto;
   grid:
     "zero monnday tuesday wednesday thursday friday saturday sunday habit_sum" 50px
-    "habit1 . . . . . . . habit1_sum" 100px
-    "habit2 . . . . . . . habit2_sum" 100px
-    "habit3 . . . . . . . habit3_sum" 100px
-    "habit4 . . . . . . . habit4_sum" 100px
-    "habit5 . . . . . . . habit5_sum" 100px
-    "plannded_time . . . . . . . ." 30px
-    "time_done . . . . . . . ." 30px
-    / 160px 100px 100px 100px 100px 100px 100px 100px 50px;
+    "habit1 . . . . . . . habit1_sum" 120px
+    "habit2 . . . . . . . habit2_sum" 120px
+    "habit3 . . . . . . . habit3_sum" 120px
+    "habit4 . . . . . . . habit4_sum" 120px
+    "habit5 . . . . . . . habit5_sum" 120px
+    "plannded_time . . . . . . . ." 40px
+    "time_done . . . . . . . ." 40px
+    / 180px 120px 120px 120px 120px 120px 120px 120px 50px;
   gap: 10px;
 }
 
@@ -72,7 +71,8 @@ div {
 .friday_real_time,
 .saturday_real_time,
 .sunday_real_time {
-  line-height: 230%;
+  line-height: 40px;
+  vertical-align: middle;
   font-size: 0.8rem;
   font-weight: bold;
   background-color: #cbd5e1;
@@ -94,14 +94,9 @@ div {
   border: none;
 }
 
-.plannded_time {
-  font-size: 0.8rem;
-  grid-area: plannded_time;
-  background-color: aliceblue;
-}
-
+.plannded_time,
 .time_done {
   font-size: 0.8rem;
-  grid-area: time_done;
+  grid-area: plannded_time time_done;
   background-color: aliceblue;
 }
