@@ -14,10 +14,11 @@ export class App extends Component {
   constructor() {
     super();
     this.myLocalStore = localStorage.getItem("myTasks") ? JSON.parse(localStorage.getItem("myTasks")) : new Array();
+    this.myLang = localStorage.getItem("language") ? JSON.parse(localStorage.getItem("language")) : false;
 
     this.state = {
       store: this.myLocalStore,
-      switchPL: false,
+      switchPL: this.myLang,
       days: {
         en: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
         pl: ["Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek", "Sobota", "Niedziela"],

@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 const Language = (props) => {
   const langButton = () => props.updateLang(!props.switch);
+  localStorage.setItem("language", JSON.stringify(props.switch));
 
   return (
     <>
