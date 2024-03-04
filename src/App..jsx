@@ -14,11 +14,12 @@ export class App extends Component {
   constructor() {
     super();
     this.myLocalStore = localStorage.getItem("myTasks") ? JSON.parse(localStorage.getItem("myTasks")) : new Array();
-    this.myLang = localStorage.getItem("language") ? JSON.parse(localStorage.getItem("language")) : false;
+    this.myLang = localStorage.getItem("languagePL") ? JSON.parse(localStorage.getItem("languagePL")) : false;
 
     this.state = {
       store: this.myLocalStore,
       switchPL: this.myLang,
+      visibleAddBar: false,
       days: {
         en: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
         pl: ["Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek", "Sobota", "Niedziela"],
@@ -131,8 +132,13 @@ export class App extends Component {
   };
 
   // UPDATE state AFTER REMOVE TASK FROM COMPONENT ShowTask
-  newstate = (newState) => {
-    this.setState({ store: newState });
+  newStore = (newStore) => {
+    this.setState({ store: newStore });
+  };
+
+  // UPDATE VISIBILTY ADD BAR SECTION
+  newStateAddBar = (state) => {
+    this.setState({ visibleAddBar: state });
   };
 
   // SWITCH LANGUAGE in state
@@ -150,8 +156,8 @@ export class App extends Component {
 
     return (
       <>
-        <Header store={this.state.store} updateState={this.newstate} switch={this.state.switchPL} />
-        <SectionAddTask days={this.state.days} habits={this.state.habits} switch={this.state.switchPL} btnAdd={this.addTaskFromUser} />
+        <Header store={this.state} updateStore={this.newStore} updateAddBar={this.newStateAddBar} />
+        <SectionAddTask store={this.state} btnAdd={this.addTaskFromUser} updateAddBar={this.newStateAddBar} />
         <section className="layout">
           <Days daysNames={this.state.days} switch={this.state.switchPL} />
           <Habits habitsNames={this.state.habits} switch={this.state.switchPL} />

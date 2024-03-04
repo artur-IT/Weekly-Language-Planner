@@ -13,23 +13,24 @@ const Header = (props) => {
       addBar.classList.toggle("show_task_bar");
     }
     addBar.classList.toggle("show_task_bar");
+    props.updateAddBar(true);
   };
 
   // REMOVE ALL TASKS FROM LocalStore
   const clearAllTasks = () => {
     localStorage.clear();
     myLocalStore = [];
-    props.updateState(myLocalStore);
+    props.updateStore(myLocalStore);
   };
 
   return (
     <>
-      <h1> {!props.switch ? "Weekly Language Planner" : "Tygodniowy planner językowy"}</h1>
+      <h1> {!props.store.switchPL ? "Weekly Language Planner" : "Tygodniowy planner językowy"}</h1>
       <button className="add_top" onClick={showTaskBar}>
-        {!props.switch ? "ADD TASK" : "DODAJ ZADANIE"}
+        {!props.store.switchPL ? "ADD TASK" : "DODAJ ZADANIE"}
       </button>
       <button className="remove_top" onClick={clearAllTasks}>
-        {!props.switch ? "CLEAR PLAN" : "WYCZYŚĆ PLAN"}
+        {!props.store.switchPL ? "CLEAR PLAN" : "WYCZYŚĆ PLAN"}
       </button>
     </>
   );

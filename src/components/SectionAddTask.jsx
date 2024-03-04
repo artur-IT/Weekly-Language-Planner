@@ -1,8 +1,12 @@
 /* eslint-disable react/prop-types */
 const AddTaskSection = (props) => {
-  const lang = props.switch;
-  const days = props.days;
-  const habits = props.habits;
+  const lang = props.store.switchPL;
+  const days = props.store.days;
+  const habits = props.store.habits;
+
+  // props.updateAddBar(true);
+  if (props.store.visibleAddBar) console.log(props.store.visibleAddBar);
+
   return (
     <div className="form-container">
       <form className="task_fields" id="task_inputs">

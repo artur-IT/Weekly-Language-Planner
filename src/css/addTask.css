@@ -15,34 +15,38 @@
 
 @keyframes show-bar {
   0% {
-    transform: scale(0);
+    opacity: 0;
+    /* transform: scale(0); */
     transform-origin: center;
   }
   100% {
-    transform: scale(1);
+    opacity: 1;
+    /* transform: scale(1); */
     transform-origin: center;
   }
 }
 
 @keyframes hide-bar {
   0% {
-    transform: scale(1);
+    opacity: 1;
+    /* transform: scale(1); */
     transform-origin: center;
   }
   100% {
-    transform: scale(0);
+    opacity: 0;
+    /* transform: scale(0); */
     transform-origin: center;
   }
 }
 
 .show_task_bar {
   display: block;
-  animation: show-bar 0.5s both;
+  animation: show-bar 1s both;
   animation-direction: alternate;
 }
 .hide_task_bar {
   display: block;
-  animation: hide-bar 0.5s both;
+  animation: hide-bar 1s both;
   animation-direction: alternate;
 }
 
