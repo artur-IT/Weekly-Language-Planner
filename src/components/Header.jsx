@@ -17,7 +17,8 @@ const Header = (props) => {
   // REMOVE ALL TASKS FROM LocalStore
   const clearAllTasks = () => {
     localStorage.clear();
-    myLocalStore = [];
+    myLocalStore = new Array();
+    // localStorage.setItem("myTasks", JSON.stringify(myLocalStore));
     props.updateStore(myLocalStore);
   };
 

@@ -19,7 +19,6 @@ export class App extends Component {
     this.state = {
       store: this.myLocalStore,
       switchPL: this.myLang,
-      visibleAddBar: false,
       days: {
         en: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
         pl: ["Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek", "Sobota", "Niedziela"],
@@ -79,6 +78,7 @@ export class App extends Component {
   // GET NEW TASK FROM USER AND SAVE TO LocalStorage
   addTaskFromUser = (e) => {
     e.preventDefault();
+
     let myDay = document.querySelector(".day_task").value;
     let myStudy = document.querySelector(".study").value;
     let myTask = document.querySelector(".task_name").value;
@@ -100,7 +100,7 @@ export class App extends Component {
           done: false,
           active: false,
         });
-        this.setState({ store: this.myLocalStore, visibleAddBar: !this.visibleAddBar });
+        this.setState({ store: this.myLocalStore });
         localStorage.setItem("myTasks", JSON.stringify(this.state.store));
         this.clearAllInputs();
       }
@@ -134,11 +134,6 @@ export class App extends Component {
   // UPDATE state AFTER REMOVE TASK FROM COMPONENT ShowTask
   newStore = (newStore) => {
     this.setState({ store: newStore });
-  };
-
-  // UPDATE VISIBILTY ADD BAR SECTION
-  newStateAddBar = () => {
-    this.setState({ visibleAddBar: !this.state.visibleAddBar });
   };
 
   // SWITCH LANGUAGE in state
