@@ -4,8 +4,6 @@ const AddTaskSection = (props) => {
   const days = props.store.days;
   const habits = props.store.habits;
 
-  // console.log(document.querySelector(".task_fields").classList.contains("show_task_bar"));
-
   return (
     <div className="form-container">
       <form className="task_fields" id="task_inputs">

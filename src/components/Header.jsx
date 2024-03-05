@@ -12,7 +12,6 @@ const Header = (props) => {
       addBar.classList.remove("hide_task_bar");
       addBar.classList.toggle("show_task_bar");
     } else addBar.classList.add("show_task_bar");
-    props.updateAddBar();
   };
 
   // REMOVE ALL TASKS FROM LocalStore

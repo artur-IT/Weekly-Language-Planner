@@ -76,9 +76,9 @@ export class App extends Component {
     });
     return flag;
   };
-
   // GET NEW TASK FROM USER AND SAVE TO LocalStorage
-  addTaskFromUser = () => {
+  addTaskFromUser = (e) => {
+    e.preventDefault();
     let myDay = document.querySelector(".day_task").value;
     let myStudy = document.querySelector(".study").value;
     let myTask = document.querySelector(".task_name").value;
@@ -100,11 +100,14 @@ export class App extends Component {
           done: false,
           active: false,
         });
-        this.setState({ store: this.myLocalStore });
+        this.setState({ store: this.myLocalStore, visibleAddBar: !this.visibleAddBar });
         localStorage.setItem("myTasks", JSON.stringify(this.state.store));
+        this.clearAllInputs();
       }
     } else alert("Uzupełnij pola!");
   };
+
+  clearAllInputs = () => document.getElementById("task_inputs").reset();
 
   // SUMMARY FROM ALL TASKS PLANNED TIME FROM ONE-DAY
   getOneDayTimes = () => {
