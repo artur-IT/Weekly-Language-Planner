@@ -4,9 +4,6 @@ const AddTaskSection = (props) => {
   const days = props.store.days;
   const habits = props.store.habits;
 
-  // props.updateAddBar(true);
-  if (props.store.visibleAddBar) console.log(props.store.visibleAddBar);
-
   return (
     <div className="form-container">
       <form className="task_fields" id="task_inputs">
@@ -42,7 +39,7 @@ const AddTaskSection = (props) => {
           {!lang ? "Task time:" : "Czas zadania:"}
           <input className="task_time" type="number" id="exercise_time" step="5" min="0" max="60" placeholder="max. 60" /> min.
         </label>
-        <button className="add_form" onClick={props.btnAdd}>
+        <button className="add_form" onClick={props.addTaskFromUser}>
           {!lang ? "ADD" : "DODAJ"}
         </button>
       </form>

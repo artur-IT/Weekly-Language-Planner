@@ -77,8 +77,6 @@ export class App extends Component {
     return flag;
   };
 
-  clearAllInputs = () => document.getElementById("task_inputs").reset();
-
   // GET NEW TASK FROM USER AND SAVE TO LocalStorage
   addTaskFromUser = () => {
     let myDay = document.querySelector(".day_task").value;
@@ -104,7 +102,6 @@ export class App extends Component {
         });
         this.setState({ store: this.myLocalStore });
         localStorage.setItem("myTasks", JSON.stringify(this.state.store));
-        // this.clearAllInputs();
       }
     } else alert("Uzupełnij pola!");
   };
@@ -137,8 +134,8 @@ export class App extends Component {
   };
 
   // UPDATE VISIBILTY ADD BAR SECTION
-  newStateAddBar = (state) => {
-    this.setState({ visibleAddBar: state });
+  newStateAddBar = () => {
+    this.setState({ visibleAddBar: !this.state.visibleAddBar });
   };
 
   // SWITCH LANGUAGE in state
@@ -157,7 +154,7 @@ export class App extends Component {
     return (
       <>
         <Header store={this.state} updateStore={this.newStore} updateAddBar={this.newStateAddBar} />
-        <SectionAddTask store={this.state} btnAdd={this.addTaskFromUser} updateAddBar={this.newStateAddBar} />
+        <SectionAddTask store={this.state} addTaskFromUser={this.addTaskFromUser} updateAddBar={this.newStateAddBar} />
         <section className="layout">
           <Days daysNames={this.state.days} switch={this.state.switchPL} />
           <Habits habitsNames={this.state.habits} switch={this.state.switchPL} />
