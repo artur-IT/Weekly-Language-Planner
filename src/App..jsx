@@ -13,7 +13,7 @@ import HabitSumTime from "./components/HabitSumTime";
 export class App extends Component {
   constructor() {
     super();
-    this.myLocalStore = localStorage.getItem("myTasks") ? JSON.parse(localStorage.getItem("myTasks")) : new Array();
+    this.myLocalStore = localStorage.getItem("myTasks") ? JSON.parse(localStorage.getItem("myTasks")) : [];
     this.myLang = localStorage.getItem("languagePL") ? JSON.parse(localStorage.getItem("languagePL")) : false;
 
     this.state = {
@@ -78,7 +78,6 @@ export class App extends Component {
   // GET NEW TASK FROM USER AND SAVE TO LocalStorage
   addTaskFromUser = (e) => {
     e.preventDefault();
-
     let myDay = document.querySelector(".day_task").value;
     let myStudy = document.querySelector(".study").value;
     let myTask = document.querySelector(".task_name").value;
@@ -101,7 +100,7 @@ export class App extends Component {
           active: false,
         });
         this.setState({ store: this.myLocalStore });
-        localStorage.setItem("myTasks", JSON.stringify(this.state.store));
+        localStorage.setItem("myTasks", JSON.stringify(this.myLocalStore));
         this.clearAllInputs();
       }
     } else alert("Uzupełnij pola!");
@@ -151,47 +150,47 @@ export class App extends Component {
 
     return (
       <>
-        <Header store={this.state} updateStore={this.newStore} updateAddBar={this.newStateAddBar} />
-        <SectionAddTask store={this.state} addTaskFromUser={this.addTaskFromUser} updateAddBar={this.newStateAddBar} />
+        <Header store={this.state} updateStore={this.newStore} />
+        <SectionAddTask store={this.state} addTaskFromUser={this.addTaskFromUser} />
         <section className="layout">
           <Days daysNames={this.state.days} switch={this.state.switchPL} />
           <Habits habitsNames={this.state.habits} switch={this.state.switchPL} />
           {/*  */}
-          <ShowTask name={this.divNames[0]} times={this.dayTimes} store={this.state.store} updateState={this.newStore} />
-          <ShowTask name={this.divNames[1]} times={this.dayTimes} store={this.state.store} updateState={this.newStore} />
-          <ShowTask name={this.divNames[2]} times={this.dayTimes} store={this.state.store} updateState={this.newStore} />
-          <ShowTask name={this.divNames[3]} times={this.dayTimes} store={this.state.store} updateState={this.newStore} />
-          <ShowTask name={this.divNames[4]} times={this.dayTimes} store={this.state.store} updateState={this.newStore} />
-          <ShowTask name={this.divNames[5]} times={this.dayTimes} store={this.state.store} updateState={this.newStore} />
-          <ShowTask name={this.divNames[6]} times={this.dayTimes} store={this.state.store} updateState={this.newStore} />
-          <ShowTask name={this.divNames[7]} times={this.dayTimes} store={this.state.store} updateState={this.newStore} />
-          <ShowTask name={this.divNames[8]} times={this.dayTimes} store={this.state.store} updateState={this.newStore} />
-          <ShowTask name={this.divNames[9]} times={this.dayTimes} store={this.state.store} updateState={this.newStore} />
-          <ShowTask name={this.divNames[10]} times={this.dayTimes} store={this.state.store} updateState={this.newStore} />
-          <ShowTask name={this.divNames[11]} times={this.dayTimes} store={this.state.store} updateState={this.newStore} />
-          <ShowTask name={this.divNames[12]} times={this.dayTimes} store={this.state.store} updateState={this.newStore} />
-          <ShowTask name={this.divNames[13]} times={this.dayTimes} store={this.state.store} updateState={this.newStore} />
-          <ShowTask name={this.divNames[14]} times={this.dayTimes} store={this.state.store} updateState={this.newStore} />
-          <ShowTask name={this.divNames[15]} times={this.dayTimes} store={this.state.store} updateState={this.newStore} />
-          <ShowTask name={this.divNames[16]} times={this.dayTimes} store={this.state.store} updateState={this.newStore} />
-          <ShowTask name={this.divNames[17]} times={this.dayTimes} store={this.state.store} updateState={this.newStore} />
-          <ShowTask name={this.divNames[18]} times={this.dayTimes} store={this.state.store} updateState={this.newStore} />
-          <ShowTask name={this.divNames[19]} times={this.dayTimes} store={this.state.store} updateState={this.newStore} />
-          <ShowTask name={this.divNames[20]} times={this.dayTimes} store={this.state.store} updateState={this.newStore} />
-          <ShowTask name={this.divNames[21]} times={this.dayTimes} store={this.state.store} updateState={this.newStore} />
-          <ShowTask name={this.divNames[22]} times={this.dayTimes} store={this.state.store} updateState={this.newStore} />
-          <ShowTask name={this.divNames[23]} times={this.dayTimes} store={this.state.store} updateState={this.newStore} />
-          <ShowTask name={this.divNames[24]} times={this.dayTimes} store={this.state.store} updateState={this.newStore} />
-          <ShowTask name={this.divNames[25]} times={this.dayTimes} store={this.state.store} updateState={this.newStore} />
-          <ShowTask name={this.divNames[26]} times={this.dayTimes} store={this.state.store} updateState={this.newStore} />
-          <ShowTask name={this.divNames[27]} times={this.dayTimes} store={this.state.store} updateState={this.newStore} />
-          <ShowTask name={this.divNames[28]} times={this.dayTimes} store={this.state.store} updateState={this.newStore} />
-          <ShowTask name={this.divNames[29]} times={this.dayTimes} store={this.state.store} updateState={this.newStore} />
-          <ShowTask name={this.divNames[30]} times={this.dayTimes} store={this.state.store} updateState={this.newStore} />
-          <ShowTask name={this.divNames[31]} times={this.dayTimes} store={this.state.store} updateState={this.newStore} />
-          <ShowTask name={this.divNames[32]} times={this.dayTimes} store={this.state.store} updateState={this.newStore} />
-          <ShowTask name={this.divNames[33]} times={this.dayTimes} store={this.state.store} updateState={this.newStore} />
-          <ShowTask name={this.divNames[34]} times={this.dayTimes} store={this.state.store} updateState={this.newStore} />
+          <ShowTask name={this.divNames[0]} times={this.dayTimes} store={this.state.store} updateStore={this.newStore} />
+          <ShowTask name={this.divNames[1]} times={this.dayTimes} store={this.state.store} updateStore={this.newStore} />
+          <ShowTask name={this.divNames[2]} times={this.dayTimes} store={this.state.store} updateStore={this.newStore} />
+          <ShowTask name={this.divNames[3]} times={this.dayTimes} store={this.state.store} updateStore={this.newStore} />
+          <ShowTask name={this.divNames[4]} times={this.dayTimes} store={this.state.store} updateStore={this.newStore} />
+          <ShowTask name={this.divNames[5]} times={this.dayTimes} store={this.state.store} updateStore={this.newStore} />
+          <ShowTask name={this.divNames[6]} times={this.dayTimes} store={this.state.store} updateStore={this.newStore} />
+          <ShowTask name={this.divNames[7]} times={this.dayTimes} store={this.state.store} updateStore={this.newStore} />
+          <ShowTask name={this.divNames[8]} times={this.dayTimes} store={this.state.store} updateStore={this.newStore} />
+          <ShowTask name={this.divNames[9]} times={this.dayTimes} store={this.state.store} updateStore={this.newStore} />
+          <ShowTask name={this.divNames[10]} times={this.dayTimes} store={this.state.store} updateStore={this.newStore} />
+          <ShowTask name={this.divNames[11]} times={this.dayTimes} store={this.state.store} updateStore={this.newStore} />
+          <ShowTask name={this.divNames[12]} times={this.dayTimes} store={this.state.store} updateStore={this.newStore} />
+          <ShowTask name={this.divNames[13]} times={this.dayTimes} store={this.state.store} updateStore={this.newStore} />
+          <ShowTask name={this.divNames[14]} times={this.dayTimes} store={this.state.store} updateStore={this.newStore} />
+          <ShowTask name={this.divNames[15]} times={this.dayTimes} store={this.state.store} updateStore={this.newStore} />
+          <ShowTask name={this.divNames[16]} times={this.dayTimes} store={this.state.store} updateStore={this.newStore} />
+          <ShowTask name={this.divNames[17]} times={this.dayTimes} store={this.state.store} updateStore={this.newStore} />
+          <ShowTask name={this.divNames[18]} times={this.dayTimes} store={this.state.store} updateStore={this.newStore} />
+          <ShowTask name={this.divNames[19]} times={this.dayTimes} store={this.state.store} updateStore={this.newStore} />
+          <ShowTask name={this.divNames[20]} times={this.dayTimes} store={this.state.store} updateStore={this.newStore} />
+          <ShowTask name={this.divNames[21]} times={this.dayTimes} store={this.state.store} updateStore={this.newStore} />
+          <ShowTask name={this.divNames[22]} times={this.dayTimes} store={this.state.store} updateStore={this.newStore} />
+          <ShowTask name={this.divNames[23]} times={this.dayTimes} store={this.state.store} updateStore={this.newStore} />
+          <ShowTask name={this.divNames[24]} times={this.dayTimes} store={this.state.store} updateStore={this.newStore} />
+          <ShowTask name={this.divNames[25]} times={this.dayTimes} store={this.state.store} updateStore={this.newStore} />
+          <ShowTask name={this.divNames[26]} times={this.dayTimes} store={this.state.store} updateStore={this.newStore} />
+          <ShowTask name={this.divNames[27]} times={this.dayTimes} store={this.state.store} updateStore={this.newStore} />
+          <ShowTask name={this.divNames[28]} times={this.dayTimes} store={this.state.store} updateStore={this.newStore} />
+          <ShowTask name={this.divNames[29]} times={this.dayTimes} store={this.state.store} updateStore={this.newStore} />
+          <ShowTask name={this.divNames[30]} times={this.dayTimes} store={this.state.store} updateStore={this.newStore} />
+          <ShowTask name={this.divNames[31]} times={this.dayTimes} store={this.state.store} updateStore={this.newStore} />
+          <ShowTask name={this.divNames[32]} times={this.dayTimes} store={this.state.store} updateStore={this.newStore} />
+          <ShowTask name={this.divNames[33]} times={this.dayTimes} store={this.state.store} updateStore={this.newStore} />
+          <ShowTask name={this.divNames[34]} times={this.dayTimes} store={this.state.store} updateStore={this.newStore} />
           {/*  */}
           <HabitSumTime times={this.habitTimes} />
           <PlannedTime times={this.dayTimes} switch={this.state.switchPL} />

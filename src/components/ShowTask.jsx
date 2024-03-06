@@ -7,22 +7,18 @@ const ShowTask = (values) => {
   // -- BTN_REMOVE HANDLER
   const removeTaskHandle = () => {
     const taskName = (myRef.current = values.name);
-
     let findTaskIdx = myLocalStore.findIndex((el) => el.id === taskName);
     myLocalStore.splice(findTaskIdx, 1);
-
-    values.updateState(myLocalStore);
+    values.updateStore(myLocalStore);
     localStorage.setItem("myTasks", JSON.stringify(myLocalStore));
   };
 
   // -- BTN_DONE HANDLER
   const doneTaskHandle = () => {
     const taskName = (myRef.current = values.name);
-
     const findTaskIdx = myLocalStore.findIndex((el) => el.id === taskName);
     myLocalStore[findTaskIdx].done = !myLocalStore[findTaskIdx].done;
-
-    values.updateState(myLocalStore);
+    values.updateStore(myLocalStore);
     localStorage.setItem("myTasks", JSON.stringify(myLocalStore));
   };
 

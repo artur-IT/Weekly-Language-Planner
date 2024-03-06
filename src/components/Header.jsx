@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 const Header = (props) => {
-  let myLocalStore = props.store;
-
+  // let myLocalStore = props.store;
   const showTaskBar = () => {
     const addBar = document.querySelector(".task_fields");
 
@@ -17,10 +16,11 @@ const Header = (props) => {
   // REMOVE ALL TASKS FROM LocalStore
   const clearAllTasks = () => {
     localStorage.clear();
-    myLocalStore = new Array();
-    // localStorage.setItem("myTasks", JSON.stringify(myLocalStore));
-    props.updateStore(myLocalStore);
+    props.updateStore([]);
+    // localStorage.setItem("myTasks", JSON.stringify([]));
+    // props.updateStore(JSON.parse(localStorage.getItem("myTasks")));
   };
+  console.log(props.store.store);
 
   return (
     <>
