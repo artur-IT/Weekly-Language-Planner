@@ -15,12 +15,9 @@ const Header = (props) => {
 
   // REMOVE ALL TASKS FROM LocalStore
   const clearAllTasks = () => {
-    localStorage.clear();
-    props.updateStore([]);
-    // localStorage.setItem("myTasks", JSON.stringify([]));
-    // props.updateStore(JSON.parse(localStorage.getItem("myTasks")));
+    localStorage.removeItem("myTasks");
+    props.updateStore();
   };
-  console.log(props.store.store);
 
   return (
     <>

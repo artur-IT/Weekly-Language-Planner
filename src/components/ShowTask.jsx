@@ -24,7 +24,7 @@ const ShowTask = (values) => {
 
   // return jsx to DOM
   const task = (el) => {
-    const taskFromLocalStore = (
+    return (
       <div className={`empty${el.done == true ? ` done_task_bgc` : ""}`} name={values.name}>
         <div>
           <p>{el.name}</p>
@@ -34,7 +34,6 @@ const ShowTask = (values) => {
         </div>
       </div>
     );
-    return taskFromLocalStore;
   };
 
   if (myLocalStore) {

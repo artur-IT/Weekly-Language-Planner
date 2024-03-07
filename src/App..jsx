@@ -13,11 +13,11 @@ import HabitSumTime from "./components/HabitSumTime";
 export class App extends Component {
   constructor() {
     super();
-    this.myLocalStore = localStorage.getItem("myTasks") ? JSON.parse(localStorage.getItem("myTasks")) : [];
+    // this.myLocalStore = localStorage.getItem("myTasks") ? JSON.parse(localStorage.getItem("myTasks")) : [];
     this.myLang = localStorage.getItem("languagePL") ? JSON.parse(localStorage.getItem("languagePL")) : false;
 
     this.state = {
-      store: this.myLocalStore,
+      store: localStorage.getItem("myTasks") ? JSON.parse(localStorage.getItem("myTasks")) : [],
       switchPL: this.myLang,
       days: {
         en: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
@@ -29,7 +29,6 @@ export class App extends Component {
       },
     };
 
-    this.taskArray = [];
     this.divNames = [];
 
     this.dayTimes = [
@@ -78,6 +77,8 @@ export class App extends Component {
   // GET NEW TASK FROM USER AND SAVE TO LocalStorage
   addTaskFromUser = (e) => {
     e.preventDefault();
+    let myLocalStore = this.state.store;
+
     let myDay = document.querySelector(".day_task").value;
     let myStudy = document.querySelector(".study").value;
     let myTask = document.querySelector(".task_name").value;
@@ -89,7 +90,7 @@ export class App extends Component {
     if (myDay && myStudy && myTask && myTime != 0) {
       const test = this.checkNameConflict(`${id}`);
       if (test == false) {
-        this.myLocalStore.push({
+        myLocalStore.push({
           id: id,
           date_add: date_add,
           day: myDay,
@@ -99,9 +100,10 @@ export class App extends Component {
           done: false,
           active: false,
         });
-        this.setState({ store: this.myLocalStore });
-        localStorage.setItem("myTasks", JSON.stringify(this.myLocalStore));
+
+        localStorage.setItem("myTasks", JSON.stringify(myLocalStore));
         this.clearAllInputs();
+        this.setState({ store: myLocalStore });
       }
     } else alert("Uzupełnij pola!");
   };
@@ -131,7 +133,7 @@ export class App extends Component {
   };
 
   // UPDATE state AFTER REMOVE TASK FROM COMPONENT ShowTask
-  newStore = (newStore) => {
+  newStore = (newStore = []) => {
     this.setState({ store: newStore });
   };
 
@@ -150,7 +152,7 @@ export class App extends Component {
 
     return (
       <>
-        <Header store={this.state} updateStore={this.newStore} />
+        <Header store={this.state} updateStore={this.newStore} LS={this.myLocalStore} />
         <SectionAddTask store={this.state} addTaskFromUser={this.addTaskFromUser} />
         <section className="layout">
           <Days daysNames={this.state.days} switch={this.state.switchPL} />
