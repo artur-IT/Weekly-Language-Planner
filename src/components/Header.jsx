@@ -21,12 +21,14 @@ const Header = (props) => {
   return (
     <>
       <h1> {!props.store.switchPL ? "Weekly Language Planner" : "Tygodniowy planner językowy"}</h1>
-      <button className="add_top" onClick={showTaskBar}>
-        {!props.store.switchPL ? "ADD TASK" : "DODAJ ZADANIE"}
-      </button>
-      <button className="remove_top" onClick={clearAllTasks}>
-        {!props.store.switchPL ? "CLEAR PLAN" : "WYCZYŚĆ PLAN"}
-      </button>
+      <div className="header_buttons">
+        <button className="add_top" onClick={showTaskBar}>
+          {!props.store.switchPL ? "ADD TASK" : "DODAJ ZADANIE"}
+        </button>
+        <button className="remove_top" onClick={clearAllTasks}>
+          {!props.store.switchPL ? "CLEAR PLAN" : "WYCZYŚĆ PLAN"}
+        </button>
+      </div>
     </>
   );
 };

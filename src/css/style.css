@@ -5,8 +5,8 @@
   padding: 0;
   box-sizing: border-box;
   border-radius: 10px;
-  --bgc-habit: #34d399;
-  --bgc-days: #fbbf24;
+  --bgc-habit: #49d907;
+  --bgc-days: #eaf205;
 }
 
 body {
@@ -15,8 +15,11 @@ body {
   background-color: #151d2c;
 }
 
-h1 {
-  margin-bottom: 20px;
+h1,
+.header_buttons {
+  width: 60%;
+  margin: 0 auto 0px auto;
+  /* margin-bottom: 20px; */
   padding: 20px 0;
   color: #fff;
   background-color: #020408;
@@ -39,6 +42,7 @@ button.remove_top {
   cursor: pointer;
   background-color: #000;
   border: 1px solid #34d399;
+  transition: 0.5s;
   z-index: 1;
 }
 
@@ -47,7 +51,7 @@ button.remove_top:hover {
   color: #000;
   font-weight: bold;
   background-color: #34d399;
-  transition: 0.7s;
+  transition: 0.5s;
 }
 
 .btn_remove {

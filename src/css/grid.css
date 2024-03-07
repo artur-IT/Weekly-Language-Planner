@@ -36,11 +36,11 @@ div {
 }
 .done_task_bgc {
   color: #fff;
-  background-color: #e879f9;
+  background-color: #f24607;
 }
 .empty p {
   padding: 5px 7px;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   font-weight: 500;
 }
 .empty div {
@@ -86,7 +86,7 @@ div {
 .saturday_real_time,
 .sunday_real_time {
   color: #fff;
-  background-color: #e879f9;
+  background-color: #3c94ca;
 }
 
 .zero {

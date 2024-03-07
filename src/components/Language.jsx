@@ -7,7 +7,7 @@ const Language = (props) => {
     <>
       <div className="languages">
         <div className="tooltip">
-          <img className="" src="icon/question.svg" alt="question symbol" />
+          <img className="language_info" src="icon/question.svg" alt="question symbol" />
           <p className="tooltiptext">
             {!props.switch
               ? "Accurate Plan to learn your foreign language. Type in a brief statement of what you will be doing in chosing day e.g., listening to the radio, reading an article, fiche..."
@@ -15,9 +15,9 @@ const Language = (props) => {
           </p>
         </div>
         {props.switch ? (
-          <img src="icon/en.png" onClick={langButton} alt="english language" />
+          <img className="language_info" src="icon/en.png" onClick={langButton} alt="english language" />
         ) : (
-          <img src="icon/pl.png" onClick={langButton} alt="polish language" />
+          <img className="language_info" src="icon/pl.png" onClick={langButton} alt="polish language" />
         )}
       </div>
     </>

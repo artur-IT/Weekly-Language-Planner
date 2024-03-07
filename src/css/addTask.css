@@ -86,11 +86,12 @@ button.add_form {
   cursor: pointer;
   background-color: #000;
   border: 1px solid #34d399;
+  transition: 0.5s;
 }
 
 button.add_form:hover {
   color: #000;
   font-weight: bold;
   background-color: #34d399;
-  transition: 0.7s;
+  transition: 0.5s;
 }
