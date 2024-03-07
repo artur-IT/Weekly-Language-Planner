@@ -13,7 +13,6 @@ import HabitSumTime from "./components/HabitSumTime";
 export class App extends Component {
   constructor() {
     super();
-    // this.myLocalStore = localStorage.getItem("myTasks") ? JSON.parse(localStorage.getItem("myTasks")) : [];
     this.myLang = localStorage.getItem("languagePL") ? JSON.parse(localStorage.getItem("languagePL")) : false;
 
     this.state = {
@@ -77,7 +76,7 @@ export class App extends Component {
   // GET NEW TASK FROM USER AND SAVE TO LocalStorage
   addTaskFromUser = (e) => {
     e.preventDefault();
-    let myLocalStore = this.state.store;
+    const myLocalStore = this.state.store;
 
     let myDay = document.querySelector(".day_task").value;
     let myStudy = document.querySelector(".study").value;
@@ -100,10 +99,9 @@ export class App extends Component {
           done: false,
           active: false,
         });
-
         localStorage.setItem("myTasks", JSON.stringify(myLocalStore));
-        this.clearAllInputs();
         this.setState({ store: myLocalStore });
+        this.clearAllInputs();
       }
     } else alert("Uzupełnij pola!");
   };
@@ -133,14 +131,10 @@ export class App extends Component {
   };
 
   // UPDATE state AFTER REMOVE TASK FROM COMPONENT ShowTask
-  newStore = (newStore = []) => {
-    this.setState({ store: newStore });
-  };
+  newStore = (newStore = []) => this.setState({ store: newStore });
 
   // SWITCH LANGUAGE in state
-  newStateSwitchPL = (lang) => {
-    this.setState({ switchPL: lang });
-  };
+  newStateSwitchPL = (lang) => this.setState({ switchPL: lang });
 
   render() {
     {
@@ -152,7 +146,7 @@ export class App extends Component {
 
     return (
       <>
-        <Header store={this.state} updateStore={this.newStore} LS={this.myLocalStore} />
+        <Header store={this.state} updateStore={this.newStore} />
         <SectionAddTask store={this.state} addTaskFromUser={this.addTaskFromUser} />
         <section className="layout">
           <Days daysNames={this.state.days} switch={this.state.switchPL} />

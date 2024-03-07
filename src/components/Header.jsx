@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 const Header = (props) => {
-  // let myLocalStore = props.store;
   const showTaskBar = () => {
     const addBar = document.querySelector(".task_fields");
 
