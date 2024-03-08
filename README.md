@@ -38,9 +38,7 @@ Simple planner helping to study any foreign language.
 
 &nbsp;
 
-```
 Example code:
-```
 
 ![function addTaskFromUser()](/public/screenshot/addTaskFromUser.png)
 

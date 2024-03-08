@@ -41,6 +41,7 @@ img.language_info:hover {
   /* Fade in tooltip */
   opacity: 0;
   transition: opacity 0.3s;
+  z-index: 5;
 }
 
 /* Tooltip arrow */
