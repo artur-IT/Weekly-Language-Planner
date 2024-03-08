@@ -66,7 +66,7 @@ export class App extends Component {
 
     this.state.store.forEach((el, idx) => {
       if (this.state.store[idx].id === taskId) {
-        alert("W tym polu jest już zadanie, usuń je najpierw");
+        alert("W tym polu jest już zadanie, usuń je najpierw / There is already a task in this field, please delete it first");
         flag = true;
         return flag;
       }
@@ -103,7 +103,7 @@ export class App extends Component {
         this.setState({ store: myLocalStore });
         this.clearAllInputs();
       }
-    } else alert("Uzupełnij pola!");
+    } else alert("Uzupełnij wszystkie pola! / Complete all fields!");
   };
 
   clearAllInputs = () => document.getElementById("task_inputs").reset();

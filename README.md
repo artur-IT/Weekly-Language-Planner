@@ -1,4 +1,4 @@
-![screen or GIF of your app](https://via.placeholder.com/1000x300)
+![screen of my app](/public/screenshot/app_in_web.png)
 
 # Weekly Language Planner
 
@@ -6,7 +6,7 @@ See the live version of [Weekly Language Planner](https://artur-it.github.io/Wee
 
 Project create in Vite.
 
-Simple planner helping to study language (any).
+Simple planner helping to study any foreign language.
 
 **Main features**:
 
@@ -28,52 +28,42 @@ Simple planner helping to study language (any).
 
 ## 🤔 Solutions provided in the project
 
-- Summary habit time, One day time and User real task time
+- Summary habit time,
+- Summary One day times
+  ![function getOneDayTimes()](/public/screenshot/getOneDayTimes.png)
+
+- Summary User real task time
 - CSS scale effect
-- User tasks is store in LocalStore
+- All User tasks is stored in LocalStore
+
+&nbsp;
 
 ```
-some example code
-
-more code :)
+Example code:
 ```
 
-&nbsp;
+![function addTaskFromUser()](/public/screenshot/addTaskFromUser.png)
 
-- three
+Array with all user times:
 
-| Issue | Solution             |     |
-| ----- | -------------------- | --- |
-| one   | `short code example` |     |
-| two   | `short code example` |     |
-| thre  | `short code example` |     |
+![Array with all user times](/public/screenshot/all_times.png)
 
-&nbsp;
+Class App:
 
-- four - some shortcut <kbd>Ctrl</kbd> + <kbd>C</kbd>
+![class App](/public/screenshot/class_App.png)
 
-&nbsp;
+setState:
 
-- five - example with a screenshot
-  <img alt='what it is' src="https://via.placeholder.com/500x200" />
+![Hook setState](/public/screenshot/setState.png)
 
 &nbsp;
 
 ## 💭 Conclusions for future projects
 
-I would like to improve...
+I would like to add Panel Admin with options:
 
-#### This is the first issue:
-
-```
-and this is a code example
-```
-
-#### This is the second issue:
-
-```
-and this is a code example
-```
+- Delete Habits
+- delete Days
 
 &nbsp;
 
@@ -83,6 +73,6 @@ Write sth nice ;) inz.matys@gmail.com
 
 &nbsp;
 
-## 👏 Thanks / Special thanks / Credits
+## 👏 Thanks
 
 Thanks to [Mentor - devmentor.pl](https://devmentor.pl/) – for readme template.
