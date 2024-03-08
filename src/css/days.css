@@ -1,35 +1,34 @@
-.monnday {
-  grid-area: monnday;
+.monnday,
+.tuesday,
+.wednesday,
+.thursday,
+.friday,
+.saturday,
+.sunday {
   font-weight: 700;
   background-color: var(--bgc-days);
+  box-shadow: 2.8px 2.8px 2.2px rgba(0, 0, 0, 0.25), 6.7px 6.7px 5.3px rgba(0, 0, 0, 0.18), 12.5px 12.5px 10px rgba(0, 0, 0, 0.149),
+    22.3px 22.3px 17.9px rgba(0, 0, 0, 0.125), 41.8px 41.8px 33.4px rgba(0, 0, 0, 0.101), 100px 100px 80px rgba(0, 0, 0, 0.071);
+}
+
+.monnday {
+  grid-area: monnday;
 }
 .tuesday {
   grid-area: tuesday;
-  font-weight: 700;
-  background-color: var(--bgc-days);
 }
 .wednesday {
   grid-area: wednesday;
-  font-weight: 700;
-  background-color: var(--bgc-days);
 }
 .thursday {
   grid-area: thursday;
-  font-weight: 700;
-  background-color: var(--bgc-days);
 }
 .friday {
   grid-area: friday;
-  font-weight: 700;
-  background-color: var(--bgc-days);
 }
 .saturday {
   grid-area: saturday;
-  font-weight: 700;
-  background-color: var(--bgc-days);
 }
 .sunday {
   grid-area: sunday;
-  font-weight: 700;
-  background-color: var(--bgc-days);
 }

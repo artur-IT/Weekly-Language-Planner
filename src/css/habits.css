@@ -4,30 +4,24 @@
 .habit4,
 .habit5 {
   font-size: 1.2rem;
+  font-weight: 700;
+  background-color: var(--bgc-habit);
+  box-shadow: 2.8px 2.8px 2.2px rgba(0, 0, 0, 0.25), 6.7px 6.7px 5.3px rgba(0, 0, 0, 0.18), 12.5px 12.5px 10px rgba(0, 0, 0, 0.149),
+    22.3px 22.3px 17.9px rgba(0, 0, 0, 0.125), 41.8px 41.8px 33.4px rgba(0, 0, 0, 0.101), 100px 100px 80px rgba(0, 0, 0, 0.071);
 }
 
 .habit1 {
   grid-area: habit1;
-  font-weight: 700;
-  background-color: var(--bgc-habit);
 }
 .habit2 {
   grid-area: habit2;
-  font-weight: 700;
-  background-color: var(--bgc-habit);
 }
 .habit3 {
   grid-area: habit3;
-  font-weight: 700;
-  background-color: var(--bgc-habit);
 }
 .habit4 {
   grid-area: habit4;
-  font-weight: 700;
-  background-color: var(--bgc-habit);
 }
 .habit5 {
   grid-area: habit5;
-  font-weight: 700;
-  background-color: var(--bgc-habit);
 }

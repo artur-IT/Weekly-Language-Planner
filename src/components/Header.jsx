@@ -20,8 +20,8 @@ const Header = (props) => {
 
   return (
     <>
-      <h1> {!props.store.switchPL ? "Weekly Language Planner" : "Tygodniowy planner językowy"}</h1>
       <div className="header_buttons">
+        <h1> {!props.store.switchPL ? "Language Learning Planner" : "Planer Nauki Języka"}</h1>
         <button className="add_top" onClick={showTaskBar}>
           {!props.store.switchPL ? "ADD TASK" : "DODAJ ZADANIE"}
         </button>

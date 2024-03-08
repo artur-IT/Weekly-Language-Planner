@@ -1,27 +1,23 @@
 .form-container {
-  margin: 20px auto;
-  width: 1150px;
+  margin: 30px auto;
+  width: 1050px;
   height: 70px;
-  /* background-color: yellowgreen; */
 }
 
 .task_fields {
   display: none;
-  margin: 20px auto;
-  padding: 20px 0;
-  background-color: #090b0d;
-  border: 2px solid #222;
+  margin: 0px auto;
+  padding: 10px 0;
+  background-color: #3c94ca;
 }
 
 @keyframes show-bar {
   0% {
     opacity: 0;
-    /* transform: scale(0); */
     transform-origin: center;
   }
   100% {
     opacity: 1;
-    /* transform: scale(1); */
     transform-origin: center;
   }
 }
@@ -29,12 +25,10 @@
 @keyframes hide-bar {
   0% {
     opacity: 1;
-    /* transform: scale(1); */
     transform-origin: center;
   }
   100% {
     opacity: 0;
-    /* transform: scale(0); */
     transform-origin: center;
   }
 }
@@ -56,21 +50,20 @@ label {
 }
 
 select {
-  font-size: 1rem;
+  font-size: 0.9rem;
   margin-left: 5px;
   margin-right: 5px;
-  padding: 2px 3px;
-  border: 1px solid #ddd;
+  padding: 5px;
+  border: 1px solid #fff;
 }
 
 select option {
-  margin: 15px;
-  padding: 15px;
+  padding: 10px;
 }
 
 input {
   margin: 0 5px;
-  padding: 5px;
+  padding: 7px;
   border: 1px solid #ddd;
 }
 
@@ -84,14 +77,14 @@ button.add_form {
   padding: 7px 10px;
   color: #fff;
   cursor: pointer;
-  background-color: #000;
-  border: 1px solid #34d399;
+  background-color: #970ff2;
+  border: none;
   transition: 0.5s;
 }
 
 button.add_form:hover {
   color: #000;
-  font-weight: bold;
-  background-color: #34d399;
+  /* font-weight: bold; */
+  /* background-color: #34d399; */
   transition: 0.5s;
 }

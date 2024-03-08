@@ -5,6 +5,7 @@
   padding: 0;
   box-sizing: border-box;
   border-radius: 10px;
+  --btn-bg-color: #970ff2;
   --bgc-habit: #49d907;
   --bgc-days: #eaf205;
 }
@@ -12,17 +13,22 @@
 body {
   font-family: "Lato", Arial, sans-serif;
   text-align: center;
-  background-color: #151d2c;
+
+  background-color: #0093e9;
+  background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
 }
 
-h1,
 .header_buttons {
-  width: 60%;
-  margin: 0 auto 0px auto;
-  /* margin-bottom: 20px; */
-  padding: 20px 0;
+  width: 45%;
+  margin: 0 auto 20px auto;
+  padding: 5px 0;
   color: #fff;
-  background-color: #020408;
+}
+
+h1 {
+  margin: 40px auto;
+  font-size: 2.5rem;
+  text-shadow: 2px 2px 4px #000;
 }
 
 hr {
@@ -39,18 +45,22 @@ button.remove_top {
   margin-left: 15px;
   padding: 15px 20px;
   color: #fff;
+  font-weight: bold;
   cursor: pointer;
-  background-color: #000;
-  border: 1px solid #34d399;
+  background: none;
+  background-color: var(--btn-bg-color);
+  border: none;
   transition: 0.5s;
   z-index: 1;
+
+  box-shadow: 2.8px 2.8px 2.2px rgba(0, 0, 0, 0.25), 6.7px 6.7px 5.3px rgba(0, 0, 0, 0.18), 12.5px 12.5px 10px rgba(0, 0, 0, 0.149),
+    22.3px 22.3px 17.9px rgba(0, 0, 0, 0.125), 41.8px 41.8px 33.4px rgba(0, 0, 0, 0.101), 100px 100px 80px rgba(0, 0, 0, 0.071);
 }
 
 button.add_top:hover,
 button.remove_top:hover {
   color: #000;
-  font-weight: bold;
-  background-color: #34d399;
+  background-color: #49d907;
   transition: 0.5s;
 }
 
