@@ -6,6 +6,7 @@
   font-size: 0.8rem;
   font-weight: bold;
   background-color: #cbd5e1;
+  box-shadow: var(--shadow);
 }
 
 .habit1_sum {
@@ -29,4 +30,5 @@
   font-size: 0.8rem;
   grid-area: habit_sum;
   background-color: #fff;
+  box-shadow: var(--shadow);
 }

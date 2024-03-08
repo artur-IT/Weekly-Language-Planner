@@ -12,7 +12,8 @@ img.language_info {
   cursor: pointer;
 }
 img.language_info:hover {
-  border: 2px solid #34d399;
+  border: 1px solid #eaf205;
+  box-shadow: var(--shadow);
 }
 
 /* Tooltip container */
@@ -25,11 +26,11 @@ img.language_info:hover {
 .tooltip .tooltiptext {
   visibility: hidden;
   width: 200px;
-  background-color: #555;
-  color: #fbbf24;
+  background-color: #3c94ca;
+  color: #eaf205;
   text-align: center;
-  padding: 7px;
-  border-radius: 6px;
+  padding: 10px;
+  border-radius: 15px;
 
   /* Position the tooltip text */
   position: absolute;

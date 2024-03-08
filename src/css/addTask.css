@@ -7,8 +7,9 @@
 .task_fields {
   display: none;
   margin: 0px auto;
-  padding: 10px 0;
+  padding: 20px 0;
   background-color: #3c94ca;
+  box-shadow: var(--shadow);
 }
 
 @keyframes show-bar {
@@ -84,7 +85,5 @@ button.add_form {
 
 button.add_form:hover {
   color: #000;
-  /* font-weight: bold; */
-  /* background-color: #34d399; */
   transition: 0.5s;
 }
