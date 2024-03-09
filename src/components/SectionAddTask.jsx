@@ -33,7 +33,7 @@ const AddTaskSection = (props) => {
         </label>
         <label>
           {!lang ? "Task name:" : "Nazwa zadania:"}
-          <input className="task_name" name="task-name" type="text" placeholder="task name..." />
+          <input className="task_name" name="task-name" type="text" placeholder="max.40 characters" maxLength={40} />
         </label>
         <label>
           {!lang ? "Task time:" : "Czas zadania:"}

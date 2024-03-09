@@ -85,7 +85,7 @@ button.remove_top:hover {
 
 .btn_remove,
 .btn_done {
-  margin-top: 10px;
+  margin-top: 5px;
   width: 25px;
   height: 25px;
   transition: 0.1s;
