@@ -20,7 +20,7 @@ body {
 }
 
 .header_buttons {
-  width: 45%;
+  width: 55%;
   margin: 0 auto 20px auto;
   padding: 5px 0;
   color: #fff;
@@ -28,16 +28,9 @@ body {
 
 h1 {
   margin: 40px auto;
-  font-size: 2.7rem;
+  font-size: 3rem;
+  font-weight: normal;
   text-shadow: 2px 2px 4px #000;
-}
-
-hr {
-  margin: 0 auto;
-  width: 80%;
-  color: #000;
-  border-style: dashed;
-  opacity: 0.2;
 }
 
 button.remove_top {
@@ -47,7 +40,6 @@ button.remove_top {
 button.add_top,
 button.remove_top {
   position: relative;
-
   padding: 15px 20px;
   color: #fff;
   font-weight: bold;
@@ -69,6 +61,12 @@ button.remove_top:hover {
 
 .btn_remove,
 .btn_done {
+  margin-top: 0px;
+  width: 25px;
+  height: 25px;
+  transition: 0.1s;
+  border: 0px;
+  border-radius: 15px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: 50%;
@@ -83,19 +81,10 @@ button.remove_top:hover {
   background-image: url(/public/icon/done.svg);
 }
 
-.btn_remove,
-.btn_done {
-  margin-top: 5px;
-  width: 25px;
-  height: 25px;
-  transition: 0.1s;
-  border: 0px;
-  border-radius: 15px;
-}
 .btn_remove:hover,
 .btn_done:hover {
   cursor: pointer;
-  border: 1px solid red;
+  border: 1px solid #ff0000;
   opacity: 1;
 }
 

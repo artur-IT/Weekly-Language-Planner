@@ -27,6 +27,8 @@ div {
   box-shadow: var(--shadow);
 }
 .empty:hover {
+  box-sizing: content-box;
+  width: 100%;
   border: 1px solid #000;
   transform: scale(1.3);
   box-shadow: 1.6px 1.6px 0.2px rgba(0, 0, 0, 0.105), 3.4px 3.4px 0.6px rgba(0, 0, 0, 0.155), 5.8px 5.8px 1.5px rgba(0, 0, 0, 0.191),
@@ -40,7 +42,7 @@ div {
   background-color: #f24607;
 }
 .empty p {
-  padding: 5px 7px;
+  padding: 3px 6px;
   font-size: 0.8rem;
   font-weight: 500;
 }
@@ -48,7 +50,6 @@ div {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  max-height: 80%;
 }
 
 .center_text {
