@@ -14,7 +14,7 @@ const PlannedTime = (props) => {
       <div className="friday_sum_time">{time[4].time > 0 ? `${time[4].time} min.` : null}</div>
       <div className="saturday_sum_time">{time[5].time > 0 ? `${time[5].time} min.` : null}</div>
       <div className="sunday_sum_time">{time[6].time > 0 ? `${time[6].time} min.` : null}</div>
-      <div className="habit_sum_bgc">-</div>
+      <div className="habit_sum_bgc"></div>
     </>
   );
 };

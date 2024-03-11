@@ -6,6 +6,8 @@ Simple planner helping to study any foreign language.
 
 See the live version of [Weekly Language Planner](https://artur-it.github.io/Weekly-Language-Planner/).
 
+(no RWD, only Desktop)
+
 **Short instruction:**
 
 Learning a foreign language requires practicing vocabulary, reading, listening, speaking, and writing.

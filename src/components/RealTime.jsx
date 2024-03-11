@@ -14,7 +14,7 @@ const RealTime = (props) => {
       <div className="friday_real_time">{time[4].real_time > 0 ? `${time[4].real_time} min.` : null}</div>
       <div className="saturday_real_time">{time[5].real_time > 0 ? `${time[5].real_time} min.` : null}</div>
       <div className="sunday_real_time">{time[6].real_time > 0 ? `${time[6].real_time} min.` : null}</div>
-      <div className="habit_sum_bgc">-</div>
+      <div className="habit_sum_bgc"></div>
     </>
   );
 };
