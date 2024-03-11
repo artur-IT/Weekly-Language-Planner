@@ -2,11 +2,16 @@
 
 # Weekly Language Planner
 
+Simple planner helping to study any foreign language.
+
 See the live version of [Weekly Language Planner](https://artur-it.github.io/Weekly-Language-Planner/).
 
-Project create in Vite.
+**Short instruction:**
 
-Simple planner helping to study any foreign language.
+Learning a foreign language requires practicing vocabulary, reading, listening, speaking, and writing.
+Plan on what day you will practice a given skill and type in your planner.
+
+&nbsp;
 
 **Main features**:
 
@@ -18,6 +23,8 @@ Simple planner helping to study any foreign language.
 &nbsp;
 
 ## 💡 Technologies
+
+Project create in Vite.
 
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
