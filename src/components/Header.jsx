@@ -14,8 +14,10 @@ const Header = (props) => {
 
   // REMOVE ALL TASKS FROM LocalStore
   const clearAllTasks = () => {
-    localStorage.removeItem("myTasks");
-    props.updateStore();
+    if (confirm("Are you sure? \nDelete all tasks?")) {
+      localStorage.removeItem("myTasks");
+      props.updateStore();
+    } else return;
   };
 
   return (
