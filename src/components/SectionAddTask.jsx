@@ -16,7 +16,6 @@ const AddTaskSection = (props) => {
             <option value={"Wednesday"}>{!lang ? days.en[2] : days.pl[2]}</option>
             <option value={"Thursday"}>{!lang ? days.en[3] : days.pl[3]}</option>
             <option value={"Friday"}>{!lang ? days.en[4] : days.pl[4]}</option>
-            <option value={"Saturday"}>{!lang ? days.en[5] : days.pl[5]}</option>
           </select>
         </label>
         <label>
