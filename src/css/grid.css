@@ -5,15 +5,15 @@
   width: 1150px;
   height: auto;
   grid:
-    "zero monnday tuesday wednesday thursday friday saturday sunday habit_sum" 50px
-    "habit1 . . . . . . . habit1_sum" 120px
-    "habit2 . . . . . . . habit2_sum" 120px
-    "habit3 . . . . . . . habit3_sum" 120px
-    "habit4 . . . . . . . habit4_sum" 120px
-    "habit5 . . . . . . . habit5_sum" 120px
-    "plannded_time . . . . . . . ." 40px
-    "time_done . . . . . . . ." 40px
-    / 180px 120px 120px 120px 120px 120px 120px 120px 50px;
+    "zero monnday tuesday wednesday thursday friday habit_sum" 50px
+    "habit1 . . . . . habit1_sum" 120px
+    "habit2 . . . . . habit2_sum" 120px
+    "habit3 . . . . . habit3_sum" 120px
+    "habit4 . . . . . habit4_sum" 120px
+    "habit5 . . . . . habit5_sum" 120px
+    "plannded_time . . . . . ." 40px
+    "time_done . . . . . ." 40px
+    / 180px 120px 120px 120px 120px 120px 50px;
   gap: 10px;
 }
 
@@ -65,15 +65,11 @@ div {
 .wednesday_sum_time,
 .thursday_sum_time,
 .friday_sum_time,
-.saturday_sum_time,
-.sunday_sum_time,
 .monday_real_time,
 .tuesday_real_time,
 .wednesday_real_time,
 .thursday_real_time,
-.friday_real_time,
-.saturday_real_time,
-.sunday_real_time {
+.friday_real_time {
   line-height: 40px;
   vertical-align: middle;
   font-size: 0.8rem;
@@ -86,9 +82,7 @@ div {
 .tuesday_real_time,
 .wednesday_real_time,
 .thursday_real_time,
-.friday_real_time,
-.saturday_real_time,
-.sunday_real_time {
+.friday_real_time {
   color: #fff;
   background-color: #3c94ca;
 }
