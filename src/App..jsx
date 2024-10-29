@@ -1,165 +1,118 @@
-import { Component } from "react";
-
+import { useState, useEffect, useCallback } from "react";
 import Header from "./components/Header";
 import SectionAddTask from "./components/SectionAddTask";
-import Language from "./components/Language.jsx";
-import ShowTask from "./components/ShowTask";
 import Days from "./components/Days";
 import Habits from "./components/Habits";
+import ShowTask from "./components/ShowTask";
+import HabitSumTime from "./components/HabitSumTime";
 import PlannedTime from "./components/PlannedTime";
 import RealTime from "./components/RealTime";
-import HabitSumTime from "./components/HabitSumTime";
+import Language from "./components/Language";
 
-export class App extends Component {
-  constructor() {
-    super();
-    this.myLang = localStorage.getItem("languagePL") ? JSON.parse(localStorage.getItem("languagePL")) : false;
+// Stałe konfiguracyjne
+const INITIAL_DAYS = {
+  en: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+  pl: ["Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek"],
+};
 
-    this.state = {
-      store: localStorage.getItem("myTasks") ? JSON.parse(localStorage.getItem("myTasks")) : [],
-      switchPL: this.myLang,
-      days: {
-        en: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        pl: ["Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek"],
-      },
-      habits: {
-        en: ["SPEAKING", "READING", "WRITING", "LISTENING", "VOCABULARY"],
-        pl: ["MÓWIENIE", "CZYTANIE", "PISANIE", "SŁUCHANIE", "SŁOWNICTWO"],
-      },
-    };
+const INITIAL_HABITS = {
+  en: ["SPEAKING", "READING", "WRITING", "LISTENING", "VOCABULARY"],
+  pl: ["MÓWIENIE", "CZYTANIE", "PISANIE", "SŁUCHANIE", "SŁOWNICTWO"],
+};
 
-    this.divNames = [];
+const INITIAL_DAY_TIMES = [
+  { day: "Monday", time: 0, real_time: 0 },
+  { day: "Tuesday", time: 0, real_time: 0 },
+  { day: "Wednesday", time: 0, real_time: 0 },
+  { day: "Thursday", time: 0, real_time: 0 },
+  { day: "Friday", time: 0, real_time: 0 },
+];
 
-    this.dayTimes = [
-      { day: "Monday", time: 0, real_time: 0 },
-      { day: "Tuesday", time: 0, real_time: 0 },
-      { day: "Wednesday", time: 0, real_time: 0 },
-      { day: "Thursday", time: 0, real_time: 0 },
-      { day: "Friday", time: 0, real_time: 0 },
-    ];
-    this.habitTimes = [
-      { study: "SPEAKING", time: 0 },
-      { study: "READING", time: 0 },
-      { study: "WRITING", time: 0 },
-      { study: "LISTENING", time: 0 },
-      { study: "VOCABULARY", time: 0 },
-    ];
-  }
+const INITIAL_HABIT_TIMES = [
+  { study: "SPEAKING", time: 0 },
+  { study: "READING", time: 0 },
+  { study: "WRITING", time: 0 },
+  { study: "LISTENING", time: 0 },
+  { study: "VOCABULARY", time: 0 },
+];
 
-  // CREATE ARRAY WITH NAMES for div: 'day-HABIT'
-  namesForDIV = () => {
-    for (let x = 0; x < this.state.days.en.length; x++) {
-      for (let y = 0; y < this.state.days.en.length; y++) {
-        const divName = this.state.days.en[y].toLocaleLowerCase() + `-` + this.state.habits.en[x];
-        this.divNames.push(divName);
+// Hook customowy do obsługi localStorage
+const useLocalStorage = (key, initialValue) => {
+  const [value, setValue] = useState(() => {
+    const item = localStorage.getItem(key);
+    return item ? JSON.parse(item) : initialValue;
+  });
+
+  useEffect(() => {
+    localStorage.setItem(key, JSON.stringify(value));
+  }, [key, value]);
+
+  return [value, setValue];
+};
+
+const App = () => {
+  const [store, setStore] = useLocalStorage("myTasks", []);
+  const [switchPL, setSwitchPL] = useLocalStorage("languagePL", false);
+  const [days] = useState(INITIAL_DAYS);
+  const [habits] = useState(INITIAL_HABITS);
+  const [divNames, setDivNames] = useState([]);
+  const [dayTimes, setDayTimes] = useState(INITIAL_DAY_TIMES);
+  const [habitTimes, setHabitTimes] = useState(INITIAL_HABIT_TIMES);
+
+  // Generowanie nazw dla divów
+  const generateDivNames = useCallback(() => {
+    const names = habits.en.flatMap((habit) => days.en.map((day) => `${day.toLowerCase()}-${habit}`));
+    setDivNames(names);
+  }, [days.en, habits.en]);
+
+  // Obliczanie czasów
+  const calculateTimes = useCallback(() => {
+    const newDayTimes = INITIAL_DAY_TIMES.map((day) => ({ ...day }));
+    const newHabitTimes = INITIAL_HABIT_TIMES.map((habit) => ({ ...habit }));
+
+    store.forEach((task) => {
+      const dayTime = newDayTimes.find((d) => d.day === task.day);
+      if (dayTime) {
+        dayTime.time += Number(task.time);
+        if (task.done) {
+          dayTime.real_time += Number(task.time);
+        }
       }
-    }
-    return;
-  };
 
-  // CHECK CONFLICTS NAMES in LocalStore <=> myLocalstore in App
-  checkNameConflict = (taskId) => {
-    let flag = false;
-    if (this.state.store == []) return flag;
-
-    this.state.store.forEach((el, idx) => {
-      if (this.state.store[idx].id === taskId) {
-        alert("W tym polu jest już zadanie, usuń je najpierw / There is already a task in this field, please delete it first");
-        flag = true;
-        return flag;
+      const habitTime = newHabitTimes.find((h) => h.study === task.study);
+      if (habitTime) {
+        habitTime.time += Number(task.time);
       }
     });
-    return flag;
-  };
-  // GET NEW TASK FROM USER AND SAVE TO LocalStorage
-  addTaskFromUser = (e) => {
-    e.preventDefault();
-    const myLocalStore = this.state.store;
 
-    let myDay = document.querySelector(".day_task").value;
-    let myStudy = document.querySelector(".study").value;
-    let myTask = document.querySelector(".task_name").value;
-    let myTime = document.querySelector(".task_time").value;
-    const id = myDay.toLocaleLowerCase() + "-" + myStudy;
-    const date_add = new Date().toLocaleDateString("pl-PL");
+    setDayTimes(newDayTimes);
+    setHabitTimes(newHabitTimes);
+  }, [store]);
 
-    // add new task to this.state and LocalStore
-    if (myDay && myStudy && myTask && myTime != 0) {
-      const test = this.checkNameConflict(`${id}`);
-      if (test == false) {
-        myLocalStore.push({
-          id: id,
-          date_add: date_add,
-          day: myDay,
-          study: myStudy,
-          name: myTask,
-          time: myTime,
-          done: false,
-          active: false,
-        });
-        localStorage.setItem("myTasks", JSON.stringify(myLocalStore));
-        this.setState({ store: myLocalStore });
-        this.clearAllInputs();
-      }
-    } else alert("Uzupełnij wszystkie pola! / Complete all fields!");
-  };
+  useEffect(() => {
+    generateDivNames();
+    calculateTimes();
+  }, [store, generateDivNames, calculateTimes]);
 
-  clearAllInputs = () => document.getElementById("task_inputs").reset();
+  return (
+    <>
+      <Header store={store} updateStore={setStore} switchPL={switchPL} />
+      <SectionAddTask store={store} setStore={setStore} days={days} habits={habits} switchPL={switchPL} />
+      <section className="layout">
+        <Days daysNames={days} switch={switchPL} />
+        <Habits habitsNames={habits} switch={switchPL} />
 
-  // SUMMARY FROM ALL TASKS PLANNED TIME FROM ONE-DAY
-  getOneDayTimes = () => {
-    this.dayTimes.forEach((item) => (item.time = 0));
-    const summaryOneDayTime = (day, time) => this.dayTimes.forEach((item) => (item.day === day ? (item.time += Number(time)) : null));
-    for (const el of this.state.store) summaryOneDayTime(el.day, el.time);
-  };
+        {divNames.map((item) => (
+          <ShowTask key={item} name={item} times={dayTimes} store={store} updateStore={setStore} />
+        ))}
 
-  // SUMMARY ONE HABIT TIMES FROM ALL DAYS
-  getOneHabitTimes = () => {
-    this.habitTimes.forEach((item) => (item.time = 0));
-    const summaryOneHabitTime = (study, time) =>
-      this.habitTimes.forEach((item) => (item.study === study ? (item.time += Number(time)) : null));
-    for (const el of this.state.store) summaryOneHabitTime(el.study, el.time);
-  };
-
-  // SUMMARY MY REALLY TIME (tasks done)
-  getOneDayRealTime = () => {
-    this.dayTimes.forEach((item) => (item.real_time = 0));
-    const summaryRealTime = (day, time) => this.dayTimes.forEach((item) => (item.day === day ? (item.real_time += Number(time)) : null));
-    for (const el of this.state.store) el.done == true ? summaryRealTime(el.day, el.time) : null;
-  };
-
-  // UPDATE state AFTER REMOVE TASK FROM COMPONENT ShowTask
-  newStore = (newStore = []) => this.setState({ store: newStore });
-
-  // SWITCH LANGUAGE in state
-  newStateSwitchPL = (lang) => this.setState({ switchPL: lang });
-
-  render() {
-    {
-      this.namesForDIV();
-      this.getOneDayTimes();
-      this.getOneDayRealTime();
-      this.getOneHabitTimes();
-    }
-
-    return (
-      <>
-        <Header store={this.state} updateStore={this.newStore} />
-        <SectionAddTask store={this.state} addTaskFromUser={this.addTaskFromUser} />
-        <section className="layout">
-          <Days daysNames={this.state.days} switch={this.state.switchPL} />
-          <Habits habitsNames={this.state.habits} switch={this.state.switchPL} />
-          {this.divNames.map((item) => (
-            <ShowTask key={item} name={item} times={this.dayTimes} store={this.state.store} updateStore={this.newStore} />
-          ))}
-          <HabitSumTime times={this.habitTimes} />
-          <PlannedTime times={this.dayTimes} switch={this.state.switchPL} />
-          <RealTime times={this.dayTimes} switch={this.state.switchPL} />
-          <Language updateLang={this.newStateSwitchPL} switch={this.state.switchPL} />
-        </section>
-      </>
-    );
-  }
-}
+        <HabitSumTime times={habitTimes} />
+        <PlannedTime times={dayTimes} switch={switchPL} />
+        <RealTime times={dayTimes} switch={switchPL} />
+        <Language updateLang={setSwitchPL} switch={switchPL} />
+      </section>
+    </>
+  );
+};
 
 export default App;

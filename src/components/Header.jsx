@@ -1,38 +1,47 @@
-/* eslint-disable react/prop-types */
-const Header = (props) => {
+import { useState } from "react";
+import PropTypes from "prop-types";
+
+const Header = ({ updateStore, switchPL }) => {
+  const [isTaskBarVisible, setIsTaskBarVisible] = useState(false);
+
   const showTaskBar = () => {
     const addBar = document.querySelector(".task_fields");
+    setIsTaskBarVisible(!isTaskBarVisible);
 
-    if (addBar.classList.contains("show_task_bar")) {
-      addBar.classList.remove("show_task_bar");
-      addBar.classList.toggle("hide_task_bar");
-    } else if (addBar.classList.contains("hide_task_bar")) {
-      addBar.classList.remove("hide_task_bar");
-      addBar.classList.toggle("show_task_bar");
-    } else addBar.classList.add("show_task_bar");
+    if (addBar) {
+      if (isTaskBarVisible) {
+        addBar.classList.remove("show_task_bar");
+        addBar.classList.add("hide_task_bar");
+      } else {
+        addBar.classList.remove("hide_task_bar");
+        addBar.classList.add("show_task_bar");
+      }
+    }
   };
 
-  // REMOVE ALL TASKS FROM LocalStore
   const clearAllTasks = () => {
-    if (confirm("Are you sure? \nDelete all tasks?")) {
-      localStorage.removeItem("myTasks");
-      props.updateStore();
-    } else return;
+    if (window.confirm("Are you sure? \nDelete all tasks?")) {
+      updateStore([]); // Używamy bezpośrednio setStore z useLocalStorage
+    }
   };
 
   return (
-    <>
-      <div className="header_buttons">
-        <h1> {!props.store.switchPL ? "Language Learning Planner" : "Planer Nauki Języka"}</h1>
-        <button className="add_top" onClick={showTaskBar}>
-          {!props.store.switchPL ? "ADD TASK" : "DODAJ ZADANIE"}
-        </button>
-        <button className="remove_top" onClick={clearAllTasks}>
-          {!props.store.switchPL ? "CLEAR PLAN" : "WYCZYŚĆ PLAN"}
-        </button>
-      </div>
-    </>
+    <div className="header_buttons">
+      <h1>{!switchPL ? "Language Learning Planner" : "Planer Nauki Języka"}</h1>
+      <button className="add_top" onClick={showTaskBar}>
+        {!switchPL ? "ADD TASK" : "DODAJ ZADANIE"}
+      </button>
+      <button className="remove_top" onClick={clearAllTasks}>
+        {!switchPL ? "CLEAR PLAN" : "WYCZYŚĆ PLAN"}
+      </button>
+    </div>
   );
+};
+
+Header.propTypes = {
+  store: PropTypes.array.isRequired,
+  updateStore: PropTypes.func.isRequired,
+  switchPL: PropTypes.bool.isRequired,
 };
 
 export default Header;
