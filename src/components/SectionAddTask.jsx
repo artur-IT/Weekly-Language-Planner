@@ -1,43 +1,88 @@
-/* eslint-disable react/prop-types */
-const AddTaskSection = (props) => {
-  const lang = props.store.switchPL;
-  const days = props.store.days;
-  const habits = props.store.habits;
+const SectionAddTask = ({ switchPL: lang, days, habits, store, setStore }) => {
+  const onAddTask = (formData) => {
+    const { day, study, task: name, time } = formData;
+    const id = `${day.toLowerCase()}-${study}`;
+
+    if (store.some((task) => task.id === id)) {
+      alert("W tym polu jest już zadanie, usuń je najpierw / There is already a task in this field, please delete it first");
+      return false;
+    }
+
+    const newTask = {
+      id,
+      date_add: new Date().toLocaleDateString("pl-PL"),
+      day,
+      study,
+      name,
+      time,
+      done: false,
+      active: false,
+    };
+
+    setStore((prev) => [...prev, newTask]);
+    return true;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const formData = {
+      day: e.target.elements["day-task"].value,
+      study: e.target.elements["study-name"].value,
+      task: e.target.elements["task-name"].value,
+      time: e.target.elements["exercise_time"].value,
+    };
+
+    if (onAddTask(formData)) {
+      e.target.reset();
+    }
+  };
 
   return (
     <div className="form-container">
-      <form className="task_fields" id="task_inputs">
+      <form className="task_fields" id="task_inputs" onSubmit={handleSubmit}>
         <label>
           {!lang ? "Day:" : "Dzień:"}
-          <select className="day_task" name="day-task">
-            <option></option>
-            <option value={"Monday"}>{!lang ? days.en[0] : days.pl[0]}</option>
-            <option value={"Tuesday"}>{!lang ? days.en[1] : days.pl[1]}</option>
-            <option value={"Wednesday"}>{!lang ? days.en[2] : days.pl[2]}</option>
-            <option value={"Thursday"}>{!lang ? days.en[3] : days.pl[3]}</option>
-            <option value={"Friday"}>{!lang ? days.en[4] : days.pl[4]}</option>
+          <select className="day_task" name="day-task" required>
+            <option value=""></option>
+            {days.en.map((day, i) => (
+              <option key={day} value={day}>
+                {!lang ? days.en[i] : days.pl[i]}
+              </option>
+            ))}
           </select>
         </label>
         <label>
           {!lang ? "Study:" : "Nawyk:"}
-          <select className="study" name="study-name">
-            <option></option>
-            <option value={"SPEAKING"}>{!lang ? habits.en[0] : habits.pl[0]}</option>
-            <option value={"READING"}>{!lang ? habits.en[1] : habits.pl[1]}</option>
-            <option value={"WRITING"}>{!lang ? habits.en[2] : habits.pl[2]}</option>
-            <option value={"LISTENING"}>{!lang ? habits.en[3] : habits.pl[3]}</option>
-            <option value={"VOCABULARY"}>{!lang ? habits.en[4] : habits.pl[4]}</option>
+          <select className="study" name="study-name" required>
+            <option value=""></option>
+            {habits.en.map((habit, i) => (
+              <option key={habit} value={habit}>
+                {!lang ? habits.en[i] : habits.pl[i]}
+              </option>
+            ))}
           </select>
         </label>
         <label>
           {!lang ? "Task name:" : "Nazwa zadania:"}
-          <input className="task_name" name="task-name" type="text" placeholder="max.40 characters" maxLength={40} />
+          <input className="task_name" name="task-name" type="text" placeholder="max.80 characters" maxLength={80} required />
         </label>
         <label>
           {!lang ? "Task time:" : "Czas zadania:"}
-          <input className="task_time" type="number" id="exercise_time" step="5" min="0" max="60" placeholder="max. 60" /> min.
+          <input
+            className="task_time"
+            type="number"
+            id="exercise_time"
+            name="exercise_time"
+            step="5"
+            min="0"
+            max="60"
+            placeholder="max. 60"
+            required
+          />{" "}
+          min.
         </label>
-        <button className="add_form" onClick={props.addTaskFromUser}>
+        <button className="add_form" type="submit">
           {!lang ? "ADD" : "DODAJ"}
         </button>
       </form>
@@ -45,4 +90,4 @@ const AddTaskSection = (props) => {
   );
 };
 
-export default AddTaskSection;
+export default SectionAddTask;

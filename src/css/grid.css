@@ -1,19 +1,27 @@
+.container {
+  width: 100%;
+  max-width: 1330px;
+  margin: 0 auto;
+}
+
 .layout {
   display: grid;
-  margin: 0px auto;
-  padding-bottom: 40px;
-  width: 1150px;
+  width: fit-content;
+  min-width: 1230px;
+  margin: 0 auto;
+  padding: 0 50px 50px 0px;
+  justify-content: center;
   height: auto;
   grid:
     "zero monnday tuesday wednesday thursday friday habit_sum" 50px
-    "habit1 . . . . . habit1_sum" 120px
-    "habit2 . . . . . habit2_sum" 120px
-    "habit3 . . . . . habit3_sum" 120px
-    "habit4 . . . . . habit4_sum" 120px
-    "habit5 . . . . . habit5_sum" 120px
+    "habit1 . . . . . habit1_sum" 200px
+    "habit2 . . . . . habit2_sum" 200px
+    "habit3 . . . . . habit3_sum" 200px
+    "habit4 . . . . . habit4_sum" 200px
+    "habit5 . . . . . habit5_sum" 200px
     "plannded_time . . . . . ." 40px
     "time_done . . . . . ." 40px
-    / 180px 120px 120px 120px 120px 120px 50px;
+    / 180px 200px 200px 200px 200px 200px 50px;
   gap: 10px;
 }
 
@@ -22,6 +30,8 @@ div {
 }
 
 .empty {
+  width: 200px;
+  height: 200px;
   background-color: #fff;
   transition: 0.6s;
   box-shadow: var(--shadow);
@@ -37,13 +47,14 @@ div {
     100px 100px 80px rgba(0, 0, 0, 0.5);
   z-index: 5;
 }
+
 .done_task_bgc {
   color: #fff;
   background-color: #f24607;
 }
 .empty p {
   padding: 3px 6px;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   font-weight: 500;
 }
 .empty div {
