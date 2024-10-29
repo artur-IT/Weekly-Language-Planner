@@ -1,15 +1,17 @@
-.monnday,
+.monday,
 .tuesday,
 .wednesday,
 .thursday,
 .friday {
+  justify-self: center;
+  width: 150px;
   font-weight: 700;
   background-color: var(--bgc-days);
   box-shadow: var(--shadow);
 }
 
 .monnday {
-  grid-area: monnday;
+  grid-area: monday;
 }
 .tuesday {
   grid-area: tuesday;

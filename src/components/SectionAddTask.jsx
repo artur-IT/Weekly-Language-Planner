@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 const SectionAddTask = ({ switchPL: lang, days, habits, store, setStore }) => {
   const onAddTask = (formData) => {
     const { day, study, task: name, time } = formData;
@@ -66,7 +65,7 @@ const SectionAddTask = ({ switchPL: lang, days, habits, store, setStore }) => {
         </label>
         <label>
           {!lang ? "Task name:" : "Nazwa zadania:"}
-          <input className="task_name" name="task-name" type="text" placeholder="max.40 characters" maxLength={40} required />
+          <input className="task_name" name="task-name" type="text" placeholder="max.80 characters" maxLength={80} required />
         </label>
         <label>
           {!lang ? "Task time:" : "Czas zadania:"}

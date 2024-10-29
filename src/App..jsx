@@ -9,7 +9,6 @@ import PlannedTime from "./components/PlannedTime";
 import RealTime from "./components/RealTime";
 import Language from "./components/Language";
 
-// Stałe konfiguracyjne
 const INITIAL_DAYS = {
   en: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
   pl: ["Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek"],

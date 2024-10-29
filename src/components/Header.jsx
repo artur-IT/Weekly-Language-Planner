@@ -27,7 +27,7 @@ const Header = ({ updateStore, switchPL }) => {
 
   return (
     <div className="header_buttons">
-      <h1>{!switchPL ? "Language Learning Planner" : "Planer Nauki Języka"}</h1>
+      <h1>{!switchPL ? "Foreign Language Learning Planner" : "Planer Nauki Języka Obcego"}</h1>
       <button className="add_top" onClick={showTaskBar}>
         {!switchPL ? "ADD TASK" : "DODAJ ZADANIE"}
       </button>

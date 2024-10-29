@@ -1,28 +1,14 @@
-/* eslint-disable react/prop-types */
-const Days = (props) => {
-  const lang = props.switch;
-  const dayEN = props.daysNames.en;
-  const dayPL = props.daysNames.pl;
+const Days = ({ daysNames, switch: switchPL }) => {
   return (
     <>
       <div className="zero"></div>
-      <div className="monnday">
-        <p className="center_text">{!lang ? dayEN[0] : dayPL[0]}</p>
-      </div>
-      <div className="tuesday">
-        <p className="center_text">{!lang ? dayEN[1] : dayPL[1]}</p>
-      </div>
-      <div className="wednesday">
-        <p className="center_text">{!lang ? dayEN[2] : dayPL[2]}</p>
-      </div>
-      <div className="thursday">
-        <p className="center_text">{!lang ? dayEN[3] : dayPL[3]}</p>
-      </div>
-      <div className="friday">
-        <p className="center_text">{!lang ? dayEN[4] : dayPL[4]}</p>
-      </div>
+      {daysNames[switchPL ? "pl" : "en"].map((day, index) => (
+        <div key={day} className={daysNames.en[index].toLowerCase()}>
+          <p className="center_text">{day}</p>
+        </div>
+      ))}
       <div className="habit_sum">
-        <p className="center_text">{!lang ? "Habit time" : "Czas nawyku"}</p>
+        <p className="center_text">{!switchPL ? "Habit time" : "Czas nawyku"}</p>
       </div>
     </>
   );
