@@ -21,12 +21,6 @@ const Days = (props) => {
       <div className="friday">
         <p className="center_text">{!lang ? dayEN[4] : dayPL[4]}</p>
       </div>
-      <div className="saturday">
-        <p className="center_text">{!lang ? dayEN[5] : dayPL[5]}</p>
-      </div>
-      <div className="sunday">
-        <p className="center_text">{!lang ? dayEN[6] : dayPL[6]}</p>
-      </div>
       <div className="habit_sum">
         <p className="center_text">{!lang ? "Habit time" : "Czas nawyku"}</p>
       </div>
