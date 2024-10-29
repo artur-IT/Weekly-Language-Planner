@@ -97,19 +97,22 @@ const App = () => {
     <>
       <Header store={store} updateStore={setStore} switchPL={switchPL} />
       <SectionAddTask store={store} setStore={setStore} days={days} habits={habits} switchPL={switchPL} />
-      <section className="layout">
-        <Days daysNames={days} switch={switchPL} />
-        <Habits habitsNames={habits} switch={switchPL} />
 
-        {divNames.map((item) => (
-          <ShowTask key={item} name={item} times={dayTimes} store={store} updateStore={setStore} />
-        ))}
+      <div className="container">
+        <section className="layout">
+          <Days daysNames={days} switch={switchPL} />
+          <Habits habitsNames={habits} switch={switchPL} />
 
-        <HabitSumTime times={habitTimes} />
-        <PlannedTime times={dayTimes} switch={switchPL} />
-        <RealTime times={dayTimes} switch={switchPL} />
-        <Language updateLang={setSwitchPL} switch={switchPL} />
-      </section>
+          {divNames.map((item) => (
+            <ShowTask key={item} name={item} times={dayTimes} store={store} updateStore={setStore} />
+          ))}
+
+          <HabitSumTime times={habitTimes} />
+          <PlannedTime times={dayTimes} switch={switchPL} />
+          <RealTime times={dayTimes} switch={switchPL} />
+        </section>
+      </div>
+      <Language updateLang={setSwitchPL} switch={switchPL} />
     </>
   );
 };
