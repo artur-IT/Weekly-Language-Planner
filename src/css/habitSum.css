@@ -4,8 +4,8 @@
 .habit4_sum,
 .habit5_sum {
   align-self: center;
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 40px;
   font-size: 0.8rem;
   font-weight: bold;
   background-color: #cbd5e1;
@@ -29,7 +29,7 @@
 }
 
 .habit_sum {
-  width: 60px;
+  width: 70px;
   font-size: 0.8rem;
   grid-area: habit_sum;
   background-color: #fff;

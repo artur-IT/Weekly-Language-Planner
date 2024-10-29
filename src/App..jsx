@@ -96,6 +96,7 @@ const App = () => {
   return (
     <>
       <Header store={store} updateStore={setStore} switchPL={switchPL} />
+      <Language updateLang={setSwitchPL} switch={switchPL} />
       <SectionAddTask store={store} setStore={setStore} days={days} habits={habits} switchPL={switchPL} />
 
       <div className="container">
@@ -112,7 +113,6 @@ const App = () => {
           <RealTime times={dayTimes} switch={switchPL} />
         </section>
       </div>
-      <Language updateLang={setSwitchPL} switch={switchPL} />
     </>
   );
 };

@@ -8,7 +8,7 @@
   display: none;
   margin: 0px auto;
   padding: 20px 0;
-  background-color: #3c94ca;
+  background-color: var(--btn-bg-color);
   box-shadow: var(--shadow);
   border-radius: 0;
 }
@@ -81,7 +81,7 @@ button.add_form {
   padding: 10px 10px;
   color: #fff;
   cursor: pointer;
-  background-color: #970ff2;
+  background-color: #f24607;
   border: none;
   transition: 0.5s;
   border-radius: 0;
@@ -89,6 +89,6 @@ button.add_form {
 
 button.add_form:hover {
   color: #000;
-
+  background-color: #49d907;
   transition: 0.5s;
 }

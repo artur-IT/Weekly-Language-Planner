@@ -81,9 +81,10 @@ div {
 .wednesday_real_time,
 .thursday_real_time,
 .friday_real_time {
+  width: 70px;
   line-height: 40px;
-  vertical-align: middle;
-  font-size: 0.8rem;
+  margin: 0 auto;
+  font-size: 0.9rem;
   font-weight: bold;
   background-color: #cbd5e1;
   box-shadow: var(--shadow);

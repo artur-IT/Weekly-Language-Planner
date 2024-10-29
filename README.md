@@ -1,4 +1,4 @@
-![screen of my app](/public/screenshot/app_in_web.png)
+![screen of my app](/public/screenshot/screenshot.png)
 
 # Weekly Language Planner
 
