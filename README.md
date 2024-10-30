@@ -37,40 +37,22 @@ Project create in Vite.
 
 ## 🤔 Solutions provided in the project
 
-- Summary habit time,
-- Summary One day times
-  ![function getOneDayTimes()](/public/screenshot/getOneDayTimes.png)
-
+- Summary one habit time in week,
+- Summary one day habits times
 - Summary User real task time
-- CSS scale effect
 - All User tasks is stored in LocalStore
 
 &nbsp;
 
-Example code:
+Example code
 
-![function addTaskFromUser()](/public/screenshot/addTaskFromUser.png)
+Get new task and reset fields:
 
-Array with all user times:
+![function addTaskFromUser()](/public/screenshot/get_new-task_and_reset_fields.png)
 
-![Array with all user times](/public/screenshot/all_times.png)
+Array with all initial data:
 
-Class App:
-
-![class App](/public/screenshot/class_App.png)
-
-setState:
-
-![Hook setState](/public/screenshot/setState.png)
-
-&nbsp;
-
-## 💭 Conclusions for future projects
-
-I would like to add Panel Admin with options:
-
-- Delete Habits
-- delete Days
+![Array with all user times](/public/screenshot/initial_data.png)
 
 &nbsp;
 

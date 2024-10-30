@@ -35,7 +35,7 @@ const INITIAL_HABIT_TIMES = [
   { study: "VOCABULARY", time: 0 },
 ];
 
-// Hook customowy do obsługi localStorage
+// Custom Hook to handle localStorage
 const useLocalStorage = (key, initialValue) => {
   const [value, setValue] = useState(() => {
     const item = localStorage.getItem(key);
@@ -58,13 +58,13 @@ const App = () => {
   const [dayTimes, setDayTimes] = useState(INITIAL_DAY_TIMES);
   const [habitTimes, setHabitTimes] = useState(INITIAL_HABIT_TIMES);
 
-  // Generowanie nazw dla divów
+  // Generating div names
   const generateDivNames = useCallback(() => {
     const names = habits.en.flatMap((habit) => days.en.map((day) => `${day.toLowerCase()}-${habit}`));
     setDivNames(names);
   }, [days.en, habits.en]);
 
-  // Obliczanie czasów
+  // Calculating times
   const calculateTimes = useCallback(() => {
     const newDayTimes = INITIAL_DAY_TIMES.map((day) => ({ ...day }));
     const newHabitTimes = INITIAL_HABIT_TIMES.map((habit) => ({ ...habit }));
